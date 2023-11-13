@@ -5,19 +5,17 @@
  */
 package dao;
 
-import bean.MslfUsuarios;
+import bean.MslfJogo;
 import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 
 /**
  *
- *
  */
-public class UsuariosDAO extends DAO_Abstract{
+public class JogoDAO extends DAO_Abstract{
 
-
-@Override
+    @Override
     public void insert(Object object) {
        session.beginTransaction();
        session.save(object);
@@ -27,7 +25,7 @@ public class UsuariosDAO extends DAO_Abstract{
     @Override 
     public void update(Object object) {
        session.beginTransaction();
-       session.flush();
+        session.flush();
        session.clear();
        session.update(object);
        session.getTransaction().commit();
@@ -38,15 +36,15 @@ public class UsuariosDAO extends DAO_Abstract{
        session.beginTransaction();
        session.flush();
        session.clear();
-       session.delete(object);
+       session.delete( object);
        session.getTransaction().commit();
     }
-    
+
     @Override
     public Object list(int id) {
         session.beginTransaction();
-        Criteria criteria = session.createCriteria(UsuariosDAO.class);
-        criteria.add(Restrictions.eq("MSLF_idUsuarios", id));
+        Criteria criteria = session.createCriteria(JogoDAO.class);
+        criteria.add(Restrictions.eq("MSLF_idJogo", id));
         List Lista = criteria.list();
         session.getTransaction().commit();
         return Lista.get(0);
@@ -55,57 +53,43 @@ public class UsuariosDAO extends DAO_Abstract{
     @Override
     public List listALL() {
         session.beginTransaction();
-        Criteria criteria = session.createCriteria(MslfUsuarios.class);
+        Criteria criteria = session.createCriteria(MslfJogo.class);
         List Lista = criteria.list();
         session.getTransaction().commit();
-        return Lista;
-    }
-    
-    public List validar(String tabela, String busca) {
-        session.beginTransaction();
-        Criteria criteria = session.createCriteria(MslfUsuarios.class);
-        criteria.add(Restrictions.eq(tabela, busca));
-        
-        List lista = criteria.list();
-        
-        session.getTransaction().commit();
-        return lista;
-    }
-    
-    
-    public List listNome(String nome) {
-        session.beginTransaction();
-        Criteria criteria = session.createCriteria(MslfUsuarios.class);
-        criteria.add(Restrictions.like("mslfNome", "%" + nome + "%"));
-        List Lista = criteria.list();
-        session.getTransaction().commit();
-        
-        return Lista;
-    }
-    
-    public List listCpf(String cpf) {
-        session.beginTransaction();
-        Criteria criteria = session.createCriteria(MslfUsuarios.class);
-        criteria.add(Restrictions.like("mslfCpf", "%" + cpf + "%"));
-        List Lista = criteria.list();
-        session.getTransaction().commit();
-        
-        return Lista;
-    }
-    
-    public List listNomeCpf(String nome, String cpf) {
-        session.beginTransaction();
-        Criteria criteria = session.createCriteria(MslfUsuarios.class);
-        criteria.add(Restrictions.like("mslfNome", "%" + nome + "%"));
-        criteria.add(Restrictions.like("mslfCpf", "%" + cpf + "%"));
-        List Lista = criteria.list();
-        session.getTransaction().commit();
-        
         return Lista;
     }
     
     public static void main(String[] args) {
-       
+        JogoDAO jogoDAO = new JogoDAO();
     }
     
+    public List listNome(String nome) {
+        session.beginTransaction();
+        Criteria criteria = session.createCriteria(MslfJogo.class);
+        criteria.add(Restrictions.like("mslfNome", "%" + nome + "%"));
+        List Lista = criteria.list();
+        session.getTransaction().commit();
+        
+        return Lista;
+    }
+    public List listEstoque(int estoque) {
+        session.beginTransaction();
+        Criteria criteria = session.createCriteria(MslfJogo.class);
+        criteria.add(Restrictions.ge("mslfEstoque", estoque));
+        List Lista = criteria.list();
+        session.getTransaction().commit();
+        
+        return Lista;
+    }
+    
+    public List listNomeEstoque(String nome, int estoque) {
+        session.beginTransaction();
+        Criteria criteria = session.createCriteria(MslfJogo.class);
+        criteria.add(Restrictions.like("mslfNome", "%" + nome + "%"));
+        criteria.add(Restrictions.ge("mslfEstoque", estoque));
+        List Lista = criteria.list();
+        session.getTransaction().commit();
+        
+        return Lista;
+    }
 }

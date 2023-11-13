@@ -55,12 +55,12 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTxtNome" min="-2" pref="276" max="-2" attributes="0"/>
+                      <Component id="jTxtRg" min="-2" pref="276" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="103" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <Component id="jTxtCpf" min="-2" pref="204" max="-2" attributes="0"/>
+                          <Component id="jTxtCep" min="-2" pref="204" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                           <Component id="jBtnConsultar" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
@@ -84,10 +84,10 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jTxtNome" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTxtRg" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jBtnConsultar" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="jTxtCpf" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTxtCep" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="30" max="32767" attributes="0"/>
               </Group>
@@ -97,10 +97,10 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Nome"/>
+            <Property name="text" type="java.lang.String" value="RG"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTxtNome">
+        <Component class="javax.swing.JTextField" name="jTxtRg">
         </Component>
         <Component class="javax.swing.JButton" name="jBtnConsultar">
           <Properties>
@@ -112,10 +112,10 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
-            <Property name="text" type="java.lang.String" value="CPF"/>
+            <Property name="text" type="java.lang.String" value="CEP"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTxtCpf">
+        <Component class="javax.swing.JTextField" name="jTxtCep">
         </Component>
       </SubComponents>
     </Container>

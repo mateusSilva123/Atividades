@@ -5,32 +5,33 @@
  */
 package query;
 
-import dao.UsuariosDAO;
+import dao.JogoDAO;
 import java.util.List;
-import view.controle.UsuariosControle;
+import view.controle.JogoControle;
+import tools.Util;
 
 /**
  *
  * @author u04127224290
  */
-public class JDlgConsultasUsuarios extends javax.swing.JDialog {
+public class JDlgConsultasJogo extends javax.swing.JDialog {
 
-    UsuariosControle usuariosControle; // Setando como varivavel global
-    UsuariosDAO usuariosDAO;
+    JogoControle jogoControle; // Setando como varivavel global
+    JogoDAO jogoDAO;
 
     /**
-     * Creates new form JDlgConsultasUsuarios
+     * Creates new form JDlgConsultasJogo
      */
-    public JDlgConsultasUsuarios(java.awt.Frame parent, boolean modal) {
+    public JDlgConsultasJogo(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        setTitle("Pesquisas de Usuarios");
+        setTitle("Pesquisas de Jogo");
         setLocationRelativeTo(null);
-        usuariosControle = new UsuariosControle();
-        usuariosDAO = new UsuariosDAO();
-        List lista = usuariosDAO.listALL();
-        usuariosControle.setList(lista);
-        jTable1.setModel(usuariosControle);
+        jogoControle = new JogoControle();
+        jogoDAO = new JogoDAO();
+        List lista = jogoDAO.listALL();
+        jogoControle.setList(lista);
+        jTable1.setModel(jogoControle);
     }
 
     /**
@@ -47,7 +48,7 @@ public class JDlgConsultasUsuarios extends javax.swing.JDialog {
         jTxtNome = new javax.swing.JTextField();
         jBtnConsultar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jTxtCpf = new javax.swing.JTextField();
+        jTxtEstoque = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
 
@@ -64,7 +65,7 @@ public class JDlgConsultasUsuarios extends javax.swing.JDialog {
             }
         });
 
-        jLabel2.setText("CPF");
+        jLabel2.setText("Estoque");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -78,7 +79,7 @@ public class JDlgConsultasUsuarios extends javax.swing.JDialog {
                 .addGap(103, 103, 103)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jTxtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTxtEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jBtnConsultar)
                         .addGap(21, 21, 21))
@@ -98,7 +99,7 @@ public class JDlgConsultasUsuarios extends javax.swing.JDialog {
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jTxtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jBtnConsultar))
-                    .addComponent(jTxtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTxtEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
 
@@ -138,41 +139,41 @@ public class JDlgConsultasUsuarios extends javax.swing.JDialog {
         // TODO add your handling code here:
         /*List lista = null;
         if (jTxtNome.getText().equals("") && jTxtCpf.getText().equals("")) {
-            lista = usuariosDAO.listALL();
+            lista = jogoDAO.listALL();
         } else {
             if (!jTxtNome.getText().equals("") && !jTxtCpf.getText().equals("")) {
-                lista = usuariosDAO.listNomeCpf(jTxtNome.getText(), jTxtCpf.getText());
+                lista = jogoDAO.listNomeCpf(jTxtNome.getText(), jTxtCpf.getText());
             } else {
                 if (!jTxtNome.getText().equals("")) {
-                    lista = usuariosDAO.listNome(jTxtNome.getText());
+                    lista = jogoDAO.listNome(jTxtNome.getText());
                 } else {
                     if (!jTxtCpf.getText().equals("")) {
-                        lista = usuariosDAO.listCpf(jTxtCpf.getText());
+                        lista = jogoDAO.listCpf(jTxtCpf.getText());
                     }
                 }
             }
         }
-        usuariosControle.setList(lista);
+        jogoControle.setList(lista);
         */
         
-        if (jTxtNome.getText().equals("") && jTxtCpf.getText().equals("")) {
-           List lista = usuariosDAO.listALL
+        if (jTxtNome.getText().equals("") && jTxtEstoque.getText().equals("")) {
+           List lista = jogoDAO.listALL
         ();
-           usuariosControle.setList(lista);
+           jogoControle.setList(lista);
        } else {
-           if (! jTxtNome.getText().equals("") && ! jTxtCpf.getText().equals("")) {
-               List lista = usuariosDAO.listNomeCpf(jTxtNome.getText(), jTxtCpf.getText());
-               usuariosControle.setList(lista);
+           if (! jTxtNome.getText().equals("") && ! jTxtEstoque.getText().equals("")) {
+               List lista = jogoDAO.listNomeEstoque(jTxtNome.getText(), Util.strInt(jTxtEstoque.getText()));
+               jogoControle.setList(lista);
            } else {
                 if (! jTxtNome.getText().equals("")) {
-                List lista = usuariosDAO.listNome(jTxtNome.getText());
-                usuariosControle.setList(lista);
-                jTable1.setModel(usuariosControle);
+                List lista = jogoDAO.listNome(jTxtNome.getText());
+                jogoControle.setList(lista);
+                jTable1.setModel(jogoControle);
             } else {
-                    if (! jTxtCpf.getText().equals("")) {
-                        List lista = usuariosDAO.listCpf(jTxtCpf.getText());
-                        usuariosControle.setList(lista);
-                        jTable1.setModel(usuariosControle);
+                    if (! jTxtEstoque.getText().equals("")) {
+                        List lista = jogoDAO.listEstoque(Util.strInt(jTxtEstoque.getText()));
+                        jogoControle.setList(lista);
+                        jTable1.setModel(jogoControle);
                     }
                 }
            }
@@ -197,20 +198,23 @@ public class JDlgConsultasUsuarios extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JDlgConsultasUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDlgConsultasJogo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JDlgConsultasUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDlgConsultasJogo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JDlgConsultasUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDlgConsultasJogo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JDlgConsultasUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDlgConsultasJogo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                JDlgConsultasUsuarios dialog = new JDlgConsultasUsuarios(new javax.swing.JFrame(), true);
+                JDlgConsultasJogo dialog = new JDlgConsultasJogo(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -229,7 +233,7 @@ public class JDlgConsultasUsuarios extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTxtCpf;
+    private javax.swing.JTextField jTxtEstoque;
     private javax.swing.JTextField jTxtNome;
     // End of variables declaration//GEN-END:variables
 }

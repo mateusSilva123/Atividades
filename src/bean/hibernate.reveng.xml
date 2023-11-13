@@ -40,12 +40,11 @@ made subject to such option by the copyright holder.
 Contributor(s):
 -->
 <hibernate-reverse-engineering>
-  <schema-selection match-catalog="mpv_aluno"/>
-  <table-filter match-name="usuarios"/>
-  <table-filter match-name="grupo"/>
-  <table-filter match-name="clientes"/>
-  <table-filter match-name="vendedor"/>
-  <table-filter match-name="produtos"/>
-  <table-filter match-name="vendas"/>
-  <table-filter match-name="vendas_produtos"/>
+  <schema-selection match-catalog="db_mateus_fonseca"/>
+  <table-filter match-name="MslfEntregas"/>
+  <table-filter match-name="MslfCliente"/>
+  <table-filter match-name="MslfVendedor"/>
+  <table-filter match-name="MslfJogo"/>
+  <table-filter match-name="MslfUsuarios"/>
+  <table-filter match-name="MslfVendas"/>
 </hibernate-reverse-engineering>
