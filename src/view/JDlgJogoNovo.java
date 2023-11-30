@@ -127,35 +127,39 @@ public class JDlgJogoNovo extends javax.swing.JDialog {
         jDlgJogoNovoIA.setVisible(true);
         List lista = jogoDAO.listALL();
         jogoControle.setList(lista);
-        //jDlgJogoNovoIA.setVisible(true);
         
     }//GEN-LAST:event_jBtnIncluirActionPerformed
 
     private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed
         int rowSel = jTable1.getSelectedRow();
-        MslfJogo jogo = jogoControle.getbean(rowSel);
-        jDlgJogoNovoIA.beanView(jogo);
-        List lista = jogoDAO.listALL();
-        jogoControle.setList(lista); 
-        jDlgJogoNovoIA.setTitle("Alteração");
-        jDlgJogoNovoIA.setVisible(true);
+        if (rowSel == -1) {
+            Util.mensagem("Você não pode alterar um jogo sem selecioná-lo");
+        } else {
+            MslfJogo jogo = jogoControle.getbean(rowSel);
+            jDlgJogoNovoIA.beanView(jogo);
+            List lista = jogoDAO.listALL();
+            jogoControle.setList(lista); 
+            jDlgJogoNovoIA.setTitle("Alteração");
+            jDlgJogoNovoIA.setVisible(true);
+        }
     }//GEN-LAST:event_jBtnAlterarActionPerformed
 
     private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
-       if ((Util.pergunta("Deseja excluir?")) == true) {
-            int rowSel = jTable1.getSelectedRow();
-            
+        int rowSel = jTable1.getSelectedRow();
+        if (rowSel == -1) {
+            Util.mensagem("Você não pode excluir um jogo sem selecioná-lo");
+        } else {
+        if ((Util.pergunta("Deseja excluir?")) == true) {
             MslfJogo jogo = jogoControle.getbean(rowSel);       
             JogoDAO jogoDAO = new JogoDAO();
             jogoDAO.delete(jogo);
             Util.mensagem("Exclusão realizada com sucesso");
             List lista = jogoDAO.listALL();       
             jogoControle.setList(lista);
-            
             } else
         {
            Util.mensagem("Exclusão cancelada");
-        
+        }
         }
     }//GEN-LAST:event_jBtnExcluirActionPerformed
 

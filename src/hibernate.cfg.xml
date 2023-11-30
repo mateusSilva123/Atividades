@@ -50,7 +50,7 @@ Contributor(s):
     <mapping class="bean.MslfCliente"/>
     <mapping class="bean.MslfJogo"/>
     <mapping class="bean.MslfEntregas"/>
-    <mapping class="bean.MslfVendasProdutos"/>
+    <mapping class="bean.MslfVendasJogo"/>
     <mapping class="bean.MslfVendas"/>
     <mapping class="bean.MslfVendedor"/>
   </session-factory>

@@ -115,11 +115,13 @@ public class JDlgClientePesquisar extends javax.swing.JDialog {
         MslfCliente cliente = clienteControle.getBean(rowSel);
         jDlgCliente.beanView(cliente);
         setVisible(false);
+        jDlgCliente.mexer = true;
     }//GEN-LAST:event_jBtnOkActionPerformed
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
         // TODO add your handling code here:
         setVisible(false);
+        jDlgCliente.mexer = false;
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     /**

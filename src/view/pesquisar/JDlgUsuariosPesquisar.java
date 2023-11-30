@@ -9,6 +9,7 @@ import view.controle.UsuariosControle;
 import bean.MslfUsuarios;
 import dao.UsuariosDAO;
 import java.util.List;
+import tools.Util;
 import view.JDlgUsuarios;
 
 /**
@@ -112,13 +113,19 @@ public class JDlgUsuariosPesquisar extends javax.swing.JDialog {
     private void jBtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkActionPerformed
         // TODO add your handling code here:
         int rowSel = jTable1.getSelectedRow();
-        MslfUsuarios usuarios = usuariosControle.getbean(rowSel);
-        jDlgUsuarios.beanView(usuarios);
-        setVisible(false);
+        if (rowSel == -1) {
+            Util.mensagem("Você precisa selecionar algum registro");
+        } else {
+            MslfUsuarios usuarios = usuariosControle.getbean(rowSel);
+            jDlgUsuarios.beanView(usuarios);
+            jDlgUsuarios.mexer = true;
+            setVisible(false);
+        }
     }//GEN-LAST:event_jBtnOkActionPerformed
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
         // TODO add your handling code here:
+        jDlgUsuarios.mexer = false;
         setVisible(false);
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 

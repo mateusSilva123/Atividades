@@ -12,6 +12,7 @@ import dao.VendedorDAO;
 import bean.MslfCliente;
 import dao.EntregasDAO;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -26,10 +27,12 @@ import view.controle.EntregasControle;
  */
 public class JDlgEntregas extends javax.swing.JDialog {
     boolean incluindo;
+    boolean mexerEntregas;
+    boolean mexerEntregasJogo;
     
-    MaskFormatter mascaraCpf;
-    MaskFormatter mascaraRg;
-    MaskFormatter mascaraCep;
+    MaskFormatter mascaraCPF;
+    MaskFormatter mascaraRG;
+    MaskFormatter mascaraCEP;
     
     MaskFormatter mascaraData;
     MaskFormatter mascaraNumero;
@@ -67,16 +70,16 @@ k     */
                  jFmtCPF, jFmtCEP, jFmtData, jFmtTelefone, jCboCliente, jCboVendedor, jBtnCancelar, jBtnConfirmar);
          
         try {
-            mascaraCpf = new MaskFormatter("###.###.###-##");
+            mascaraCPF = new MaskFormatter("###.###.###-##");
             mascaraNumero = new MaskFormatter("(##) ### ###-###");
             mascaraData = new MaskFormatter("##/##/####");
             
         } catch (ParseException ex) {
             Logger.getLogger(JDlgEntregas.class.getName()).log(Level.SEVERE, null, ex);
         }
-        jFmtCPF.setFormatterFactory(new DefaultFormatterFactory(mascaraCpf));
-        jFmtCEP.setFormatterFactory(new DefaultFormatterFactory(mascaraRg));
-        jFmtRG.setFormatterFactory(new DefaultFormatterFactory(mascaraRg));
+        jFmtCPF.setFormatterFactory(new DefaultFormatterFactory(mascaraCPF));
+        jFmtCEP.setFormatterFactory(new DefaultFormatterFactory(mascaraCEP));
+        jFmtRG.setFormatterFactory(new DefaultFormatterFactory(mascaraRG));
         
         jFmtTelefone.setFormatterFactory(new DefaultFormatterFactory(mascaraNumero));
         jFmtData.setFormatterFactory(new DefaultFormatterFactory(mascaraData));
@@ -494,6 +497,7 @@ k     */
 
     private void jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirActionPerformed
         // TODO add your handling code here:
+        
         Util.habilitar(true, jTxtBairro, jTxtCidade, jTxtEndereco, jTxtEstado, jTxtID, jTxtNumCasa, jFmtRG,
                  jFmtCPF, jFmtCEP, jFmtData, jFmtTelefone, jCboCliente, jCboVendedor, jBtnCancelar, jBtnConfirmar);
         
@@ -502,36 +506,48 @@ k     */
         Util.limparCampos(jTxtBairro, jTxtCidade, jTxtEndereco, jTxtEstado, jTxtID, jTxtNumCasa, jFmtRG,
                  jFmtCPF, jFmtCEP, jFmtData, jFmtTelefone, jCboCliente, jCboVendedor);
         
+        entregasControle.setList(new ArrayList());
+        
         incluindo = true;
+        mexerEntregasJogo = true;
+        mexerEntregas = true;
     }//GEN-LAST:event_jBtnIncluirActionPerformed
 
     private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed
         // TODO add your handling code here:
-       int rowSel = jTable1.getSelectedRow();
-       MslfEntregas entregas = entregasControle.getBean(rowSel);
-       this.beanView(entregas);
-
+       if (mexerEntregas == true){
+       
        Util.habilitar(true, jTxtBairro, jTxtCidade, jTxtEndereco, jTxtEstado, jTxtID, jTxtNumCasa, jFmtRG,
                  jFmtCPF, jFmtCEP, jFmtData, jFmtTelefone, jCboCliente, jCboVendedor, jBtnCancelar, jBtnConfirmar);
         
         Util.habilitar(false, jBtnAlterar, jBtnExcluir, jBtnIncluir, jBtnPesquisar);
         
         incluindo = false;
+        mexerEntregasJogo = true;
+       } else {
+           Util.mensagem("Você não pode alterar um registro que não existe");
+       }
     }//GEN-LAST:event_jBtnAlterarActionPerformed
 
     private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
         // TODO add your handling code here:
-        if ((Util.pergunta("Deseja excluir o registro?") == true)){
-            MslfEntregas entregas = viewBean();
-            EntregasDAO entregasDAO = new EntregasDAO();
-            entregasDAO.delete(entregas);
-            Util.mensagem("Exclusão realizada com sucesso");
+            if (mexerEntregas == true){
+            if ((Util.pergunta("Deseja excluir o registro?") == true)){
+                MslfEntregas entregas = viewBean();
+                EntregasDAO entregasDAO = new EntregasDAO();
+                entregasDAO.delete(entregas);
+                Util.mensagem("Exclusão realizada com sucesso");
+            } else {
+                Util.mensagem("Exclusão cancelada com sucesso");
+            }      
+              Util.limparCampos(jTxtBairro, jTxtCidade, jTxtEndereco, jTxtEstado, jTxtID, jTxtNumCasa, jFmtRG,
+                     jFmtCPF, jFmtCEP, jFmtData, jFmtTelefone, jCboCliente, jCboVendedor);
+            
+             mexerEntregas = false;
         } else {
-            Util.mensagem("Exclusão cancelada com sucesso");
-        }      
-          Util.limparCampos(jTxtBairro, jTxtCidade, jTxtEndereco, jTxtEstado, jTxtID, jTxtNumCasa, jFmtRG,
-                 jFmtCPF, jFmtCEP, jFmtData, jFmtTelefone, jCboCliente, jCboVendedor);
-                                    
+            Util.mensagem("Você não pode excluir um registro que não existe");
+        }
+
     }//GEN-LAST:event_jBtnExcluirActionPerformed
 
     private void jBtnAlterar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterar1ActionPerformed
@@ -597,10 +613,14 @@ k     */
                  jFmtCPF, jFmtCEP, jFmtData, jFmtTelefone, jCboCliente, jCboVendedor, jFmtData);
          
         Util.mensagem("Operação Cancelada");
+        mexerEntregas = false;
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     private void jBtnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPesquisarActionPerformed
         // TODO add your handling code here:
+//       JDlgVendasPesquisar jdlgVendasPesquisar = new JDlgVendasPesquisar(null, true);
+//       jdlgVendasPesquisar.setTelaAnterior(this);
+//       jdlgVendasPesquisar.setVisible(true);
     }//GEN-LAST:event_jBtnPesquisarActionPerformed
 
     private void jFmtRGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFmtRGActionPerformed

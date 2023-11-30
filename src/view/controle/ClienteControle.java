@@ -5,6 +5,7 @@
  */
 package view.controle;
 import bean.MslfCliente;
+import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
 import java.util.List;
 /**
@@ -12,11 +13,11 @@ import java.util.List;
  * @author u04127224290
  */
 public class ClienteControle extends AbstractTableModel {
-private List lista;
+    private List lista = new ArrayList();
 
 public void setList(List lista){
-this.lista = lista;
-this.fireTableDataChanged();
+    this.lista = lista;
+    this.fireTableDataChanged();
 }
 
 public MslfCliente getBean(int linha){

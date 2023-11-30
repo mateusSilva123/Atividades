@@ -45,7 +45,7 @@ Contributor(s):
   <table-filter match-name="MslfVendas"/>
   <table-filter match-name="MslfVendedor"/>
   <table-filter match-name="MslfUsuarios"/>
-  <table-filter match-name="MslfVendasProdutos"/>
+  <table-filter match-name="MslfVendasJogo"/>
   <table-filter match-name="MslfJogo"/>
   <table-filter match-name="MslfCliente"/>
 </hibernate-reverse-engineering>
