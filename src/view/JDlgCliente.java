@@ -29,7 +29,7 @@ import tools.Util;
 public class JDlgCliente extends javax.swing.JDialog {
 
     boolean incluindo;
-    boolean mexer;
+    public boolean mexer;
     
     MaskFormatter mascaraCPF;
     MaskFormatter mascaraRG;
@@ -114,6 +114,7 @@ public class JDlgCliente extends javax.swing.JDialog {
         jPwfSenha.setText( cliente.getMslfSenha());
         jFmtData.setText(Util.dateStr(cliente.getMslfDataNasc())); // AQUI
     };
+     
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -482,9 +483,9 @@ public class JDlgCliente extends javax.swing.JDialog {
             Util.habilitar(false, jBtnAlterar, jBtnExcluir, jBtnIncluir, jBtnPesquisar);
 
            incluindo = false;
-           mexer = false;
+           mexer = true;
         } else {
-            Util.mensagem("Você não pode alterar nada sem ter um registro");
+            Util.mensagem("Você não pode alterar sem ter um registro");
         }
     }//GEN-LAST:event_jBtnAlterarActionPerformed
 
@@ -519,21 +520,20 @@ public class JDlgCliente extends javax.swing.JDialog {
                 ClienteDAO clienteDAO = new ClienteDAO();
                 clienteDAO.update(cliente);
             }
-
              Util.habilitar(false, jTxtApelido, jTxtBairro, jTxtCidade, jTxtEmail, jTxtEndereco,
                     jTxtEstado, jTxtID, jTxtNome, jFmtRG, jPwfSenha, jFmtCPF, jFmtCEP, jFmtData,
                     jFmtTelefone, jCboSexo, jBtnCancelar, jBtnConfirmar);
-
              Util.habilitar(true, jBtnAlterar, jBtnExcluir, jBtnIncluir, jBtnPesquisar);
-
              Util.limparCampos(jTxtApelido, jTxtBairro, jTxtCidade, jTxtEmail, jTxtEndereco,
                     jTxtEstado, jTxtID, jTxtNome, jFmtRG, jPwfSenha, jFmtCPF, jFmtCEP, jFmtData,
                     jFmtTelefone, jCboSexo);
              mexer = false;
+             
         } else {
             Util.mensagem("Você não pode confirmar se não possuir registros");
-        }
-
+                }
+        
+    
     }//GEN-LAST:event_jBtnConfirmarActionPerformed
 
     private void jCboSexoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCboSexoActionPerformed

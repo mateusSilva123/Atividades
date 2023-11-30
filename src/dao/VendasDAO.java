@@ -43,7 +43,7 @@ public class VendasDAO extends DAO_Abstract{
     @Override
     public Object list(int id) {
         session.beginTransaction();
-        Criteria criteria = session.createCriteria(VendasDAO.class);
+        Criteria criteria = session.createCriteria(MslfVendas.class);
         criteria.add(Restrictions.eq("MSLF_idVendas", id));
         List Lista = criteria.list();
         session.getTransaction().commit();
@@ -53,7 +53,7 @@ public class VendasDAO extends DAO_Abstract{
     @Override
     public List listALL() {
         session.beginTransaction();
-        Criteria criteria = session.createCriteria(VendasDAO.class);
+        Criteria criteria = session.createCriteria(MslfVendas.class);
         List Lista = criteria.list();
         session.getTransaction().commit();
         return Lista;

@@ -25,18 +25,24 @@ import view.controle.JogoControle;
  */
 public class JDlgJogoNovoIA extends javax.swing.JDialog {
 
-    JDlgJogoNovo jDlgJogoNovo;
+    public JDlgJogoNovo jDlgJogoNovo;
     MaskFormatter mascaraData;
     
     JDlgJogoNovoIA jDlgJogoNovoIA;
     JogoControle jogoControle;
     
     
-    public JDlgJogoNovoIA(java.awt.Frame parent, boolean modal) {
+    public JDlgJogoNovoIA(java.awt.Frame parent, boolean modal, JogoControle nome) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
         setTitle("Incluir Jogo");
+        
+        jogoControle = nome;
+        
+        jogoControle = new JogoControle();
+        jDlgJogoNovo = new JDlgJogoNovo(null, true);
+        
         Util.limparCampos(jTxtAvaliacao, jTxtDesconto, jTxtEmpresa, jTxtEstoque, jTxtID, jTxtNome, jTxtPreco,
                 jCboBrinde, jCboClassificacao, jCboEdicao, jCboGenero, jCboIdioma, jFmtAno);
         try {
@@ -47,6 +53,7 @@ public class JDlgJogoNovoIA extends javax.swing.JDialog {
         }
         jFmtAno.setFormatterFactory(new DefaultFormatterFactory(mascaraData));
     }
+    
     
  public MslfJogo viewBean() {
         MslfJogo jogo = new MslfJogo(); // criou o bean
@@ -83,6 +90,10 @@ public class JDlgJogoNovoIA extends javax.swing.JDialog {
         jTxtPreco.setText(Util.doubleStr(jogo.getMslfPreco()));
         jFmtAno.setText(Util.dateStr(jogo.getMslfAno()));
     };
+  
+  public void setTelaAnterior(JDlgJogoNovo jDlgJogoNovo) {
+      this.jDlgJogoNovo = jDlgJogoNovo;
+  }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -293,7 +304,7 @@ public class JDlgJogoNovoIA extends javax.swing.JDialog {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
+                .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel19)
                     .addComponent(jTxtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -344,7 +355,7 @@ public class JDlgJogoNovoIA extends javax.swing.JDialog {
                     .addComponent(jCboIdioma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel14)
                     .addComponent(jCboGenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -360,30 +371,29 @@ public class JDlgJogoNovoIA extends javax.swing.JDialog {
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     private void jBtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkActionPerformed
-
+        MslfJogo jogo = viewBean();
+        JogoDAO jogoDAO = new JogoDAO();
+        
         if (getTitle().toUpperCase().substring(0, 1).equals("I"))
         {   
-            MslfJogo jogo = viewBean();
-            JogoDAO jogoDAO = new JogoDAO();
             jogoDAO.insert(jogo);
-           
-            List lista = jogoDAO.listALL();
-            jogoControle.setList(lista); 
-            
-            setVisible(false);
-            this.dispose();
+            jDlgJogoNovo.jogoControle.addBean(jogo);
+            //List lista = jogoDAO.listALL();      
+            //jogoControle.setList(lista);
             
         } else {
-            MslfJogo jogo = viewBean();
-            JogoDAO jogoDAO = new JogoDAO();
             jogoDAO.update(jogo);
-             
-            List lista = jogoDAO.listALL();
-            jogoControle.setList(lista); 
-            
-            setVisible(false);
-            this.dispose();
+            jDlgJogoNovo.jogoControle.updateBean(jDlgJogoNovo.getSelectedRow(), jogo);
+//            jogoDAO.update(jogo);
+//            jDlgJogoNovo.jogoControle.updateBean(jDlgJogoNovo.getse );
+//            
+//            jDlgJogoNovo.vendas
+//            
+//            List lista = jogoDAO.listALL();       
+//            jogoControle.setList(lista);
         }
+       setVisible(false);
+       this.dispose();
         
         Util.limparCampos(jTxtAvaliacao, jTxtDesconto, jTxtEmpresa, jTxtEstoque, jTxtID, jTxtNome, jTxtPreco,
                 jCboBrinde, jCboClassificacao, jCboEdicao, jCboGenero, jCboIdioma, jFmtAno);           
@@ -445,7 +455,7 @@ public class JDlgJogoNovoIA extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                JDlgJogoNovoIA dialog = new JDlgJogoNovoIA(new javax.swing.JFrame(), true);
+                JDlgJogoNovoIA dialog = new JDlgJogoNovoIA(new javax.swing.JFrame(), true, null);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

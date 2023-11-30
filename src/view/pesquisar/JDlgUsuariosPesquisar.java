@@ -50,7 +50,7 @@ public class JDlgUsuariosPesquisar extends javax.swing.JDialog {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jBtnOk = new javax.swing.JButton();
+        jBtncConfirmar = new javax.swing.JButton();
         jBtnCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -68,11 +68,11 @@ public class JDlgUsuariosPesquisar extends javax.swing.JDialog {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jBtnOk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Confirmado.png"))); // NOI18N
-        jBtnOk.setText("OK");
-        jBtnOk.addActionListener(new java.awt.event.ActionListener() {
+        jBtncConfirmar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Confirmado.png"))); // NOI18N
+        jBtncConfirmar.setText("Confirmar");
+        jBtncConfirmar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBtnOkActionPerformed(evt);
+                jBtncConfirmarActionPerformed(evt);
             }
         });
 
@@ -91,7 +91,7 @@ public class JDlgUsuariosPesquisar extends javax.swing.JDialog {
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 779, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jBtnOk)
+                .addComponent(jBtncConfirmar)
                 .addGap(18, 18, 18)
                 .addComponent(jBtnCancelar)
                 .addGap(28, 28, 28))
@@ -102,7 +102,7 @@ public class JDlgUsuariosPesquisar extends javax.swing.JDialog {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBtnOk)
+                    .addComponent(jBtncConfirmar)
                     .addComponent(jBtnCancelar))
                 .addGap(0, 11, Short.MAX_VALUE))
         );
@@ -110,7 +110,7 @@ public class JDlgUsuariosPesquisar extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jBtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkActionPerformed
+    private void jBtncConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtncConfirmarActionPerformed
         // TODO add your handling code here:
         int rowSel = jTable1.getSelectedRow();
         if (rowSel == -1) {
@@ -121,7 +121,7 @@ public class JDlgUsuariosPesquisar extends javax.swing.JDialog {
             jDlgUsuarios.mexer = true;
             setVisible(false);
         }
-    }//GEN-LAST:event_jBtnOkActionPerformed
+    }//GEN-LAST:event_jBtncConfirmarActionPerformed
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
         // TODO add your handling code here:
@@ -176,7 +176,7 @@ public class JDlgUsuariosPesquisar extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBtnCancelar;
-    private javax.swing.JButton jBtnOk;
+    private javax.swing.JButton jBtncConfirmar;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables

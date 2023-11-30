@@ -9,7 +9,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JCheckBox;
-import javax.swing.JComboBox;
+import javax.swing.JComboBox; 
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -19,6 +19,8 @@ import javax.swing.JTextField;
  */
 public class Util {
 
+  
+    
     public static void habilitar(boolean valor, JComponent... vetcomp) {
         for (int i = 0; i < vetcomp.length; i++) {
             vetcomp[i].setEnabled(valor);
@@ -42,7 +44,7 @@ public class Util {
 
     public static void mensagem(String mensagem) {
         JOptionPane.showMessageDialog(null, mensagem);
-    }
+    }   
 
     public static boolean pergunta( String pergunta) {
         return JOptionPane.showConfirmDialog(null, pergunta, "Pergunta", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION;
@@ -80,3 +82,31 @@ public class Util {
     }
 
 }
+
+
+// public static void campoLimpo(JComponent... vetComp) {
+//        
+//        for (JComponent campo : vetComp) {
+//            if (campo instanceof JTextField) {
+//                JTextField texto = (JTextField) campo;
+//                if (texto.getText().isEmpty()) {
+//                    JOptionPane.showMessageDialog(null, "É necessario preencher todos os campos para continuar");
+//                    
+//                }
+//            } else if (campo instanceof JComboBox) {
+//                JComboBox combo = (JComboBox) campo;
+//                if (combo.getSelectedIndex() == -1) {
+//                    JOptionPane.showMessageDialog(null, "É necessario preencher todos os campos para continuar");
+//                  
+//                }
+//                else if (campo instanceof JCheckBox) {
+//                    JCheckBox check = (JCheckBox) campo;
+//                    if (check.isSelected() == false) {
+//                        JOptionPane.showMessageDialog(null, "É necessario preencher todos os campos para continuar");
+//                     
+//                    }
+//                }
+//            }
+//        }
+//        
+//    }

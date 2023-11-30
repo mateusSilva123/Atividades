@@ -39,6 +39,9 @@ public class JDlgVendedorNovoIA extends javax.swing.JDialog {
         initComponents();
         setLocationRelativeTo(null);
         setTitle("Incluir Vendedor");
+        
+        vendedorControle = new VendedorControle();
+        
         Util.limparCampos(jTxtID, jTxtEmail, jTxtNome, jCboSexo, jFmtCPF, jFmtData, jFmtRG, jFmtSalario, jFmtTelefone);
         
         try {

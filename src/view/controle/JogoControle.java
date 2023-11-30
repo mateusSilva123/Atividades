@@ -20,9 +20,25 @@ public void setList(List lista){
     this.fireTableDataChanged();
 }
 
-public MslfJogo getbean(int linha){
-return (MslfJogo) lista.get(linha);
-}
+    public MslfJogo getbean(int linha){
+    return (MslfJogo) lista.get(linha);
+
+ 
+    }   
+    public void addBean(MslfJogo mslfJogo) {
+        lista.add(mslfJogo);
+        this.fireTableDataChanged();
+    }
+    
+    public void removeBean(int index) {
+        lista.remove(index);
+        this.fireTableDataChanged();
+    }
+    
+    public void updateBean(int index, MslfJogo mslfJogo) {
+        lista.set(index, mslfJogo);
+        this.fireTableDataChanged();
+    }
     @Override
     public int getRowCount() {
         return lista.size();

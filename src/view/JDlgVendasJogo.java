@@ -210,6 +210,7 @@ public class JDlgVendasJogo extends javax.swing.JDialog {
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
         // TODO add your handling code here:
         this.dispose();
+        
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     private void jBtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkActionPerformed

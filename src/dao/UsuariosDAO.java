@@ -45,7 +45,7 @@ public class UsuariosDAO extends DAO_Abstract{
     @Override
     public Object list(int id) {
         session.beginTransaction();
-        Criteria criteria = session.createCriteria(UsuariosDAO.class);
+        Criteria criteria = session.createCriteria(MslfUsuarios.class);
         criteria.add(Restrictions.eq("MSLF_idUsuarios", id));
         List Lista = criteria.list();
         session.getTransaction().commit();

@@ -43,7 +43,7 @@ public class EntregasDAO extends DAO_Abstract{
     @Override
     public Object list(int id) {
         session.beginTransaction();
-        Criteria criteria = session.createCriteria(EntregasDAO.class);
+        Criteria criteria = session.createCriteria(MslfEntregas.class);
         criteria.add(Restrictions.eq("MSLF_idEntregas", id));
         List Lista = criteria.list();
         session.getTransaction().commit();

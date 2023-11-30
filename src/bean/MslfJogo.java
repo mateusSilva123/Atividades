@@ -214,6 +214,20 @@ public class MslfJogo  implements java.io.Serializable {
         this.mslfClassificacao = mslfClassificacao;
     }
 
+    @Override
+    public String toString() {
+        return getMslfNome();
+    }
+
+    public boolean equals(Object object) {
+        if (object instanceof MslfJogo) {
+            MslfJogo jogo = (MslfJogo) object;
+            if (this.getMslfIdJogo() == jogo.getMslfIdJogo()) {
+                return true;
+            }
+        }
+        return false;
+    }
 
 
 }

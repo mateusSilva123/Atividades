@@ -11,6 +11,7 @@ import javax.swing.JTable;
 import view.IA.JDlgJogoNovoIA;
 import view.controle.JogoControle;
 import tools.Util;
+import view.controle.VendasJogoControle;
 /**
  *
  * @author eu
@@ -23,9 +24,10 @@ public class JDlgJogoNovo extends javax.swing.JDialog {
    // Declaração de atributo
     JogoDAO jogoDAO;
     MslfJogo jogo;
-    JogoControle jogoControle;
+    public JogoControle jogoControle;
     
-    JDlgJogoNovoIA jDlgJogoNovoIA;
+    
+    // JDlgJogoNovoIA jDlgJogoNovoIA;
     JDlgJogoNovo jDlgJogoNovo;
    
     public JDlgJogoNovo(java.awt.Frame parent, boolean modal) {
@@ -34,12 +36,17 @@ public class JDlgJogoNovo extends javax.swing.JDialog {
         setLocationRelativeTo(null);
         setTitle("Jogo");
         
-        jDlgJogoNovoIA = new JDlgJogoNovoIA(null, true);        
+        //jDlgJogoNovoIA = new JDlgJogoNovoIA(null, true);        
         jogoControle = new JogoControle();
+        
         jogoDAO = new JogoDAO();
         List lista = jogoDAO.listALL();
         jogoControle.setList(lista);
         jTable1.setModel(jogoControle);
+    }
+    
+    public int getSelectedRow(){
+        return jTable1.getSelectedRowCount();
     }
     
     /**
@@ -122,10 +129,10 @@ public class JDlgJogoNovo extends javax.swing.JDialog {
 
     
     private void jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirActionPerformed
-        JDlgJogoNovoIA jDlgJogoNovoIA = new JDlgJogoNovoIA(null, true);
+        JDlgJogoNovoIA jDlgJogoNovoIA = new JDlgJogoNovoIA(null, true, jogoControle);
         jDlgJogoNovoIA.setTitle("Inclusão");
         jDlgJogoNovoIA.setVisible(true);
-        List lista = jogoDAO.listALL();
+        List lista = jogoDAO.listALL();       
         jogoControle.setList(lista);
         
     }//GEN-LAST:event_jBtnIncluirActionPerformed
@@ -136,11 +143,13 @@ public class JDlgJogoNovo extends javax.swing.JDialog {
             Util.mensagem("Você não pode alterar um jogo sem selecioná-lo");
         } else {
             MslfJogo jogo = jogoControle.getbean(rowSel);
-            jDlgJogoNovoIA.beanView(jogo);
-            List lista = jogoDAO.listALL();
-            jogoControle.setList(lista); 
+            JDlgJogoNovoIA jDlgJogoNovoIA = new JDlgJogoNovoIA(null, true, jogoControle);
+            jDlgJogoNovoIA.beanView(jogo); 
             jDlgJogoNovoIA.setTitle("Alteração");
+            jDlgJogoNovoIA.setTelaAnterior(this);
             jDlgJogoNovoIA.setVisible(true);
+            List lista = jogoDAO.listALL();       
+            jogoControle.setList(lista);
         }
     }//GEN-LAST:event_jBtnAlterarActionPerformed
 

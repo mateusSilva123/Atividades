@@ -23,7 +23,6 @@ import javax.swing.text.MaskFormatter;
 import view.controle.VendasJogoControle;
 import tools.Util;
 import view.pesquisar.JDlgVendasPesquisar;
-import tools.JDlgVendasJogo;
 
 
 /**
@@ -33,8 +32,8 @@ import tools.JDlgVendasJogo;
 public class JDlgVendas extends javax.swing.JDialog {
     
     boolean incluindo;
-    boolean mexerVendas;
-    boolean mexerVendasJogo;
+    public boolean mexerVendas;
+    public boolean mexerVendasJogo;
     
     MaskFormatter mascaraData;
     
@@ -474,6 +473,7 @@ k     */
                 jCboCliente, jCboVendedor, jFmtData);
           
           mexerVendas = false;
+          vendasJogoControle.setList(new ArrayList());
         } else {
             Util.mensagem("Você não pode excluir um registro que não existe");
         }
@@ -483,10 +483,10 @@ k     */
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
         // TODO add your handling code here:
         vendasJogoControle.setList(new ArrayList());
-        Util.habilitar(true, jTxtCodigo, jTxtObservacao, jTxtQuantidade, jTxtTotal,
+        Util.habilitar(false, jTxtCodigo, jTxtObservacao, jTxtQuantidade, jTxtTotal,
                 jCboCliente, jCboVendedor, jFmtData, jBtnCancelar, jBtnConfirmar);
         
-        Util.habilitar(false, jBtnAlterar, jBtnExcluir, jBtnIncluir, jBtnPesquisar);
+        Util.habilitar(true, jBtnAlterar, jBtnExcluir, jBtnIncluir, jBtnPesquisar);
         
         Util.limparCampos(jTxtCodigo, jTxtObservacao, jTxtQuantidade, jTxtTotal,
                 jCboCliente, jCboVendedor, jFmtData);
@@ -587,8 +587,8 @@ k     */
         } else{
             vendasDAO.update(mslfVendas);
             // Remover todos os pedidosProdutos deste pedido
-            VendasJogoDAO vendasJogoDAO = new VendasJogoDAO();
-            MslfVendasJogo mslfVendasJogo;
+             VendasJogoDAO vendasJogoDAO = new VendasJogoDAO();
+             MslfVendasJogo mslfVendasJogo;
             for (int linha = 0; linha < jTable1.getRowCount(); linha++) {
                 mslfVendasJogo = vendasJogoControle.getBean(linha);
                 mslfVendasJogo.setMslfVendas(mslfVendas); // funciona como chave estrangeira
@@ -604,13 +604,15 @@ k     */
             }
         }
 
-        Util.habilitar(true, jTxtCodigo, jTxtObservacao, jTxtQuantidade, jTxtTotal,
+       Util.habilitar(false, jTxtCodigo, jTxtObservacao, jTxtQuantidade, jTxtTotal,
                 jCboCliente, jCboVendedor, jFmtData, jBtnCancelar, jBtnConfirmar);
         
-        Util.habilitar(false, jBtnAlterar, jBtnExcluir, jBtnIncluir, jBtnPesquisar);
+        Util.habilitar(true, jBtnAlterar, jBtnExcluir, jBtnIncluir, jBtnPesquisar);
         
         Util.limparCampos(jTxtCodigo, jTxtObservacao, jTxtQuantidade, jTxtTotal,
                 jCboCliente, jCboVendedor, jFmtData);
+        
+        vendasJogoControle.setList(new ArrayList());
         mexerVendas = false;
     }//GEN-LAST:event_jBtnConfirmarActionPerformed
 

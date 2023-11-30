@@ -48,7 +48,7 @@ public  ClienteDAO(){
     @Override
     public Object list(int id) {
         session.beginTransaction();
-        Criteria criteria = session.createCriteria(ClienteDAO.class);
+        Criteria criteria = session.createCriteria(MslfCliente.class);
         criteria.add(Restrictions.eq("MSLF_idCliente", id));
         List Lista = criteria.list();
         session.getTransaction().commit();

@@ -21,7 +21,7 @@ public void setList(List lista){
 }
 
 public MslfCliente getBean(int linha){
-return (MslfCliente) lista.get(linha);
+    return (MslfCliente) lista.get(linha);
 }
     @Override
     public int getRowCount() {

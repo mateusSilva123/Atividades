@@ -9,6 +9,7 @@ import view.controle.ClienteControle;
 import bean.MslfCliente;
 import dao.ClienteDAO;
 import java.util.List;
+import tools.Util;
 import view.JDlgCliente;
 
 /**
@@ -27,8 +28,10 @@ public class JDlgClientePesquisar extends javax.swing.JDialog {
         initComponents();
         setLocationRelativeTo(null);
         setTitle("Consulta de Cliente");
+        
         clienteControle = new ClienteControle();
         ClienteDAO clienteDAO = new ClienteDAO();
+        
         List lista = clienteDAO.listALL();
         clienteControle.setList(lista);
         jTable1.setModel(clienteControle);                
@@ -112,10 +115,14 @@ public class JDlgClientePesquisar extends javax.swing.JDialog {
     private void jBtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkActionPerformed
         // TODO add your handling code here:
         int rowSel = jTable1.getSelectedRow();
-        MslfCliente cliente = clienteControle.getBean(rowSel);
-        jDlgCliente.beanView(cliente);
-        setVisible(false);
-        jDlgCliente.mexer = true;
+        if (rowSel == -1) {
+            Util.mensagem("Selecione um registro antes de confirmar");
+        } else {
+            MslfCliente cliente = clienteControle.getBean(rowSel);
+            jDlgCliente.beanView(cliente);
+            setVisible(false);
+            jDlgCliente.mexer = true;
+            }
     }//GEN-LAST:event_jBtnOkActionPerformed
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed

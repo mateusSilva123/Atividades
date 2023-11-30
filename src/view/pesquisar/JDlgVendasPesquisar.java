@@ -8,6 +8,7 @@ package view.pesquisar;
 import bean.MslfVendas;
 import dao.VendasDAO;
 import java.util.List;
+import tools.Util;
 import view.controle.VendasControle;
 import view.JDlgVendas;
 /**
@@ -25,16 +26,19 @@ public class JDlgVendasPesquisar extends javax.swing.JDialog {
         super(parent, modal);
         initComponents(); 
         setLocationRelativeTo(null);
-        vendasControle = new  VendasControle();
+        setTitle("Consulta de Vendas");
+         
+        vendasControle = new VendasControle();
         VendasDAO vendasDAO = new VendasDAO();
-          
+        
         List lista = vendasDAO.listALL();
+        jTable1.setModel(vendasControle);  
         vendasControle.setList(lista);
-        jTable1.setModel(vendasControle);
+                      
     }
-
-    public  void  setTelaAnterior(JDlgVendas jDlgVendas){
-    this.jDlgVendas  = jDlgVendas;
+    
+    public void setTelaAnterior(JDlgVendas jDlgVendas) {
+        this.jDlgVendas = jDlgVendas;
     }
     
     /**
@@ -111,10 +115,14 @@ public class JDlgVendasPesquisar extends javax.swing.JDialog {
     private void jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmarActionPerformed
         // TODO add your handling code here:
         int rowsel = jTable1.getSelectedRow();
-        MslfVendas vendas = vendasControle.getBean(rowsel);
-        jDlgVendas.beanView(vendas);
-        jDlgVendas.mexerVendas = true;
-        setVisible(false);
+        if (rowsel == -1) {
+            Util.mensagem("Você precisa selecionar algum registro");
+        } else {
+            MslfVendas vendas = vendasControle.getBean(rowsel);
+            jDlgVendas.beanView(vendas);
+            jDlgVendas.mexerVendas = true;
+            setVisible(false);
+        }
     }//GEN-LAST:event_jBtnConfirmarActionPerformed
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
