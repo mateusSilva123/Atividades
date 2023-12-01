@@ -5,40 +5,40 @@
  */
 package view.pesquisar;
 
-import view.controle.ClienteControle;
-import bean.MslfCliente;
-import dao.ClienteDAO;
+import view.controle.EntregasControle;
+import bean.MslfEntregas;
+import dao.EntregasDAO;
 import java.util.List;
 import tools.Util;
-import view.JDlgCliente;
+import view.JDlgEntregas;
 
 /**
  *
  * @author Marcos
  */
-public class JDlgClientePesquisar extends javax.swing.JDialog {
+public class JDlgEntregasPesquisar extends javax.swing.JDialog {
 
-    private JDlgCliente jDlgCliente;
-    ClienteControle clienteControle;
+    private JDlgEntregas jDlgEntregas;
+    EntregasControle entregasControle;
     /**
-     * Creates new form JDlgClientePesquisar
+     * Creates new form JDlgEntregasPesquisar
      */
-    public JDlgClientePesquisar(java.awt.Frame parent, boolean modal) {
+    public JDlgEntregasPesquisar(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
-        setTitle("Consulta de Cliente");
+        setTitle("Consulta de Entregas");
         
-        clienteControle = new ClienteControle();
-        ClienteDAO clienteDAO = new ClienteDAO();
+        entregasControle = new EntregasControle();
+        EntregasDAO entregasDAO = new EntregasDAO();
         
-        List lista = clienteDAO.listALL();
-        clienteControle.setList(lista);
-        jTable1.setModel(clienteControle);                
+        List lista = entregasDAO.listALL();
+        entregasControle.setList(lista);
+        jTable1.setModel(entregasControle);                
     }
     
-    public void setTelaAnterior(JDlgCliente jDlgCliente) {
-        this.jDlgCliente = jDlgCliente;
+    public void setTelaAnterior(JDlgEntregas jDlgEntregas) {
+        this.jDlgEntregas = jDlgEntregas;
     }
 
     /**
@@ -96,17 +96,17 @@ public class JDlgClientePesquisar extends javax.swing.JDialog {
                 .addComponent(jBtnConfirmar)
                 .addGap(18, 18, 18)
                 .addComponent(jBtnCancelar)
-                .addContainerGap())
+                .addGap(28, 28, 28))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBtnConfirmar)
                     .addComponent(jBtnCancelar))
-                .addContainerGap())
+                .addGap(0, 11, Short.MAX_VALUE))
         );
 
         pack();
@@ -118,17 +118,17 @@ public class JDlgClientePesquisar extends javax.swing.JDialog {
         if (rowSel == -1) {
             Util.mensagem("Selecione um registro antes de confirmar");
         } else {
-            MslfCliente cliente = clienteControle.getBean(rowSel);
-            jDlgCliente.beanView(cliente);
+            MslfEntregas entregas = entregasControle.getBean(rowSel);
+            jDlgEntregas.beanView(entregas);
             setVisible(false);
-            jDlgCliente.mexer = true;
+            jDlgEntregas.mexer = true;
             }
     }//GEN-LAST:event_jBtnConfirmarActionPerformed
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
         // TODO add your handling code here:
         setVisible(false);
-        jDlgCliente.mexer = false;
+        jDlgEntregas.mexer = false;
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     /**
@@ -148,21 +148,23 @@ public class JDlgClientePesquisar extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JDlgClientePesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDlgEntregasPesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JDlgClientePesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDlgEntregasPesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JDlgClientePesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDlgEntregasPesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JDlgClientePesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDlgEntregasPesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                JDlgClientePesquisar dialog = new JDlgClientePesquisar(new javax.swing.JFrame(), true);
+                JDlgEntregasPesquisar dialog = new JDlgEntregasPesquisar(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

@@ -11,7 +11,7 @@ import javax.swing.JTable;
 import view.IA.JDlgJogoNovoIA;
 import view.controle.JogoControle;
 import tools.Util;
-import view.controle.VendasJogoControle;
+
 /**
  *
  * @author eu
@@ -78,6 +78,7 @@ public class JDlgJogoNovo extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         jScrollPane1.setViewportView(jTable1);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
