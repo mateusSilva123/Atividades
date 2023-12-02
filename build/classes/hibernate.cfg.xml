@@ -46,12 +46,12 @@ Contributor(s):
     <property name="hibernate.connection.url">jdbc:mysql://10.7.0.51:33062/db_mateus_fonseca?zeroDateTimeBehavior=convertToNull</property>
     <property name="hibernate.connection.username">mateus_fonseca</property>
     <property name="hibernate.connection.password">mateus_fonseca</property>
-    <mapping class="bean.MslfUsuarios"/>
     <mapping class="bean.MslfCliente"/>
+    <mapping class="bean.MslfUsuarios"/>
+    <mapping class="bean.MslfVendedor"/>
+    <mapping class="bean.MslfVendasJogo"/>
     <mapping class="bean.MslfJogo"/>
     <mapping class="bean.MslfEntregas"/>
-    <mapping class="bean.MslfVendasJogo"/>
     <mapping class="bean.MslfVendas"/>
-    <mapping class="bean.MslfVendedor"/>
   </session-factory>
 </hibernate-configuration>
