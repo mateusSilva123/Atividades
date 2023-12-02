@@ -1,5 +1,5 @@
 package bean;
-// Generated 29/11/2023 10:04:28 by Hibernate Tools 4.3.1
+// Generated 01/12/2023 17:46:58 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -125,6 +125,7 @@ public class MslfUsuarios  implements java.io.Serializable {
         this.mslfAtivo = mslfAtivo;
     }
 
+
     @Override
     public String toString() {
         return getMslfNome();
@@ -139,7 +140,6 @@ public class MslfUsuarios  implements java.io.Serializable {
         }
         return false;
     }
-
 
 
 }

@@ -45,18 +45,18 @@ public class JDlgConsultasCliente extends javax.swing.JDialog {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTxtRg = new javax.swing.JTextField();
+        jTxtNivel = new javax.swing.JTextField();
         jBtnConsultar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jTxtCep = new javax.swing.JTextField();
+        jTxtApelido = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
 
-        jLabel1.setText("RG");
+        jLabel1.setText("Nivel");
 
         jBtnConsultar.setText("Consultar");
         jBtnConsultar.addActionListener(new java.awt.event.ActionListener() {
@@ -65,7 +65,7 @@ public class JDlgConsultasCliente extends javax.swing.JDialog {
             }
         });
 
-        jLabel2.setText("CEP");
+        jLabel2.setText("Apelido");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -75,11 +75,11 @@ public class JDlgConsultasCliente extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
-                    .addComponent(jTxtRg, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTxtNivel, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(103, 103, 103)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jTxtCep, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTxtApelido, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jBtnConsultar)
                         .addGap(21, 21, 21))
@@ -97,9 +97,9 @@ public class JDlgConsultasCliente extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jTxtRg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTxtNivel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jBtnConsultar))
-                    .addComponent(jTxtCep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTxtApelido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
 
@@ -156,22 +156,22 @@ public class JDlgConsultasCliente extends javax.swing.JDialog {
         clienteControle.setList(lista);
         */
         
-        if (jTxtRg.getText().equals("") && jTxtCep.getText().equals("")) {
+        if (jTxtNivel.getText().equals("") && jTxtApelido.getText().equals("")) {
            List lista = clienteDAO.listALL
         ();
            clienteControle.setList(lista);
        } else {
-           if (! jTxtRg.getText().equals("") && ! jTxtCep.getText().equals("")) {
-               List lista = clienteDAO.listRgCep(Util.strInt(jTxtRg.getText()), Util.strInt(jTxtCep.getText()));
+           if (! jTxtNivel.getText().equals("") && ! jTxtApelido.getText().equals("")) {
+               List lista = clienteDAO.listNivelApelido(Util.strInt(jTxtNivel.getText()),jTxtApelido.getText());
                clienteControle.setList(lista);
            } else {
-                if (! jTxtRg.getText().equals("")) {
-                List lista = clienteDAO.listRg(Util.strInt(jTxtRg.getText()));
+                if (! jTxtNivel.getText().equals("")) {
+                List lista = clienteDAO.listNivel(Util.strInt(jTxtNivel.getText()));
                 clienteControle.setList(lista);
                 jTable1.setModel(clienteControle);
             } else {
-                    if (! jTxtCep.getText().equals("")) {
-                        List lista = clienteDAO.listCep(Util.strInt(jTxtCep.getText()));
+                    if (! jTxtApelido.getText().equals("")) {
+                        List lista = clienteDAO.listApelido(jTxtApelido.getText());
                         clienteControle.setList(lista);
                         jTable1.setModel(clienteControle);
                     }
@@ -237,7 +237,7 @@ public class JDlgConsultasCliente extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTxtCep;
-    private javax.swing.JTextField jTxtRg;
+    private javax.swing.JTextField jTxtApelido;
+    private javax.swing.JTextField jTxtNivel;
     // End of variables declaration//GEN-END:variables
 }

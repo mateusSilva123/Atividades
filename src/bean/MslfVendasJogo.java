@@ -1,10 +1,12 @@
 package bean;
-// Generated 29/11/2023 10:04:28 by Hibernate Tools 4.3.1
+// Generated 01/12/2023 17:46:58 by Hibernate Tools 4.3.1
 
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -20,7 +22,7 @@ import javax.persistence.Table;
 public class MslfVendasJogo  implements java.io.Serializable {
 
 
-     private int mslfIdVendasJogo;
+     private Integer mslfIdVendasJogo;
      private MslfJogo mslfJogo;
      private MslfVendas mslfVendas;
      private int mslfQuantidade;
@@ -29,23 +31,22 @@ public class MslfVendasJogo  implements java.io.Serializable {
     public MslfVendasJogo() {
     }
 
-    public MslfVendasJogo(int mslfIdVendasJogo, MslfJogo mslfJogo, MslfVendas mslfVendas, int mslfQuantidade, double mslfValorUnitario) {
-       this.mslfIdVendasJogo = mslfIdVendasJogo;
+    public MslfVendasJogo(MslfJogo mslfJogo, MslfVendas mslfVendas, int mslfQuantidade, double mslfValorUnitario) {
        this.mslfJogo = mslfJogo;
        this.mslfVendas = mslfVendas;
        this.mslfQuantidade = mslfQuantidade;
        this.mslfValorUnitario = mslfValorUnitario;
     }
    
-     @Id 
+     @Id @GeneratedValue(strategy=IDENTITY)
 
     
     @Column(name="MSLF_idVendasJogo", unique=true, nullable=false)
-    public int getMslfIdVendasJogo() {
+    public Integer getMslfIdVendasJogo() {
         return this.mslfIdVendasJogo;
     }
     
-    public void setMslfIdVendasJogo(int mslfIdVendasJogo) {
+    public void setMslfIdVendasJogo(Integer mslfIdVendasJogo) {
         this.mslfIdVendasJogo = mslfIdVendasJogo;
     }
 

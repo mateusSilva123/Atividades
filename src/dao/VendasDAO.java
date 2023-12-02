@@ -78,7 +78,7 @@ public class VendasDAO extends DAO_Abstract{
     public List listQuantidade(int quantidade) {
         session.beginTransaction();
         Criteria criteria = session.createCriteria(MslfVendas.class);
-        criteria.add(Restrictions.ge("mslfQuantidade", new Double(quantidade)));
+        criteria.add(Restrictions.ge("mslfQuantidade", quantidade));
         List Lista = criteria.list();
         session.getTransaction().commit();
         
@@ -89,7 +89,7 @@ public class VendasDAO extends DAO_Abstract{
         session.beginTransaction();
         Criteria criteria = session.createCriteria(MslfVendas.class);
         criteria.add(Restrictions.like("mslfObservacao", "%" + observacao + "%"));
-        criteria.add(Restrictions.ge("mslfQuantidade", new Double(quantidade)));
+        criteria.add(Restrictions.ge("mslfQuantidade", quantidade));
         List Lista = criteria.list();
         session.getTransaction().commit();
         

@@ -64,34 +64,35 @@ public  ClienteDAO(){
         return Lista;
     }
     
-    public List listRg(int rg) {
+    public List listNivel(int nivel) {
         session.beginTransaction();
         Criteria criteria = session.createCriteria(MslfCliente.class);
-        criteria.add(Restrictions.ge("mslfRg", new Double(rg)));
+        criteria.add(Restrictions.ge("mslfNivel", nivel));
         List Lista = criteria.list();
         session.getTransaction().commit();
         
         return Lista;
     }
     
-    public List listCep(int cep) {
+    public List listApelido(String apelido) {
         session.beginTransaction();
         Criteria criteria = session.createCriteria(MslfCliente.class);
-        criteria.add(Restrictions.ge("mslfCep", new Double(cep)));
+        criteria.add(Restrictions.like("mslfApelido", "%" + apelido + "%"));
         List Lista = criteria.list();
         session.getTransaction().commit();
         
         return Lista;
     }
     
-    public List listRgCep(int rg, int cep) {
+    public List listNivelApelido(int nivel, String apelido) {
         session.beginTransaction();
         Criteria criteria = session.createCriteria(MslfCliente.class);
-        criteria.add(Restrictions.ge("mslfRg", new Double(rg)));
-        criteria.add(Restrictions.ge("mslfCep", new Double(cep)));
+        criteria.add(Restrictions.ge("mslfNivel", nivel));
+        criteria.add(Restrictions.like("mslfApelido", "%" + apelido + "%"));
         List Lista = criteria.list();
         session.getTransaction().commit();
         
         return Lista;
     }
+    
 }

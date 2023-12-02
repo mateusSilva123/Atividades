@@ -40,7 +40,7 @@ return (MslfEntregas) lista.get(linha);
              return entregas.getMslfIdEntregas();
         }
         if (columnIndex == 1) {
-             return entregas.getMslfEndereco();
+             return entregas.getMslfCidade();
         }
         if (columnIndex == 2) {
              return entregas.getMslfNumeroCasa();
@@ -57,7 +57,7 @@ return (MslfEntregas) lista.get(linha);
              return "ID";
         }
         if (columnIndex == 1) {
-             return "Endereço";
+             return "Cidade";
         }
         if (columnIndex == 2) {
              return "Número de Entrega";

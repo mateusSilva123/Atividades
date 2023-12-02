@@ -1,5 +1,5 @@
 package bean;
-// Generated 29/11/2023 10:04:28 by Hibernate Tools 4.3.1
+// Generated 01/12/2023 17:46:58 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -59,7 +59,6 @@ public class MslfVendedor  implements java.io.Serializable {
        this.mslfTelefone = mslfTelefone;
        this.mslfDataNasc = mslfDataNasc;
        this.mslfSalario = mslfSalario;
-       
     }
    
      @Id 
@@ -153,8 +152,8 @@ public class MslfVendedor  implements java.io.Serializable {
     public void setMslfSalario(double mslfSalario) {
         this.mslfSalario = mslfSalario;
     }
-
-
+    
+    
     
     @Override
     public String toString() {
@@ -170,6 +169,8 @@ public class MslfVendedor  implements java.io.Serializable {
         }
         return false;
     }
+
+
 
 }
 

@@ -1,5 +1,5 @@
 package bean;
-// Generated 29/11/2023 10:04:28 by Hibernate Tools 4.3.1
+// Generated 01/12/2023 17:46:58 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -26,8 +26,6 @@ public class MslfEntregas  implements java.io.Serializable {
      private int mslfIdEntregas;
      private MslfCliente mslfCliente;
      private MslfVendedor mslfVendedor;
-     private String mslfCpf;
-     private String mslfRg;
      private String mslfTelefone;
      private String mslfCep;
      private String mslfEndereco;
@@ -40,12 +38,10 @@ public class MslfEntregas  implements java.io.Serializable {
     public MslfEntregas() {
     }
 
-    public MslfEntregas(int mslfIdEntregas, MslfCliente mslfCliente, MslfVendedor mslfVendedor, String mslfCpf, String mslfRg, String mslfTelefone, String mslfCep, String mslfEndereco, String mslfBairro, String mslfCidade, String mslfEstado, int mslfNumeroCasa, Date mslfData) {
+    public MslfEntregas(int mslfIdEntregas, MslfCliente mslfCliente, MslfVendedor mslfVendedor, String mslfTelefone, String mslfCep, String mslfEndereco, String mslfBairro, String mslfCidade, String mslfEstado, int mslfNumeroCasa, Date mslfData) {
        this.mslfIdEntregas = mslfIdEntregas;
        this.mslfCliente = mslfCliente;
        this.mslfVendedor = mslfVendedor;
-       this.mslfCpf = mslfCpf;
-       this.mslfRg = mslfRg;
        this.mslfTelefone = mslfTelefone;
        this.mslfCep = mslfCep;
        this.mslfEndereco = mslfEndereco;
@@ -86,26 +82,6 @@ public class MslfEntregas  implements java.io.Serializable {
     
     public void setMslfVendedor(MslfVendedor mslfVendedor) {
         this.mslfVendedor = mslfVendedor;
-    }
-
-    
-    @Column(name="MSLF_cpf", nullable=false, length=30)
-    public String getMslfCpf() {
-        return this.mslfCpf;
-    }
-    
-    public void setMslfCpf(String mslfCpf) {
-        this.mslfCpf = mslfCpf;
-    }
-
-    
-    @Column(name="MSLF_rg", nullable=false, length=30)
-    public String getMslfRg() {
-        return this.mslfRg;
-    }
-    
-    public void setMslfRg(String mslfRg) {
-        this.mslfRg = mslfRg;
     }
 
     

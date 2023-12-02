@@ -30,6 +30,7 @@ public class JDlgVendasPesquisar extends javax.swing.JDialog {
          
         vendasControle = new VendasControle();
         VendasDAO vendasDAO = new VendasDAO();
+        MslfVendas mslfVendas = new MslfVendas();
         
         List lista = vendasDAO.listALL();
         jTable1.setModel(vendasControle);  
@@ -103,9 +104,11 @@ public class JDlgVendasPesquisar extends javax.swing.JDialog {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBtnConfirmar)
-                    .addComponent(jBtnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jBtnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(4, 4, 4)
+                        .addComponent(jBtnConfirmar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -116,7 +119,7 @@ public class JDlgVendasPesquisar extends javax.swing.JDialog {
         // TODO add your handling code here:
         int rowsel = jTable1.getSelectedRow();
         if (rowsel == -1) {
-            Util.mensagem("Você precisa selecionar algum registro");
+            Util.mensagem("Você precisa selecionar algum registro para continuar");
         } else {
             MslfVendas vendas = vendasControle.getBean(rowsel);
             jDlgVendas.beanView(vendas);

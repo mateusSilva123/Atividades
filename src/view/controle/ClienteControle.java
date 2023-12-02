@@ -43,10 +43,10 @@ public MslfCliente getBean(int linha){
              return cliente.getMslfNome();
         }
         if (columnIndex == 2) {
-             return cliente.getMslfApelido();
+             return cliente.getMslfNivel();
         }
         if (columnIndex == 3) {
-             return cliente.getMslfCep();
+             return cliente.getMslfApelido();
         
         }
        return "";
@@ -60,10 +60,10 @@ public MslfCliente getBean(int linha){
              return "Nome";
         }
         if (columnIndex == 2) {
-             return "Apelido";
+             return "Nivel";
         }
         if (columnIndex == 3) {
-             return "CEP";
+             return "Apelido";
         }
        
     return "";

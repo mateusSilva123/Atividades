@@ -1,5 +1,5 @@
 package bean;
-// Generated 29/11/2023 10:04:28 by Hibernate Tools 4.3.1
+// Generated 01/12/2023 17:46:58 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -55,7 +55,7 @@ public class MslfJogo  implements java.io.Serializable {
         this.mslfEstoque = mslfEstoque;
         this.mslfClassificacao = mslfClassificacao;
     }
-    public MslfJogo(int mslfIdJogo, String mslfNome, String mslfEmpresa, Date mslfAno, double mslfPreco, String mslfGenero, String mslfIdioma, String mslfAvaliacaoGeral, String mslfObservacao, String mslfEdicao, int mslfEstoque, String mslfBrinde, Double mslfDesconto, String mslfClassificacao, Set mslfVendasProdutoses) {
+    public MslfJogo(int mslfIdJogo, String mslfNome, String mslfEmpresa, Date mslfAno, double mslfPreco, String mslfGenero, String mslfIdioma, String mslfAvaliacaoGeral, String mslfObservacao, String mslfEdicao, int mslfEstoque, String mslfBrinde, Double mslfDesconto, String mslfClassificacao, Set mslfVendasJogos) {
        this.mslfIdJogo = mslfIdJogo;
        this.mslfNome = mslfNome;
        this.mslfEmpresa = mslfEmpresa;
@@ -213,7 +213,7 @@ public class MslfJogo  implements java.io.Serializable {
     public void setMslfClassificacao(String mslfClassificacao) {
         this.mslfClassificacao = mslfClassificacao;
     }
-
+    
     @Override
     public String toString() {
         return getMslfNome();
@@ -228,7 +228,6 @@ public class MslfJogo  implements java.io.Serializable {
         }
         return false;
     }
-
 
 }
 
