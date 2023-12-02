@@ -5,6 +5,7 @@
  */
 package view.controle;
 import bean.MslfJogo;
+import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
 import java.util.List;
 /**
@@ -12,16 +13,32 @@ import java.util.List;
  * @author dfdfdfdfd
  */
 public class JogoControle extends AbstractTableModel {
-private List lista;
+    private List lista = new ArrayList();
 
 public void setList(List lista){
-this.lista = lista;
-this.fireTableDataChanged();
+    this.lista = lista;
+    this.fireTableDataChanged();
 }
 
-public MslfJogo getbean(int linha){
-return (MslfJogo) lista.get(linha);
-}
+    public MslfJogo getbean(int linha){
+    return (MslfJogo) lista.get(linha);
+
+ 
+    }   
+    public void addBean(MslfJogo mslfJogo) {
+        lista.add(mslfJogo);
+        this.fireTableDataChanged();
+    }
+    
+    public void removeBean(int index) {
+        lista.remove(index);
+        this.fireTableDataChanged();
+    }
+    
+    public void updateBean(int index, MslfJogo mslfJogo) {
+        lista.set(index, mslfJogo);
+        this.fireTableDataChanged();
+    }
     @Override
     public int getRowCount() {
         return lista.size();

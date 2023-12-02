@@ -1,5 +1,5 @@
 package bean;
-// Generated 20/10/2023 13:43:36 by Hibernate Tools 4.3.1
+// Generated 01/12/2023 17:46:58 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -9,8 +9,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -27,30 +25,28 @@ public class MslfCliente  implements java.io.Serializable {
 
 
      private int mslfIdCliente;
-     private MslfUsuarios mslfUsuarios;
      private String mslfNome;
      private String mslfApelido;
      private String mslfEmail;
      private String mslfCpf;
-     private int mslfRg;
+     private String mslfRg;
      private String mslfSexo;
      private String mslfTelefone;
      private String mslfSenha;
-     private int mslfCep;
+     private String mslfCep;
      private String mslfEndereco;
      private String mslfBairro;
      private String mslfCidade;
      private String mslfEstado;
      private Date mslfDataNasc;
-     
+     private int mslfNivel;
 
     public MslfCliente() {
     }
 
 	
-    public MslfCliente(int mslfIdCliente, MslfUsuarios mslfUsuarios, String mslfNome, String mslfEmail, String mslfCpf, int mslfRg, String mslfSexo, String mslfTelefone, String mslfSenha, int mslfCep, String mslfEndereco, String mslfBairro, String mslfCidade, String mslfEstado, Date mslfDataNasc) {
+    public MslfCliente(int mslfIdCliente, String mslfNome, String mslfEmail, String mslfCpf, String mslfRg, String mslfSexo, String mslfTelefone, String mslfSenha, String mslfCep, String mslfEndereco, String mslfBairro, String mslfCidade, String mslfEstado, Date mslfDataNasc, int mslfNivel) {
         this.mslfIdCliente = mslfIdCliente;
-        this.mslfUsuarios = mslfUsuarios;
         this.mslfNome = mslfNome;
         this.mslfEmail = mslfEmail;
         this.mslfCpf = mslfCpf;
@@ -64,10 +60,10 @@ public class MslfCliente  implements java.io.Serializable {
         this.mslfCidade = mslfCidade;
         this.mslfEstado = mslfEstado;
         this.mslfDataNasc = mslfDataNasc;
+        this.mslfNivel = mslfNivel;
     }
-    public MslfCliente(int mslfIdCliente, MslfUsuarios mslfUsuarios, String mslfNome, String mslfApelido, String mslfEmail, String mslfCpf, int mslfRg, String mslfSexo, String mslfTelefone, String mslfSenha, int mslfCep, String mslfEndereco, String mslfBairro, String mslfCidade, String mslfEstado, Date mslfDataNasc) {
+    public MslfCliente(int mslfIdCliente, String mslfNome, String mslfApelido, String mslfEmail, String mslfCpf, String mslfRg, String mslfSexo, String mslfTelefone, String mslfSenha, String mslfCep, String mslfEndereco, String mslfBairro, String mslfCidade, String mslfEstado, Date mslfDataNasc, int mslfNivel, Set mslfEntregases, Set mslfVendases) {
        this.mslfIdCliente = mslfIdCliente;
-       this.mslfUsuarios = mslfUsuarios;
        this.mslfNome = mslfNome;
        this.mslfApelido = mslfApelido;
        this.mslfEmail = mslfEmail;
@@ -82,7 +78,7 @@ public class MslfCliente  implements java.io.Serializable {
        this.mslfCidade = mslfCidade;
        this.mslfEstado = mslfEstado;
        this.mslfDataNasc = mslfDataNasc;
-       
+       this.mslfNivel = mslfNivel;       
     }
    
      @Id 
@@ -95,16 +91,6 @@ public class MslfCliente  implements java.io.Serializable {
     
     public void setMslfIdCliente(int mslfIdCliente) {
         this.mslfIdCliente = mslfIdCliente;
-    }
-
-@ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="MSLF_idUsuarios", nullable=false)
-    public MslfUsuarios getMslfUsuarios() {
-        return this.mslfUsuarios;
-    }
-    
-    public void setMslfUsuarios(MslfUsuarios mslfUsuarios) {
-        this.mslfUsuarios = mslfUsuarios;
     }
 
     
@@ -149,11 +135,11 @@ public class MslfCliente  implements java.io.Serializable {
 
     
     @Column(name="MSLF_rg", nullable=false, length=30)
-    public int getMslfRg() {
+    public String getMslfRg() {
         return this.mslfRg;
     }
     
-    public void setMslfRg(int mslfRg) {
+    public void setMslfRg(String mslfRg) {
         this.mslfRg = mslfRg;
     }
 
@@ -188,12 +174,12 @@ public class MslfCliente  implements java.io.Serializable {
     }
 
     
-    @Column(name="MSLF_cep", nullable=false, length=45)
-    public int getMslfCep() {
+    @Column(name="MSLF_cep", nullable=false, length=30)
+    public String getMslfCep() {
         return this.mslfCep;
     }
     
-    public void setMslfCep(int mslfCep) {
+    public void setMslfCep(String mslfCep) {
         this.mslfCep = mslfCep;
     }
 
@@ -247,6 +233,17 @@ public class MslfCliente  implements java.io.Serializable {
         this.mslfDataNasc = mslfDataNasc;
     }
 
+    
+    @Column(name="MSLF_nivel", nullable=false)
+    public int getMslfNivel() {
+        return this.mslfNivel;
+    }
+    
+    public void setMslfNivel(int mslfNivel) {
+        this.mslfNivel = mslfNivel;
+    }
+    
+    
 @Override
     public String toString() {
         return getMslfNome();

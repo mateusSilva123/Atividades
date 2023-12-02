@@ -1,14 +1,19 @@
 package bean;
-// Generated 20/10/2023 13:43:36 by Hibernate Tools 4.3.1
+// Generated 01/12/2023 17:46:58 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -23,19 +28,27 @@ import javax.persistence.TemporalType;
 public class MslfVendas  implements java.io.Serializable {
 
 
-     private int mslfIdVendas;
+     private Integer mslfIdVendas;
      private MslfCliente mslfCliente;
      private MslfVendedor mslfVendedor;
      private int mslfQuantidade;
-     private String mslfValorTotal;
+     private double mslfValorTotal;
      private Date mslfDataEHora;
-     private String mslfObservacao;
+     private String mslfObservacao;     
 
     public MslfVendas() {
     }
 
-    public MslfVendas(int mslfIdVendas, MslfCliente mslfCliente, MslfVendedor mslfVendedor, int mslfQuantidade, String mslfValorTotal, Date mslfDataEHora, String mslfObservacao) {
-       this.mslfIdVendas = mslfIdVendas;
+	
+    public MslfVendas(MslfCliente mslfCliente, MslfVendedor mslfVendedor, int mslfQuantidade, double mslfValorTotal, Date mslfDataEHora, String mslfObservacao) {
+        this.mslfCliente = mslfCliente;
+        this.mslfVendedor = mslfVendedor;
+        this.mslfQuantidade = mslfQuantidade;
+        this.mslfValorTotal = mslfValorTotal;
+        this.mslfDataEHora = mslfDataEHora;
+        this.mslfObservacao = mslfObservacao;
+    }
+    public MslfVendas(MslfCliente mslfCliente, MslfVendedor mslfVendedor, int mslfQuantidade, double mslfValorTotal, Date mslfDataEHora, String mslfObservacao, Set mslfVendasJogos) {
        this.mslfCliente = mslfCliente;
        this.mslfVendedor = mslfVendedor;
        this.mslfQuantidade = mslfQuantidade;
@@ -44,15 +57,15 @@ public class MslfVendas  implements java.io.Serializable {
        this.mslfObservacao = mslfObservacao;
     }
    
-     @Id 
+     @Id @GeneratedValue(strategy=IDENTITY)
 
     
     @Column(name="MSLF_idVendas", unique=true, nullable=false)
-    public int getMslfIdVendas() {
+    public Integer getMslfIdVendas() {
         return this.mslfIdVendas;
     }
     
-    public void setMslfIdVendas(int mslfIdVendas) {
+    public void setMslfIdVendas(Integer mslfIdVendas) {
         this.mslfIdVendas = mslfIdVendas;
     }
 
@@ -87,12 +100,12 @@ public class MslfVendas  implements java.io.Serializable {
     }
 
     
-    @Column(name="MSLF_valor_total", nullable=false, length=45)
-    public String getMslfValorTotal() {
+    @Column(name="MSLF_valor_total", nullable=false, precision=22, scale=0)
+    public double getMslfValorTotal() {
         return this.mslfValorTotal;
     }
     
-    public void setMslfValorTotal(String mslfValorTotal) {
+    public void setMslfValorTotal(double mslfValorTotal) {
         this.mslfValorTotal = mslfValorTotal;
     }
 
@@ -115,7 +128,6 @@ public class MslfVendas  implements java.io.Serializable {
     public void setMslfObservacao(String mslfObservacao) {
         this.mslfObservacao = mslfObservacao;
     }
-
 
 
 

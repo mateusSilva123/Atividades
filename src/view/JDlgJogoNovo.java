@@ -11,6 +11,7 @@ import javax.swing.JTable;
 import view.IA.JDlgJogoNovoIA;
 import view.controle.JogoControle;
 import tools.Util;
+
 /**
  *
  * @author eu
@@ -23,9 +24,10 @@ public class JDlgJogoNovo extends javax.swing.JDialog {
    // Declaração de atributo
     JogoDAO jogoDAO;
     MslfJogo jogo;
-    JogoControle jogoControle;
+    public JogoControle jogoControle;
     
-    JDlgJogoNovoIA jDlgJogoNovoIA;
+    
+    // JDlgJogoNovoIA jDlgJogoNovoIA;
     JDlgJogoNovo jDlgJogoNovo;
    
     public JDlgJogoNovo(java.awt.Frame parent, boolean modal) {
@@ -34,12 +36,17 @@ public class JDlgJogoNovo extends javax.swing.JDialog {
         setLocationRelativeTo(null);
         setTitle("Jogo");
         
-        jDlgJogoNovoIA = new JDlgJogoNovoIA(null, true);        
+        //jDlgJogoNovoIA = new JDlgJogoNovoIA(null, true);        
         jogoControle = new JogoControle();
+        
         jogoDAO = new JogoDAO();
         List lista = jogoDAO.listALL();
         jogoControle.setList(lista);
         jTable1.setModel(jogoControle);
+    }
+    
+    public int getSelectedRow(){
+        return jTable1.getSelectedRowCount();
     }
     
     /**
@@ -71,6 +78,7 @@ public class JDlgJogoNovo extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         jScrollPane1.setViewportView(jTable1);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -122,40 +130,46 @@ public class JDlgJogoNovo extends javax.swing.JDialog {
 
     
     private void jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirActionPerformed
-        JDlgJogoNovoIA jDlgJogoNovoIA = new JDlgJogoNovoIA(null, true);
+        JDlgJogoNovoIA jDlgJogoNovoIA = new JDlgJogoNovoIA(null, true, jogoControle);
         jDlgJogoNovoIA.setTitle("Inclusão");
         jDlgJogoNovoIA.setVisible(true);
-        List lista = jogoDAO.listALL();
+        List lista = jogoDAO.listALL();       
         jogoControle.setList(lista);
-        //jDlgJogoNovoIA.setVisible(true);
         
     }//GEN-LAST:event_jBtnIncluirActionPerformed
 
     private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed
         int rowSel = jTable1.getSelectedRow();
-        MslfJogo jogo = jogoControle.getbean(rowSel);
-        jDlgJogoNovoIA.beanView(jogo);
-        List lista = jogoDAO.listALL();
-        jogoControle.setList(lista); 
-        jDlgJogoNovoIA.setTitle("Alteração");
-        jDlgJogoNovoIA.setVisible(true);
+        if (rowSel == -1) {
+            Util.mensagem("Você não pode alterar um jogo sem selecioná-lo");
+        } else {
+            MslfJogo jogo = jogoControle.getbean(rowSel);
+            JDlgJogoNovoIA jDlgJogoNovoIA = new JDlgJogoNovoIA(null, true, jogoControle);
+            jDlgJogoNovoIA.beanView(jogo); 
+            jDlgJogoNovoIA.setTitle("Alteração");
+            jDlgJogoNovoIA.setTelaAnterior(this);
+            jDlgJogoNovoIA.setVisible(true);
+            List lista = jogoDAO.listALL();       
+            jogoControle.setList(lista);
+        }
     }//GEN-LAST:event_jBtnAlterarActionPerformed
 
     private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
-       if ((Util.pergunta("Deseja excluir?")) == true) {
-            int rowSel = jTable1.getSelectedRow();
-            
+        int rowSel = jTable1.getSelectedRow();
+        if (rowSel == -1) {
+            Util.mensagem("Você não pode excluir um jogo sem selecioná-lo");
+        } else {
+        if ((Util.pergunta("Deseja excluir?")) == true) {
             MslfJogo jogo = jogoControle.getbean(rowSel);       
             JogoDAO jogoDAO = new JogoDAO();
             jogoDAO.delete(jogo);
             Util.mensagem("Exclusão realizada com sucesso");
             List lista = jogoDAO.listALL();       
             jogoControle.setList(lista);
-            
             } else
         {
            Util.mensagem("Exclusão cancelada");
-        
+        }
         }
     }//GEN-LAST:event_jBtnExcluirActionPerformed
 

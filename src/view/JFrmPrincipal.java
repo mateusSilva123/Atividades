@@ -5,6 +5,7 @@
  */
 package view;
 
+
 import query.JDlgConsultasCliente;
 import query.JDlgConsultasEntregas;
 import query.JDlgConsultasJogo;

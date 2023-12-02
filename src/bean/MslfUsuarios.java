@@ -1,15 +1,11 @@
 package bean;
-// Generated 20/10/2023 13:43:36 by Hibernate Tools 4.3.1
+// Generated 01/12/2023 17:46:58 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -32,21 +28,19 @@ public class MslfUsuarios  implements java.io.Serializable {
      private String mslfSenha;
      private int mslfNivel;
      private String mslfAtivo;
-     
 
     public MslfUsuarios() {
     }
 
-	
     public MslfUsuarios(int mslfIdUsuarios, String mslfNome, String mslfApelido, String mslfCpf, Date mslfDataNasc, String mslfSenha, int mslfNivel, String mslfAtivo) {
-        this.mslfIdUsuarios = mslfIdUsuarios;
-        this.mslfNome = mslfNome;
-        this.mslfApelido = mslfApelido;
-        this.mslfCpf = mslfCpf;
-        this.mslfDataNasc = mslfDataNasc;
-        this.mslfSenha = mslfSenha;
-        this.mslfNivel = mslfNivel;
-        this.mslfAtivo = mslfAtivo;
+       this.mslfIdUsuarios = mslfIdUsuarios;
+       this.mslfNome = mslfNome;
+       this.mslfApelido = mslfApelido;
+       this.mslfCpf = mslfCpf;
+       this.mslfDataNasc = mslfDataNasc;
+       this.mslfSenha = mslfSenha;
+       this.mslfNivel = mslfNivel;
+       this.mslfAtivo = mslfAtivo;
     }
    
      @Id 
@@ -130,6 +124,7 @@ public class MslfUsuarios  implements java.io.Serializable {
     public void setMslfAtivo(String mslfAtivo) {
         this.mslfAtivo = mslfAtivo;
     }
+
 
     @Override
     public String toString() {

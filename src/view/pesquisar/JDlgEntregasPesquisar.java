@@ -5,38 +5,40 @@
  */
 package view.pesquisar;
 
-import view.controle.UsuariosControle;
-import bean.MslfUsuarios;
-import dao.UsuariosDAO;
+import view.controle.EntregasControle;
+import bean.MslfEntregas;
+import dao.EntregasDAO;
 import java.util.List;
 import tools.Util;
-import view.JDlgUsuarios;
+import view.JDlgEntregas;
 
 /**
  *
- * @author u04127224290
+ * @author Marcos
  */
-public class JDlgUsuariosPesquisar extends javax.swing.JDialog {
+public class JDlgEntregasPesquisar extends javax.swing.JDialog {
 
-    private JDlgUsuarios jDlgUsuarios;
-    UsuariosControle usuariosControle;
+    private JDlgEntregas jDlgEntregas;
+    EntregasControle entregasControle;
     /**
-     * Creates new form JDlgUsuariosPesquisar
+     * Creates new form JDlgEntregasPesquisar
      */
-    public JDlgUsuariosPesquisar(java.awt.Frame parent, boolean modal) {
+    public JDlgEntregasPesquisar(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
-        setTitle("Consulta de Usuarios");
-        usuariosControle = new UsuariosControle();
-        UsuariosDAO usuariosDAO = new UsuariosDAO();
-        List lista = usuariosDAO.listALL();
-        usuariosControle.setList(lista);
-        jTable1.setModel(usuariosControle);                
+        setTitle("Consulta de Entregas");
+        
+        entregasControle = new EntregasControle();
+        EntregasDAO entregasDAO = new EntregasDAO();
+        
+        List lista = entregasDAO.listALL();
+        entregasControle.setList(lista);
+        jTable1.setModel(entregasControle);                
     }
     
-    public void setTelaAnterior(JDlgUsuarios jDlgUsuarios) {
-        this.jDlgUsuarios = jDlgUsuarios;
+    public void setTelaAnterior(JDlgEntregas jDlgEntregas) {
+        this.jDlgEntregas = jDlgEntregas;
     }
 
     /**
@@ -50,7 +52,7 @@ public class JDlgUsuariosPesquisar extends javax.swing.JDialog {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jBtncConfirmar = new javax.swing.JButton();
+        jBtnConfirmar = new javax.swing.JButton();
         jBtnCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -68,11 +70,11 @@ public class JDlgUsuariosPesquisar extends javax.swing.JDialog {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jBtncConfirmar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Confirmado.png"))); // NOI18N
-        jBtncConfirmar.setText("Confirmar");
-        jBtncConfirmar.addActionListener(new java.awt.event.ActionListener() {
+        jBtnConfirmar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Confirmado.png"))); // NOI18N
+        jBtnConfirmar.setText("Confirmar");
+        jBtnConfirmar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBtncConfirmarActionPerformed(evt);
+                jBtnConfirmarActionPerformed(evt);
             }
         });
 
@@ -91,7 +93,7 @@ public class JDlgUsuariosPesquisar extends javax.swing.JDialog {
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 779, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jBtncConfirmar)
+                .addComponent(jBtnConfirmar)
                 .addGap(18, 18, 18)
                 .addComponent(jBtnCancelar)
                 .addGap(28, 28, 28))
@@ -102,7 +104,7 @@ public class JDlgUsuariosPesquisar extends javax.swing.JDialog {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBtncConfirmar)
+                    .addComponent(jBtnConfirmar)
                     .addComponent(jBtnCancelar))
                 .addGap(0, 11, Short.MAX_VALUE))
         );
@@ -110,23 +112,23 @@ public class JDlgUsuariosPesquisar extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jBtncConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtncConfirmarActionPerformed
+    private void jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmarActionPerformed
         // TODO add your handling code here:
         int rowSel = jTable1.getSelectedRow();
         if (rowSel == -1) {
-            Util.mensagem("Você precisa selecionar algum registro");
+            Util.mensagem("Selecione um registro antes de confirmar");
         } else {
-            MslfUsuarios usuarios = usuariosControle.getbean(rowSel);
-            jDlgUsuarios.beanView(usuarios);
-            jDlgUsuarios.mexer = true;
+            MslfEntregas entregas = entregasControle.getBean(rowSel);
+            jDlgEntregas.beanView(entregas);
             setVisible(false);
-        }
-    }//GEN-LAST:event_jBtncConfirmarActionPerformed
+            jDlgEntregas.mexer = true;
+            }
+    }//GEN-LAST:event_jBtnConfirmarActionPerformed
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
         // TODO add your handling code here:
-        jDlgUsuarios.mexer = false;
         setVisible(false);
+        jDlgEntregas.mexer = false;
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     /**
@@ -146,13 +148,13 @@ public class JDlgUsuariosPesquisar extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JDlgUsuariosPesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDlgEntregasPesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JDlgUsuariosPesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDlgEntregasPesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JDlgUsuariosPesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDlgEntregasPesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JDlgUsuariosPesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDlgEntregasPesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -162,7 +164,7 @@ public class JDlgUsuariosPesquisar extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                JDlgUsuariosPesquisar dialog = new JDlgUsuariosPesquisar(new javax.swing.JFrame(), true);
+                JDlgEntregasPesquisar dialog = new JDlgEntregasPesquisar(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -176,7 +178,7 @@ public class JDlgUsuariosPesquisar extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBtnCancelar;
-    private javax.swing.JButton jBtncConfirmar;
+    private javax.swing.JButton jBtnConfirmar;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables

@@ -11,7 +11,7 @@ import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 
 /**
- *
+ *mysql-connector-java-5.1.23-bin.jar
  *
  */
 public class UsuariosDAO extends DAO_Abstract{
@@ -45,7 +45,7 @@ public class UsuariosDAO extends DAO_Abstract{
     @Override
     public Object list(int id) {
         session.beginTransaction();
-        Criteria criteria = session.createCriteria(UsuariosDAO.class);
+        Criteria criteria = session.createCriteria(MslfUsuarios.class);
         criteria.add(Restrictions.eq("MSLF_idUsuarios", id));
         List Lista = criteria.list();
         session.getTransaction().commit();

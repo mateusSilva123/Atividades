@@ -5,6 +5,7 @@
  */
 package view.controle;
 import bean.MslfVendas;
+import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
 import java.util.List;
 /**
@@ -12,7 +13,7 @@ import java.util.List;
  * @author u04122722490
  */
 public class VendasControle extends AbstractTableModel {
-private List lista;
+    private List lista = new ArrayList();
     
     public void setList(List lista) {
         this.lista = lista;
@@ -40,7 +41,7 @@ private List lista;
             return vendas.getMslfIdVendas();
         }
         if (columnIndex == 1) {
-            return vendas.getMslfCliente();
+            return vendas.getMslfObservacao();
         }
         if (columnIndex == 2) {
             return vendas.getMslfQuantidade();
@@ -56,7 +57,7 @@ private List lista;
              return "ID";
         }
         if (columnIndex == 1) {
-             return "Cliente";
+             return "Observação";
         }
         if (columnIndex == 2) {
              return "Quantidade";

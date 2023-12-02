@@ -5,6 +5,7 @@
  */
 package view.controle;
 import bean.MslfEntregas;
+import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
 import java.util.List;
 /**
@@ -12,11 +13,11 @@ import java.util.List;
  * @author u04127224290
  */
 public class EntregasControle extends AbstractTableModel {
-private List lista;
+    private List lista = new ArrayList();
 
 public void setList(List lista){
-this.lista = lista;
-this.fireTableDataChanged();
+    this.lista = lista;
+    this.fireTableDataChanged();
 }
 
 public MslfEntregas getBean(int linha){
@@ -39,7 +40,7 @@ return (MslfEntregas) lista.get(linha);
              return entregas.getMslfIdEntregas();
         }
         if (columnIndex == 1) {
-             return entregas.getMslfEndereco();
+             return entregas.getMslfCidade();
         }
         if (columnIndex == 2) {
              return entregas.getMslfNumeroCasa();
@@ -56,7 +57,7 @@ return (MslfEntregas) lista.get(linha);
              return "ID";
         }
         if (columnIndex == 1) {
-             return "Endereço";
+             return "Cidade";
         }
         if (columnIndex == 2) {
              return "Número de Entrega";

@@ -1,5 +1,5 @@
 package bean;
-// Generated 20/10/2023 13:43:36 by Hibernate Tools 4.3.1
+// Generated 01/12/2023 17:46:58 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -26,10 +26,8 @@ public class MslfEntregas  implements java.io.Serializable {
      private int mslfIdEntregas;
      private MslfCliente mslfCliente;
      private MslfVendedor mslfVendedor;
-     private String mslfCpf;
-     private int mslfRg;
      private String mslfTelefone;
-     private int mslfCep;
+     private String mslfCep;
      private String mslfEndereco;
      private String mslfBairro;
      private String mslfCidade;
@@ -40,12 +38,10 @@ public class MslfEntregas  implements java.io.Serializable {
     public MslfEntregas() {
     }
 
-    public MslfEntregas(int mslfIdEntregas, MslfCliente mslfCliente, MslfVendedor mslfVendedor, String mslfCpf, int mslfRg, String mslfTelefone, int mslfCep, String mslfEndereco, String mslfBairro, String mslfCidade, String mslfEstado, int mslfNumeroCasa, Date mslfData) {
+    public MslfEntregas(int mslfIdEntregas, MslfCliente mslfCliente, MslfVendedor mslfVendedor, String mslfTelefone, String mslfCep, String mslfEndereco, String mslfBairro, String mslfCidade, String mslfEstado, int mslfNumeroCasa, Date mslfData) {
        this.mslfIdEntregas = mslfIdEntregas;
        this.mslfCliente = mslfCliente;
        this.mslfVendedor = mslfVendedor;
-       this.mslfCpf = mslfCpf;
-       this.mslfRg = mslfRg;
        this.mslfTelefone = mslfTelefone;
        this.mslfCep = mslfCep;
        this.mslfEndereco = mslfEndereco;
@@ -89,26 +85,6 @@ public class MslfEntregas  implements java.io.Serializable {
     }
 
     
-    @Column(name="MSLF_cpf", nullable=false, length=30)
-    public String getMslfCpf() {
-        return this.mslfCpf;
-    }
-    
-    public void setMslfCpf(String mslfCpf) {
-        this.mslfCpf = mslfCpf;
-    }
-
-    
-    @Column(name="MSLF_rg", nullable=false, length=30)
-    public int getMslfRg() {
-        return this.mslfRg;
-    }
-    
-    public void setMslfRg(int mslfRg) {
-        this.mslfRg = mslfRg;
-    }
-
-    
     @Column(name="MSLF_telefone", nullable=false, length=45)
     public String getMslfTelefone() {
         return this.mslfTelefone;
@@ -120,11 +96,11 @@ public class MslfEntregas  implements java.io.Serializable {
 
     
     @Column(name="MSLF_cep", nullable=false, length=45)
-    public int getMslfCep() {
+    public String getMslfCep() {
         return this.mslfCep;
     }
     
-    public void setMslfCep(int mslfCep) {
+    public void setMslfCep(String mslfCep) {
         this.mslfCep = mslfCep;
     }
 

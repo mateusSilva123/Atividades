@@ -43,7 +43,7 @@ public class JogoDAO extends DAO_Abstract{
     @Override
     public Object list(int id) {
         session.beginTransaction();
-        Criteria criteria = session.createCriteria(JogoDAO.class);
+        Criteria criteria = session.createCriteria(MslfJogo.class);
         criteria.add(Restrictions.eq("MSLF_idJogo", id));
         List Lista = criteria.list();
         session.getTransaction().commit();

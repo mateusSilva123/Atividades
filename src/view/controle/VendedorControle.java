@@ -5,6 +5,7 @@
  */
 package view.controle;
 import bean.MslfVendedor;
+import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
 import java.util.List;
 /**
@@ -12,15 +13,15 @@ import java.util.List;
  * @author u04127224290
  */
 public class VendedorControle extends AbstractTableModel {
-private List lista;
+    private List lista = new ArrayList();
 
 public void setList(List lista){
-this.lista=lista;
-this.fireTableDataChanged();
+    this.lista=lista;
+    this.fireTableDataChanged();
 }
 
 public MslfVendedor getbean(int linha){
-return (MslfVendedor) lista.get(linha);
+    return (MslfVendedor) lista.get(linha);
 }
     @Override
     public int getRowCount() {
@@ -42,10 +43,10 @@ return (MslfVendedor) lista.get(linha);
              return vendedor.getMslfNome();
         }
         if (columnIndex == 2) {
-             return vendedor.getMslfUsuarios();
+             return vendedor.getMslfCpf();
         }
         if (columnIndex == 3) {
-             return vendedor.getMslfCpf();
+             return vendedor.getMslfSalario();
         
         }
        return null;
@@ -59,10 +60,10 @@ return (MslfVendedor) lista.get(linha);
              return "Nome";
         }
         if (columnIndex == 2) {
-             return "Úsuario";
+             return "CPF";
         }
         if (columnIndex == 3) {
-             return "CPF";
+             return "Salario";
         }
        
     return null;

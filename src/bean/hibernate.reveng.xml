@@ -41,10 +41,11 @@ Contributor(s):
 -->
 <hibernate-reverse-engineering>
   <schema-selection match-catalog="db_mateus_fonseca"/>
-  <table-filter match-name="MslfEntregas"/>
   <table-filter match-name="MslfCliente"/>
-  <table-filter match-name="MslfVendedor"/>
-  <table-filter match-name="MslfJogo"/>
-  <table-filter match-name="MslfUsuarios"/>
   <table-filter match-name="MslfVendas"/>
+  <table-filter match-name="MslfUsuarios"/>
+  <table-filter match-name="MslfVendedor"/>
+  <table-filter match-name="MslfVendasJogo"/>
+  <table-filter match-name="MslfEntregas"/>
+  <table-filter match-name="MslfJogo"/>
 </hibernate-reverse-engineering>

@@ -5,6 +5,7 @@
  */
 package view.controle;
 import bean.MslfCliente;
+import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
 import java.util.List;
 /**
@@ -12,15 +13,15 @@ import java.util.List;
  * @author u04127224290
  */
 public class ClienteControle extends AbstractTableModel {
-private List lista;
+    private List lista = new ArrayList();
 
 public void setList(List lista){
-this.lista = lista;
-this.fireTableDataChanged();
+    this.lista = lista;
+    this.fireTableDataChanged();
 }
 
 public MslfCliente getBean(int linha){
-return (MslfCliente) lista.get(linha);
+    return (MslfCliente) lista.get(linha);
 }
     @Override
     public int getRowCount() {
@@ -42,10 +43,10 @@ return (MslfCliente) lista.get(linha);
              return cliente.getMslfNome();
         }
         if (columnIndex == 2) {
-             return cliente.getMslfApelido();
+             return cliente.getMslfNivel();
         }
         if (columnIndex == 3) {
-             return cliente.getMslfCep();
+             return cliente.getMslfApelido();
         
         }
        return "";
@@ -59,10 +60,10 @@ return (MslfCliente) lista.get(linha);
              return "Nome";
         }
         if (columnIndex == 2) {
-             return "Apelido";
+             return "Nivel";
         }
         if (columnIndex == 3) {
-             return "CEP";
+             return "Apelido";
         }
        
     return "";

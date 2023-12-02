@@ -1,5 +1,5 @@
 package bean;
-// Generated 20/10/2023 13:43:36 by Hibernate Tools 4.3.1
+// Generated 01/12/2023 17:46:58 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -9,8 +9,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -27,7 +25,6 @@ public class MslfVendedor  implements java.io.Serializable {
 
 
      private int mslfIdVendedor;
-     private MslfUsuarios mslfUsuarios;
      private String mslfNome;
      private String mslfEmail;
      private String mslfCpf;
@@ -35,16 +32,14 @@ public class MslfVendedor  implements java.io.Serializable {
      private String mslfSexo;
      private String mslfTelefone;
      private Date mslfDataNasc;
-     private String mslfSalario;
-     
+     private double mslfSalario;
 
     public MslfVendedor() {
     }
 
 	
-    public MslfVendedor(int mslfIdVendedor, MslfUsuarios mslfUsuarios, String mslfNome, String mslfEmail, String mslfCpf, String mslfRg, String mslfSexo, String mslfTelefone, Date mslfDataNasc, String mslfSalario) {
+    public MslfVendedor(int mslfIdVendedor, String mslfNome, String mslfEmail, String mslfCpf, String mslfRg, String mslfSexo, String mslfTelefone, Date mslfDataNasc, double mslfSalario) {
         this.mslfIdVendedor = mslfIdVendedor;
-        this.mslfUsuarios = mslfUsuarios;
         this.mslfNome = mslfNome;
         this.mslfEmail = mslfEmail;
         this.mslfCpf = mslfCpf;
@@ -54,7 +49,17 @@ public class MslfVendedor  implements java.io.Serializable {
         this.mslfDataNasc = mslfDataNasc;
         this.mslfSalario = mslfSalario;
     }
-    
+    public MslfVendedor(int mslfIdVendedor, String mslfNome, String mslfEmail, String mslfCpf, String mslfRg, String mslfSexo, String mslfTelefone, Date mslfDataNasc, double mslfSalario, Set mslfEntregases, Set mslfVendases) {
+       this.mslfIdVendedor = mslfIdVendedor;
+       this.mslfNome = mslfNome;
+       this.mslfEmail = mslfEmail;
+       this.mslfCpf = mslfCpf;
+       this.mslfRg = mslfRg;
+       this.mslfSexo = mslfSexo;
+       this.mslfTelefone = mslfTelefone;
+       this.mslfDataNasc = mslfDataNasc;
+       this.mslfSalario = mslfSalario;
+    }
    
      @Id 
 
@@ -66,16 +71,6 @@ public class MslfVendedor  implements java.io.Serializable {
     
     public void setMslfIdVendedor(int mslfIdVendedor) {
         this.mslfIdVendedor = mslfIdVendedor;
-    }
-
-@ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="MSLF_idUsuarios", nullable=false)
-    public MslfUsuarios getMslfUsuarios() {
-        return this.mslfUsuarios;
-    }
-    
-    public void setMslfUsuarios(MslfUsuarios mslfUsuarios) {
-        this.mslfUsuarios = mslfUsuarios;
     }
 
     
@@ -149,15 +144,17 @@ public class MslfVendedor  implements java.io.Serializable {
     }
 
     
-    @Column(name="MSLF_salario", nullable=false, length=45)
-    public String getMslfSalario() {
+    @Column(name="MSLF_salario", nullable=false, precision=22, scale=0)
+    public double getMslfSalario() {
         return this.mslfSalario;
     }
     
-    public void setMslfSalario(String mslfSalario) {
+    public void setMslfSalario(double mslfSalario) {
         this.mslfSalario = mslfSalario;
     }
-
+    
+    
+    
     @Override
     public String toString() {
         return getMslfNome();
@@ -172,6 +169,7 @@ public class MslfVendedor  implements java.io.Serializable {
         }
         return false;
     }
+
 
 
 }

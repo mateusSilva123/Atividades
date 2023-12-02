@@ -1,11 +1,15 @@
 package bean;
-// Generated 20/10/2023 13:43:36 by Hibernate Tools 4.3.1
+// Generated 01/12/2023 17:46:58 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -24,21 +28,22 @@ public class MslfJogo  implements java.io.Serializable {
      private String mslfNome;
      private String mslfEmpresa;
      private Date mslfAno;
-     private String mslfPreco;
+     private double mslfPreco;
      private String mslfGenero;
      private String mslfIdioma;
      private String mslfAvaliacaoGeral;
+     private String mslfObservacao;
      private String mslfEdicao;
      private int mslfEstoque;
      private String mslfBrinde;
-     private String mslfDesconto;
+     private Double mslfDesconto;
      private String mslfClassificacao;
 
     public MslfJogo() {
     }
 
 	
-    public MslfJogo(int mslfIdJogo, String mslfNome, String mslfEmpresa, Date mslfAno, String mslfPreco, String mslfGenero, String mslfIdioma, String mslfAvaliacaoGeral, String mslfEdicao, int mslfEstoque, String mslfClassificacao) {
+    public MslfJogo(int mslfIdJogo, String mslfNome, String mslfEmpresa, Date mslfAno, double mslfPreco, String mslfGenero, String mslfIdioma, String mslfAvaliacaoGeral, int mslfEstoque, String mslfClassificacao) {
         this.mslfIdJogo = mslfIdJogo;
         this.mslfNome = mslfNome;
         this.mslfEmpresa = mslfEmpresa;
@@ -47,11 +52,10 @@ public class MslfJogo  implements java.io.Serializable {
         this.mslfGenero = mslfGenero;
         this.mslfIdioma = mslfIdioma;
         this.mslfAvaliacaoGeral = mslfAvaliacaoGeral;
-        this.mslfEdicao = mslfEdicao;
         this.mslfEstoque = mslfEstoque;
         this.mslfClassificacao = mslfClassificacao;
     }
-    public MslfJogo(int mslfIdJogo, String mslfNome, String mslfEmpresa, Date mslfAno, String mslfPreco, String mslfGenero, String mslfIdioma, String mslfAvaliacaoGeral, String mslfEdicao, int mslfEstoque, String mslfBrinde, String mslfDesconto, String mslfClassificacao) {
+    public MslfJogo(int mslfIdJogo, String mslfNome, String mslfEmpresa, Date mslfAno, double mslfPreco, String mslfGenero, String mslfIdioma, String mslfAvaliacaoGeral, String mslfObservacao, String mslfEdicao, int mslfEstoque, String mslfBrinde, Double mslfDesconto, String mslfClassificacao, Set mslfVendasJogos) {
        this.mslfIdJogo = mslfIdJogo;
        this.mslfNome = mslfNome;
        this.mslfEmpresa = mslfEmpresa;
@@ -60,6 +64,7 @@ public class MslfJogo  implements java.io.Serializable {
        this.mslfGenero = mslfGenero;
        this.mslfIdioma = mslfIdioma;
        this.mslfAvaliacaoGeral = mslfAvaliacaoGeral;
+       this.mslfObservacao = mslfObservacao;
        this.mslfEdicao = mslfEdicao;
        this.mslfEstoque = mslfEstoque;
        this.mslfBrinde = mslfBrinde;
@@ -110,12 +115,12 @@ public class MslfJogo  implements java.io.Serializable {
     }
 
     
-    @Column(name="MSLF_preco", nullable=false, length=45)
-    public String getMslfPreco() {
+    @Column(name="MSLF_preco", nullable=false, precision=22, scale=0)
+    public double getMslfPreco() {
         return this.mslfPreco;
     }
     
-    public void setMslfPreco(String mslfPreco) {
+    public void setMslfPreco(double mslfPreco) {
         this.mslfPreco = mslfPreco;
     }
 
@@ -150,7 +155,17 @@ public class MslfJogo  implements java.io.Serializable {
     }
 
     
-    @Column(name="MSLF_edicao", nullable=false, length=45)
+    @Column(name="MSLF_Observacao", length=45)
+    public String getMslfObservacao() {
+        return this.mslfObservacao;
+    }
+    
+    public void setMslfObservacao(String mslfObservacao) {
+        this.mslfObservacao = mslfObservacao;
+    }
+
+    
+    @Column(name="MSLF_edicao", length=45)
     public String getMslfEdicao() {
         return this.mslfEdicao;
     }
@@ -160,7 +175,7 @@ public class MslfJogo  implements java.io.Serializable {
     }
 
     
-    @Column(name="MSLF_estoque", nullable=false, length=45)
+    @Column(name="MSLF_estoque", nullable=false)
     public int getMslfEstoque() {
         return this.mslfEstoque;
     }
@@ -180,12 +195,12 @@ public class MslfJogo  implements java.io.Serializable {
     }
 
     
-    @Column(name="MSLF_desconto", length=45)
-    public String getMslfDesconto() {
+    @Column(name="MSLF_desconto", precision=22, scale=0)
+    public Double getMslfDesconto() {
         return this.mslfDesconto;
     }
     
-    public void setMslfDesconto(String mslfDesconto) {
+    public void setMslfDesconto(Double mslfDesconto) {
         this.mslfDesconto = mslfDesconto;
     }
 
@@ -198,9 +213,21 @@ public class MslfJogo  implements java.io.Serializable {
     public void setMslfClassificacao(String mslfClassificacao) {
         this.mslfClassificacao = mslfClassificacao;
     }
+    
+    @Override
+    public String toString() {
+        return getMslfNome();
+    }
 
-
-
+    public boolean equals(Object object) {
+        if (object instanceof MslfJogo) {
+            MslfJogo jogo = (MslfJogo) object;
+            if (this.getMslfIdJogo() == jogo.getMslfIdJogo()) {
+                return true;
+            }
+        }
+        return false;
+    }
 
 }
 

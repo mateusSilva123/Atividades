@@ -127,18 +127,24 @@ public class JDlgVendedorNovo extends javax.swing.JDialog {
 
     private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed
         int rowSel = jTable1.getSelectedRow();
-        MslfVendedor vendedor = vendedorControle.getbean(rowSel);
-        jDlgVendedorNovoIA.beanView(vendedor);
-        List lista = vendedorDAO.listALL();
-        vendedorControle.setList(lista); 
-        jDlgVendedorNovoIA.setTitle("Alteração");
-        jDlgVendedorNovoIA.setVisible(true);
+        if (rowSel == -1) {
+            Util.mensagem("Você não pode alterar um vendedor sem selecioná-lo");
+        } else {
+            MslfVendedor vendedor = vendedorControle.getbean(rowSel);
+            jDlgVendedorNovoIA.beanView(vendedor);
+            List lista = vendedorDAO.listALL();
+            vendedorControle.setList(lista); 
+            jDlgVendedorNovoIA.setTitle("Alteração");
+            jDlgVendedorNovoIA.setVisible(true);
+        }
     }//GEN-LAST:event_jBtnAlterarActionPerformed
 
     private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
-       if ((Util.pergunta("Deseja excluir?")) == true) {
-            int rowSel = jTable1.getSelectedRow();
-            
+        int rowSel = jTable1.getSelectedRow();
+        if (rowSel == -1) {
+            Util.mensagem("Você não pode excluir um vendedor sem selecioná-lo");
+        } else {
+        if ((Util.pergunta("Deseja excluir?")) == true) {
             MslfVendedor vendedor = vendedorControle.getbean(rowSel);       
             VendedorDAO vendedorDAO = new VendedorDAO();
             vendedorDAO.delete(vendedor);
@@ -150,6 +156,7 @@ public class JDlgVendedorNovo extends javax.swing.JDialog {
         {
            Util.mensagem("Exclusão cancelada");
         
+        }
         }
     }//GEN-LAST:event_jBtnExcluirActionPerformed
 
