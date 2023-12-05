@@ -24,6 +24,21 @@ public class VendasControle extends AbstractTableModel {
         return (MslfVendas) lista.get(linha);
     }
     
+     public void addBean(MslfVendas mslfVendas) {
+        lista.add(mslfVendas);
+        this.fireTableDataChanged();
+    }
+    
+    public void removeBean(int index) {
+        lista.remove(index);
+        this.fireTableDataChanged();
+    }
+    
+    public void updateBean(int index, MslfVendas mslfVendas) {
+        lista.set(index, mslfVendas);
+        this.fireTableDataChanged();
+    }
+    
     @Override
     public int getRowCount() {
         return lista.size();

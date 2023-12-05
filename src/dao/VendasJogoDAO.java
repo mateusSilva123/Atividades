@@ -43,7 +43,7 @@ public class VendasJogoDAO extends DAO_Abstract {
     public Object list(int id) {
         session.beginTransaction();
         Criteria criteria = session.createCriteria(MslfVendasJogo.class);
-        criteria.add( Restrictions.eq("MSLF_idVendasJogo", id) );
+        criteria.add( Restrictions.eq("mslfIdVendasJogo", id) );
         List lista = criteria.list();
         session.getTransaction().commit();
         return lista.get(0);
@@ -60,7 +60,7 @@ public class VendasJogoDAO extends DAO_Abstract {
     public List listVendas(MslfVendas mslfVendas) {
         session.beginTransaction();
         Criteria criteria = session.createCriteria(MslfVendasJogo.class);
-        criteria.add( Restrictions.eq("MSLF_idVendas", mslfVendas) );
+        criteria.add( Restrictions.eq("mslfVendas", mslfVendas) );
         List lista = criteria.list();
         session.getTransaction().commit();
         return lista;

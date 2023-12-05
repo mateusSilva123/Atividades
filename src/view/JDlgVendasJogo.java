@@ -58,7 +58,7 @@ public class JDlgVendasJogo extends javax.swing.JDialog {
       public void beanView(MslfVendasJogo vendasJogo) {
         
         jTxtQuantidade.setText(Util.intStr(vendasJogo.getMslfQuantidade()));  
-        jTxtTotal.setText(Util.doubleStr(vendasJogo.getMslfValorUnitario()));
+        jTxtValor.setText(Util.doubleStr(vendasJogo.getMslfValorUnitario()));
         jCboJogo.setSelectedItem(vendasJogo.getMslfJogo());
     }
     /**

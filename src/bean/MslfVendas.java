@@ -28,7 +28,7 @@ import javax.persistence.TemporalType;
 public class MslfVendas  implements java.io.Serializable {
 
 
-     private Integer mslfIdVendas;
+     private int mslfIdVendas;
      private MslfCliente mslfCliente;
      private MslfVendedor mslfVendedor;
      private int mslfQuantidade;
@@ -57,15 +57,15 @@ public class MslfVendas  implements java.io.Serializable {
        this.mslfObservacao = mslfObservacao;
     }
    
-     @Id @GeneratedValue(strategy=IDENTITY)
+     @Id 
 
     
     @Column(name="MSLF_idVendas", unique=true, nullable=false)
-    public Integer getMslfIdVendas() {
+    public int getMslfIdVendas() {
         return this.mslfIdVendas;
     }
     
-    public void setMslfIdVendas(Integer mslfIdVendas) {
+    public void setMslfIdVendas(int mslfIdVendas) {
         this.mslfIdVendas = mslfIdVendas;
     }
 

@@ -22,7 +22,7 @@ import javax.persistence.Table;
 public class MslfVendasJogo  implements java.io.Serializable {
 
 
-     private Integer mslfIdVendasJogo;
+     private int mslfIdVendasJogo;
      private MslfJogo mslfJogo;
      private MslfVendas mslfVendas;
      private int mslfQuantidade;

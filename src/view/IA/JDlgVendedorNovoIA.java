@@ -25,12 +25,12 @@ import view.controle.VendedorControle;
  */
 public class JDlgVendedorNovoIA extends javax.swing.JDialog {
 
+    public JDlgVendedorNovo jDlgVendedorNovo;
     MaskFormatter mascaraCPF;
     MaskFormatter mascaraData;
     MaskFormatter mascaraNumero;
     MaskFormatter mascaraRG;
     
-    JDlgVendedorNovo jdlgVendedorNovo;
     JDlgVendedorNovoIA jDlgVendedorNovoIA;
     VendedorControle vendedorControle;
     
@@ -41,6 +41,8 @@ public class JDlgVendedorNovoIA extends javax.swing.JDialog {
         setTitle("Incluir Vendedor");
         
         vendedorControle = new VendedorControle();
+        jDlgVendedorNovo = new JDlgVendedorNovo(null, true);
+        
         
         Util.limparCampos(jTxtID, jTxtEmail, jTxtNome, jCboSexo, jFmtCPF, jFmtData, jFmtRG, jFmtSalario, jFmtTelefone);
         
@@ -86,6 +88,12 @@ public class JDlgVendedorNovoIA extends javax.swing.JDialog {
         jFmtTelefone.setText(vendedor.getMslfTelefone());
         jFmtData.setText(Util.dateStr(vendedor.getMslfDataNasc()));        
     };
+    
+    
+  public void setTelaAnterior(JDlgVendedorNovo jDlgVendedorNovo) {
+      this.jDlgVendedorNovo = jDlgVendedorNovo;
+  }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -284,28 +292,27 @@ public class JDlgVendedorNovoIA extends javax.swing.JDialog {
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     private void jBtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkActionPerformed
-         if (getTitle().toUpperCase().substring(0, 1).equals("I"))
-        {
-            MslfVendedor vendedor = viewBean();
-            VendedorDAO vendedorDAO = new VendedorDAO();
+        MslfVendedor vendedor = viewBean();
+        VendedorDAO vendedorDAO = new VendedorDAO();
+        
+        if (getTitle().toUpperCase().substring(0, 1).equals("I"))
+        {   
             vendedorDAO.insert(vendedor);
+            jDlgVendedorNovo.vendedorControle.addBean(vendedor);
+            List lista = vendedorDAO.listALL();      
+            vendedorControle.setList(lista);
             
-            List lista = vendedorDAO.listALL();
-            vendedorControle.setList(lista); 
-            
-            setVisible(false);
-            this.dispose();
         } else {
-            MslfVendedor vendedor = viewBean();
-            VendedorDAO vendedorDAO = new VendedorDAO();
-            vendedorDAO.update(vendedor);
-             
-            List lista = vendedorDAO.listALL();
-            vendedorControle.setList(lista); 
             
-            setVisible(false);
-            this.dispose();
+                  vendedorDAO.update(vendedor);
+            jDlgVendedorNovo.vendedorControle.updateBean(jDlgVendedorNovo.getSelectedRow(), vendedor);
+            List lista = vendedorDAO.listALL();       
+            vendedorControle.setList(lista);
+      
         }
+       setVisible(false);
+       this.dispose();
+        
         Util.limparCampos(jTxtID, jTxtEmail, jTxtNome, jCboSexo, jFmtCPF, jFmtData, jFmtRG, jFmtSalario, jFmtTelefone);
     }//GEN-LAST:event_jBtnOkActionPerformed
 

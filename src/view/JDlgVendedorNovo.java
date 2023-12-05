@@ -22,7 +22,7 @@ public class JDlgVendedorNovo extends javax.swing.JDialog {
    // Declaração de atributo
     VendedorDAO vendedorDAO;
     MslfVendedor vendedor;
-    VendedorControle vendedorControle;
+    public VendedorControle vendedorControle;
     
     JDlgVendedorNovoIA jDlgVendedorNovoIA;
    
@@ -32,12 +32,16 @@ public class JDlgVendedorNovo extends javax.swing.JDialog {
         setLocationRelativeTo(null);
         setTitle("Vendedor");
         
-        jDlgVendedorNovoIA = new JDlgVendedorNovoIA(null, true);
+        vendedorControle = new VendedorControle();
+        
         vendedorDAO = new VendedorDAO();
         List lista = vendedorDAO.listALL();
-        vendedorControle = new VendedorControle();
         vendedorControle.setList(lista);
         jTable1.setModel(vendedorControle);
+    }
+    
+    public int getSelectedRow(){
+        return jTable1.getSelectedRowCount();
     }
 
     /**
@@ -119,30 +123,33 @@ public class JDlgVendedorNovo extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirActionPerformed
-        List lista = vendedorDAO.listALL();
-        vendedorControle.setList(lista);
+        JDlgVendedorNovoIA jDlgVendedorNovoIA = new JDlgVendedorNovoIA(null, true);
         jDlgVendedorNovoIA.setTitle("Inclusão");
         jDlgVendedorNovoIA.setVisible(true);
+        List lista = vendedorDAO.listALL();       
+        vendedorControle.setList(lista);
     }//GEN-LAST:event_jBtnIncluirActionPerformed
 
     private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed
         int rowSel = jTable1.getSelectedRow();
         if (rowSel == -1) {
-            Util.mensagem("Você não pode alterar um vendedor sem selecioná-lo");
+            Util.mensagem("Você não pode alterar um registro sem selecioná-lo");
         } else {
             MslfVendedor vendedor = vendedorControle.getbean(rowSel);
-            jDlgVendedorNovoIA.beanView(vendedor);
-            List lista = vendedorDAO.listALL();
-            vendedorControle.setList(lista); 
+            JDlgVendedorNovoIA jDlgVendedorNovoIA = new JDlgVendedorNovoIA(null, true);
+            jDlgVendedorNovoIA.beanView(vendedor); 
             jDlgVendedorNovoIA.setTitle("Alteração");
+            jDlgVendedorNovoIA.setTelaAnterior(this);
             jDlgVendedorNovoIA.setVisible(true);
+             List lista = vendedorDAO.listALL();       
+            vendedorControle.setList(lista);
         }
     }//GEN-LAST:event_jBtnAlterarActionPerformed
 
     private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
-        int rowSel = jTable1.getSelectedRow();
+       int rowSel = jTable1.getSelectedRow();
         if (rowSel == -1) {
-            Util.mensagem("Você não pode excluir um vendedor sem selecioná-lo");
+            Util.mensagem("Você não pode excluir um registro sem selecioná-lo");
         } else {
         if ((Util.pergunta("Deseja excluir?")) == true) {
             MslfVendedor vendedor = vendedorControle.getbean(rowSel);       
@@ -151,11 +158,9 @@ public class JDlgVendedorNovo extends javax.swing.JDialog {
             Util.mensagem("Exclusão realizada com sucesso");
             List lista = vendedorDAO.listALL();       
             vendedorControle.setList(lista);
-            
             } else
         {
            Util.mensagem("Exclusão cancelada");
-        
         }
         }
     }//GEN-LAST:event_jBtnExcluirActionPerformed

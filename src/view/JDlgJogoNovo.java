@@ -130,7 +130,7 @@ public class JDlgJogoNovo extends javax.swing.JDialog {
 
     
     private void jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirActionPerformed
-        JDlgJogoNovoIA jDlgJogoNovoIA = new JDlgJogoNovoIA(null, true, jogoControle);
+        JDlgJogoNovoIA jDlgJogoNovoIA = new JDlgJogoNovoIA(null, true);
         jDlgJogoNovoIA.setTitle("Inclusão");
         jDlgJogoNovoIA.setVisible(true);
         List lista = jogoDAO.listALL();       
@@ -141,13 +141,12 @@ public class JDlgJogoNovo extends javax.swing.JDialog {
     private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed
         int rowSel = jTable1.getSelectedRow();
         if (rowSel == -1) {
-            Util.mensagem("Você não pode alterar um jogo sem selecioná-lo");
+            Util.mensagem("Você não pode alterar um registro sem selecioná-lo");
         } else {
             MslfJogo jogo = jogoControle.getbean(rowSel);
-            JDlgJogoNovoIA jDlgJogoNovoIA = new JDlgJogoNovoIA(null, true, jogoControle);
+            JDlgJogoNovoIA jDlgJogoNovoIA = new JDlgJogoNovoIA(null, true);
+            jDlgJogoNovoIA.setTitle("alteração");
             jDlgJogoNovoIA.beanView(jogo); 
-            jDlgJogoNovoIA.setTitle("Alteração");
-            jDlgJogoNovoIA.setTelaAnterior(this);
             jDlgJogoNovoIA.setVisible(true);
             List lista = jogoDAO.listALL();       
             jogoControle.setList(lista);
@@ -157,7 +156,7 @@ public class JDlgJogoNovo extends javax.swing.JDialog {
     private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
         int rowSel = jTable1.getSelectedRow();
         if (rowSel == -1) {
-            Util.mensagem("Você não pode excluir um jogo sem selecioná-lo");
+            Util.mensagem("Você não pode excluir um registro sem selecioná-lo");
         } else {
         if ((Util.pergunta("Deseja excluir?")) == true) {
             MslfJogo jogo = jogoControle.getbean(rowSel);       

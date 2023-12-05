@@ -32,13 +32,11 @@ public class JDlgJogoNovoIA extends javax.swing.JDialog {
     JogoControle jogoControle;
     
     
-    public JDlgJogoNovoIA(java.awt.Frame parent, boolean modal, JogoControle nome) {
+    public JDlgJogoNovoIA(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
         setTitle("Incluir Jogo");
-        
-        jogoControle = nome;
         
         jogoControle = new JogoControle();
         jDlgJogoNovo = new JDlgJogoNovo(null, true);
@@ -374,19 +372,14 @@ public class JDlgJogoNovoIA extends javax.swing.JDialog {
         {   
             jogoDAO.insert(jogo);
             jDlgJogoNovo.jogoControle.addBean(jogo);
-            //List lista = jogoDAO.listALL();      
-            //jogoControle.setList(lista);
+            List lista = jogoDAO.listALL();      
+            jogoControle.setList(lista);
             
         } else {
             jogoDAO.update(jogo);
             jDlgJogoNovo.jogoControle.updateBean(jDlgJogoNovo.getSelectedRow(), jogo);
-//            jogoDAO.update(jogo);
-//            jDlgJogoNovo.jogoControle.updateBean(jDlgJogoNovo.getse );
-//            
-//            jDlgJogoNovo.vendas
-//            
-//            List lista = jogoDAO.listALL();       
-//            jogoControle.setList(lista);
+            List lista = jogoDAO.listALL();       
+            jogoControle.setList(lista);
         }
        setVisible(false);
        this.dispose();
@@ -451,7 +444,7 @@ public class JDlgJogoNovoIA extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                JDlgJogoNovoIA dialog = new JDlgJogoNovoIA(new javax.swing.JFrame(), true, null);
+                JDlgJogoNovoIA dialog = new JDlgJogoNovoIA(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

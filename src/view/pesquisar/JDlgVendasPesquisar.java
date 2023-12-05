@@ -105,10 +105,8 @@ public class JDlgVendasPesquisar extends javax.swing.JDialog {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jBtnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addComponent(jBtnConfirmar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jBtnCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
+                    .addComponent(jBtnConfirmar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -117,13 +115,13 @@ public class JDlgVendasPesquisar extends javax.swing.JDialog {
 
     private void jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmarActionPerformed
         // TODO add your handling code here:
-        int rowsel = jTable1.getSelectedRow();
-        if (rowsel == -1) {
+        int rowSel = jTable1.getSelectedRow();        
+        if (rowSel == -1) {
             Util.mensagem("Você precisa selecionar algum registro para continuar");
         } else {
-            MslfVendas vendas = vendasControle.getBean(rowsel);
-            jDlgVendas.beanView(vendas);
+            MslfVendas vendas = vendasControle.getBean(rowSel);
             jDlgVendas.mexerVendas = true;
+            jDlgVendas.beanView(vendas);
             setVisible(false);
         }
     }//GEN-LAST:event_jBtnConfirmarActionPerformed

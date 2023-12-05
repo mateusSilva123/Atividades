@@ -22,7 +22,21 @@ public void setList(List lista){
 
 public MslfVendedor getbean(int linha){
     return (MslfVendedor) lista.get(linha);
-}
+}   
+    public void addBean(MslfVendedor mslfVendedor) {
+        lista.add(mslfVendedor);
+        this.fireTableDataChanged();
+    }
+    
+    public void removeBean(int index) {
+        lista.remove(index);
+        this.fireTableDataChanged();
+    }
+    
+    public void updateBean(int index, MslfVendedor mslfVendedor) {
+        lista.set(index, mslfVendedor);
+        this.fireTableDataChanged();
+    }
     @Override
     public int getRowCount() {
         return lista.size();
