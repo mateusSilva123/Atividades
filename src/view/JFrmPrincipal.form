@@ -204,7 +204,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/img/jogo.png"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Jogo"/>
+                <Property name="text" type="java.lang.String" value="Jogos"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMiniConsultaJogoActionPerformed"/>
@@ -266,7 +266,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jToolBar2" alignment="0" pref="676" max="32767" attributes="0"/>
+          <Component id="jToolBar2" alignment="0" pref="457" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">

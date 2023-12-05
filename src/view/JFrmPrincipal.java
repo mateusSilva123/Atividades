@@ -307,7 +307,7 @@ public class JFrmPrincipal extends javax.swing.JFrame {
 
         jMiniConsultaJogo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_J, java.awt.event.InputEvent.CTRL_MASK));
         jMiniConsultaJogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/jogo.png"))); // NOI18N
-        jMiniConsultaJogo.setText("Jogo");
+        jMiniConsultaJogo.setText("Jogos");
         jMiniConsultaJogo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMiniConsultaJogoActionPerformed(evt);
@@ -343,7 +343,7 @@ public class JFrmPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jToolBar2, javax.swing.GroupLayout.DEFAULT_SIZE, 676, Short.MAX_VALUE)
+            .addComponent(jToolBar2, javax.swing.GroupLayout.DEFAULT_SIZE, 457, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
