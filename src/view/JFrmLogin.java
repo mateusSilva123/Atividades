@@ -4,9 +4,9 @@
  * and open the template in the editor.
  */
 package view;
-import com.mysql.jdbc.Connection;
-import com.mysql.jdbc.PreparedStatement;
-import java.sql.ResultSet;
+
+import bean.MslfUsuarios;
+import dao.UsuariosDAO;
 import javax.swing.JOptionPane;
 import tools.Util;
 
@@ -15,12 +15,9 @@ import tools.Util;
  * @author u04127224290
  */
 public class JFrmLogin extends javax.swing.JFrame {
-
-    Connection conexao = null;
-    PreparedStatement pst = null;
-    ResultSet rs = null;
     
-    int tentativas = 3;
+    int tentativas;
+    UsuariosDAO usuariosDAO;
     /**
      * Creates new form JFrmLogin
      */
@@ -28,33 +25,10 @@ public class JFrmLogin extends javax.swing.JFrame {
         initComponents();
         setTitle("Login");
         setLocationRelativeTo(null);
+        usuariosDAO = new UsuariosDAO();
+        tentativas = 3;
     }
 
-    public void login() {
-        String sql = "select * from MslfUsuarios where MSLF_apelido=? and MSLF_senha=?";
-        try {
-            pst = (PreparedStatement) conexao.prepareStatement(sql);
-            pst.setString(1, jTxtLogin.getText());
-            pst.setString(2, jPwfSenha.getText());
-            rs = pst.executeQuery();
-            
-            if (tentativas >= 1) {
-            if (rs.next()) {
-                JFrmPrincipal jFrmPrincipal = new JFrmPrincipal();
-                jFrmPrincipal.setVisible(true);
-                this.dispose();
-            } else {
-                Util.mensagem("Campos não correspondentes");
-                tentativas = -1;
-            }
-            } else {
-                Util.mensagem("Você gastou todas as suas tentativas, você não pode mais tentar");
-                System.exit(0);
-            }
-        } catch (Exception e) {
-            System.exit(0);
-        }
-    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -159,8 +133,20 @@ public class JFrmLogin extends javax.swing.JFrame {
 
     private void jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmarActionPerformed
         // TODO add your handling code here:
-        login();
-        
+        UsuariosDAO usuariosDAO = new UsuariosDAO();
+        if(tentativas >= 1){ 
+            if ( usuariosDAO.validar("mslfApelido", jTxtLogin.getText()).size() !=0 && usuariosDAO.validar("mslfSenha", jPwfSenha.getText()).size()!=0) { 
+                JFrmPrincipal jFrmPrincipal = new JFrmPrincipal();
+                jFrmPrincipal.setVisible(true);
+                this.dispose();
+                setVisible(false);
+            } else {    
+                Util.mensagem("Algum campo está incorreto, tente novamente");
+                tentativas -= 1;
+                }
+            } else {
+            Util.mensagem("Você não possui mais tentativas, tente novamente mais tarde");
+            System.exit(0);}
     }//GEN-LAST:event_jBtnConfirmarActionPerformed
 
     /**

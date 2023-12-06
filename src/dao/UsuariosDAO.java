@@ -65,11 +65,9 @@ public class UsuariosDAO extends DAO_Abstract{
         session.beginTransaction();
         Criteria criteria = session.createCriteria(MslfUsuarios.class);
         criteria.add(Restrictions.eq(tabela, busca));
-        
         List lista = criteria.list();
-        
         session.getTransaction().commit();
-        return lista;
+        return  lista;
     }
     
     
@@ -83,21 +81,21 @@ public class UsuariosDAO extends DAO_Abstract{
         return Lista;
     }
     
-    public List listCpf(String cpf) {
+    public List listAtivo(String ativo){
         session.beginTransaction();
         Criteria criteria = session.createCriteria(MslfUsuarios.class);
-        criteria.add(Restrictions.like("mslfCpf", "%" + cpf + "%"));
-        List Lista = criteria.list();
+        criteria.add(Restrictions.like("mslfAtivo",  ativo));
+        List lista = criteria.list();
         session.getTransaction().commit();
-        
-        return Lista;
-    }
     
-    public List listNomeCpf(String nome, String cpf) {
+        return lista;
+    }   
+    
+    public List listNomeAtivo(String nome, String ativo) {
         session.beginTransaction();
         Criteria criteria = session.createCriteria(MslfUsuarios.class);
         criteria.add(Restrictions.like("mslfNome", "%" + nome + "%"));
-        criteria.add(Restrictions.like("mslfCpf", "%" + cpf + "%"));
+        criteria.add(Restrictions.like("mslfAtivo",  ativo));
         List Lista = criteria.list();
         session.getTransaction().commit();
         

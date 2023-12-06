@@ -44,7 +44,7 @@
                           <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTxtTotal" alignment="0" min="-2" pref="166" max="-2" attributes="0"/>
+                              <Component id="jTxtTotal" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Component id="jCboJogo" min="-2" pref="376" max="-2" attributes="0"/>
@@ -250,6 +250,7 @@
         </Property>
       </Properties>
       <Events>
+        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="jCboJogoItemStateChanged"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCboJogoActionPerformed"/>
       </Events>
       <AuxValues>

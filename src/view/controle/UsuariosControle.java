@@ -43,7 +43,12 @@ public MslfUsuarios getbean(int linha){
              return usuarios.getMslfNome();
         }
         if (columnIndex == 2) {
-             return usuarios.getMslfApelido();
+              if (usuarios.getMslfAtivo().equals("Sim")) {
+              return  "Ativo";
+            } else if(usuarios.getMslfAtivo().equals("Não")){
+             return  "Não Ativo";
+            }
+              return "Sem atividade";
         }
         if (columnIndex == 3) {
              return usuarios.getMslfCpf();
@@ -60,7 +65,7 @@ public MslfUsuarios getbean(int linha){
              return "Nome";
         }
         if (columnIndex == 2) {
-             return "Apelido";
+             return "Ativo";
         }
         if (columnIndex == 3) {
              return "CPF";

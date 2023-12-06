@@ -114,6 +114,7 @@ public class JDlgConsultasVendas extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -137,25 +138,6 @@ public class JDlgConsultasVendas extends javax.swing.JDialog {
 
     private void jBtnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConsultarActionPerformed
         // TODO add your handling code here:
-        /*List lista = null;
-        if (jTxtNome.getText().equals("") && jTxtCpf.getText().equals("")) {
-            lista = vendasDAO.listALL();
-        } else {
-            if (!jTxtNome.getText().equals("") && !jTxtCpf.getText().equals("")) {
-                lista = vendasDAO.listNomeCpf(jTxtNome.getText(), jTxtCpf.getText());
-            } else {
-                if (!jTxtNome.getText().equals("")) {
-                    lista = vendasDAO.listNome(jTxtNome.getText());
-                } else {
-                    if (!jTxtCpf.getText().equals("")) {
-                        lista = vendasDAO.listCpf(jTxtCpf.getText());
-                    }
-                }
-            }
-        }
-        vendasControle.setList(lista);
-        */
-        
         if (jTxtObservacao.getText().equals("") && jTxtQuantidade.getText().equals("")) {
            List lista = vendasDAO.listALL
         ();

@@ -114,6 +114,7 @@ public class JDlgConsultasJogo extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -137,26 +138,7 @@ public class JDlgConsultasJogo extends javax.swing.JDialog {
 
     private void jBtnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConsultarActionPerformed
         // TODO add your handling code here:
-        /*List lista = null;
-        if (jTxtNome.getText().equals("") && jTxtCpf.getText().equals("")) {
-            lista = jogoDAO.listALL();
-        } else {
-            if (!jTxtNome.getText().equals("") && !jTxtCpf.getText().equals("")) {
-                lista = jogoDAO.listNomeCpf(jTxtNome.getText(), jTxtCpf.getText());
-            } else {
-                if (!jTxtNome.getText().equals("")) {
-                    lista = jogoDAO.listNome(jTxtNome.getText());
-                } else {
-                    if (!jTxtCpf.getText().equals("")) {
-                        lista = jogoDAO.listCpf(jTxtCpf.getText());
-                    }
-                }
-            }
-        }
-        jogoControle.setList(lista);
-        */
-        
-        if (jTxtNome.getText().equals("") && jTxtEstoque.getText().equals("")) {
+      if (jTxtNome.getText().equals("") && jTxtEstoque.getText().equals("")) {
            List lista = jogoDAO.listALL
         ();
            jogoControle.setList(lista);

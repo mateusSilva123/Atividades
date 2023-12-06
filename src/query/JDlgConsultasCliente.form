@@ -96,7 +96,7 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Nivel"/>
+            <Property name="text" type="java.lang.String" value="Nivel (Maior que)"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTxtNivel">
@@ -134,6 +134,9 @@
                 <Column editable="true" title="Title 3" type="java.lang.Object"/>
                 <Column editable="true" title="Title 4" type="java.lang.Object"/>
               </Table>
+            </Property>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Cursor em Forma de M&#xe3;o"/>
             </Property>
           </Properties>
         </Component>

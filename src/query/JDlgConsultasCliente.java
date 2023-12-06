@@ -56,7 +56,7 @@ public class JDlgConsultasCliente extends javax.swing.JDialog {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jLabel1.setText("Nivel");
+        jLabel1.setText("Nivel (Maior que)");
 
         jBtnConsultar.setText("Consultar");
         jBtnConsultar.addActionListener(new java.awt.event.ActionListener() {
@@ -114,6 +114,7 @@ public class JDlgConsultasCliente extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -136,25 +137,6 @@ public class JDlgConsultasCliente extends javax.swing.JDialog {
 
     private void jBtnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConsultarActionPerformed
         // TODO add your handling code here:
-        /*List lista = null;
-        if (jTxtNome.getText().equals("") && jTxtCpf.getText().equals("")) {
-            lista = clienteDAO.listALL();
-        } else {
-            if (!jTxtNome.getText().equals("") && !jTxtCpf.getText().equals("")) {
-                lista = clienteDAO.listNomeCpf(jTxtNome.getText(), jTxtCpf.getText());
-            } else {
-                if (!jTxtNome.getText().equals("")) {
-                    lista = clienteDAO.listNome(jTxtNome.getText());
-                } else {
-                    if (!jTxtCpf.getText().equals("")) {
-                        lista = clienteDAO.listCpf(jTxtCpf.getText());
-                    }
-                }
-            }
-        }
-        clienteControle.setList(lista);
-        */
-        
         if (jTxtNivel.getText().equals("") && jTxtApelido.getText().equals("")) {
            List lista = clienteDAO.listALL
         ();

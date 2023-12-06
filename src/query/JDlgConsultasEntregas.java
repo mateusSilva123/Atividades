@@ -45,7 +45,7 @@ public class JDlgConsultasEntregas extends javax.swing.JDialog {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTxtCidade = new javax.swing.JTextField();
+        jTxtEstado = new javax.swing.JTextField();
         jBtnConsultar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jTxtNumCasa = new javax.swing.JTextField();
@@ -56,7 +56,7 @@ public class JDlgConsultasEntregas extends javax.swing.JDialog {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jLabel1.setText("Cidade");
+        jLabel1.setText("Estado");
 
         jBtnConsultar.setText("Consultar");
         jBtnConsultar.addActionListener(new java.awt.event.ActionListener() {
@@ -75,7 +75,7 @@ public class JDlgConsultasEntregas extends javax.swing.JDialog {
                 .addGap(25, 25, 25)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
-                    .addComponent(jTxtCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTxtEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(170, 170, 170)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -97,7 +97,7 @@ public class JDlgConsultasEntregas extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jTxtCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTxtEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jBtnConsultar))
                     .addComponent(jTxtNumCasa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(25, Short.MAX_VALUE))
@@ -114,6 +114,7 @@ public class JDlgConsultasEntregas extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -137,36 +138,17 @@ public class JDlgConsultasEntregas extends javax.swing.JDialog {
 
     private void jBtnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConsultarActionPerformed
         // TODO add your handling code here:
-        /*List lista = null;
-        if (jTxtNome.getText().equals("") && jTxtCpf.getText().equals("")) {
-            lista = entregasDAO.listALL();
-        } else {
-            if (!jTxtNome.getText().equals("") && !jTxtCpf.getText().equals("")) {
-                lista = entregasDAO.listNomeCpf(jTxtNome.getText(), jTxtCpf.getText());
-            } else {
-                if (!jTxtNome.getText().equals("")) {
-                    lista = entregasDAO.listNome(jTxtNome.getText());
-                } else {
-                    if (!jTxtCpf.getText().equals("")) {
-                        lista = entregasDAO.listCpf(jTxtCpf.getText());
-                    }
-                }
-            }
-        }
-        entregasControle.setList(lista);
-        */
-        
-        if (jTxtCidade.getText().equals("") && jTxtNumCasa.getText().equals("")) {
+        if (jTxtEstado.getText().equals("") && jTxtNumCasa.getText().equals("")) {
            List lista = entregasDAO.listALL
         ();
            entregasControle.setList(lista);
        } else {
-           if (! jTxtCidade.getText().equals("") && ! jTxtNumCasa.getText().equals("")) {
-               List lista = entregasDAO.listCidadeNumCasa(jTxtCidade.getText(), Util.strInt(jTxtNumCasa.getText()));
+           if (! jTxtEstado.getText().equals("") && ! jTxtNumCasa.getText().equals("")) {
+               List lista = entregasDAO.listEstadoNumCasa(jTxtEstado.getText(), Util.strInt(jTxtNumCasa.getText()));
                entregasControle.setList(lista);
            } else {
-                if (! jTxtCidade.getText().equals("")) {
-                List lista = entregasDAO.listCidade(jTxtCidade.getText());
+                if (! jTxtEstado.getText().equals("")) {
+                List lista = entregasDAO.listEstado(jTxtEstado.getText());
                 entregasControle.setList(lista);
                 jTable1.setModel(entregasControle);
             } else {
@@ -245,7 +227,7 @@ public class JDlgConsultasEntregas extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTxtCidade;
+    private javax.swing.JTextField jTxtEstado;
     private javax.swing.JTextField jTxtNumCasa;
     // End of variables declaration//GEN-END:variables
 }

@@ -37,7 +37,7 @@ public class JDlgVendasJogo extends javax.swing.JDialog {
         for (int i = 0; i < lista.size(); i++) {
            jCboJogo.addItem((MslfJogo) lista.get(i)); 
     }
-         Util.habilitar(false, jTxtTotal);
+         Util.habilitar(false, jTxtTotal, jTxtValor);
     }
     
     
@@ -143,6 +143,11 @@ public class JDlgVendasJogo extends javax.swing.JDialog {
 
         jLabel3.setText("Jogos");
 
+        jCboJogo.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jCboJogoItemStateChanged(evt);
+            }
+        });
         jCboJogo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCboJogoActionPerformed(evt);
@@ -171,7 +176,7 @@ public class JDlgVendasJogo extends javax.swing.JDialog {
                             .addGap(30, 30, 30)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTxtTotal, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jTxtTotal, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addComponent(jCboJogo, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 40, Short.MAX_VALUE))
             .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -238,23 +243,39 @@ public class JDlgVendasJogo extends javax.swing.JDialog {
 
     private void jTxtQuantidadeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxtQuantidadeKeyReleased
         // TODO add your handling code here:
-
+         if (jTxtQuantidade.getText().isEmpty() == false) {
+            double unitario = Double.parseDouble(jTxtValor.getText());
+            double quantidade = Double.parseDouble(jTxtQuantidade.getText());
+              
+            jTxtTotal.setText(String.valueOf(quantidade * unitario));
+            
+            if (getTitle().toUpperCase().substring(0, 1).equals("A")) {
+                
+                double precoDouble = Double.parseDouble(jTxtValor.getText());
+                int precoInt = (int) precoDouble;
+                jTxtValor.setText( String.valueOf(precoInt));
+            
+            }
+        } else {
+            jTxtTotal.setText("0");
+        }
     }//GEN-LAST:event_jTxtQuantidadeKeyReleased
 
     private void jTxtValorKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxtValorKeyReleased
         // TODO add your handling code here:
-        if (jTxtQuantidade.getText().isEmpty() == false) {
-            double unitario = Double.parseDouble(jTxtValor.getText());
-            double quantidade = Double.parseDouble(jTxtQuantidade.getText());
-            jTxtTotal.setText(String.valueOf(quantidade * unitario));
-        } else {
-            jTxtTotal.setText("0");
-        }
     }//GEN-LAST:event_jTxtValorKeyReleased
 
     private void jCboJogoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCboJogoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jCboJogoActionPerformed
+
+    private void jCboJogoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCboJogoItemStateChanged
+  // TODO add your handling code here:
+            MslfJogo jogo = (MslfJogo) jCboJogo.getSelectedItem();  
+            double precoDouble = jogo.getMslfPreco();
+            int precoInt = (int) precoDouble;
+            jTxtValor.setText( String.valueOf(precoInt));
+    }//GEN-LAST:event_jCboJogoItemStateChanged
 
     /**
      * @param args the command line arguments
