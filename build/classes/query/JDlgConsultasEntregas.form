@@ -55,7 +55,7 @@
                   <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTxtCidade" min="-2" pref="200" max="-2" attributes="0"/>
+                      <Component id="jTxtEstado" min="-2" pref="200" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="170" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -84,7 +84,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jTxtCidade" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTxtEstado" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jBtnConsultar" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Component id="jTxtNumCasa" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -97,10 +97,10 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Cidade"/>
+            <Property name="text" type="java.lang.String" value="Estado"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTxtCidade">
+        <Component class="javax.swing.JTextField" name="jTxtEstado">
         </Component>
         <Component class="javax.swing.JButton" name="jBtnConsultar">
           <Properties>
@@ -135,6 +135,9 @@
                 <Column editable="true" title="Title 3" type="java.lang.Object"/>
                 <Column editable="true" title="Title 4" type="java.lang.Object"/>
               </Table>
+            </Property>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Cursor em Forma de M&#xe3;o"/>
             </Property>
           </Properties>
         </Component>
