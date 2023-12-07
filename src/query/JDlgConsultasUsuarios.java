@@ -6,6 +6,7 @@
 package query;
 
 import dao.UsuariosDAO;
+import java.awt.event.KeyEvent;
 import java.util.List;
 import view.controle.UsuariosControle;
 
@@ -60,6 +61,11 @@ public class JDlgConsultasUsuarios extends javax.swing.JDialog {
         jBtnConsultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBtnConsultarActionPerformed(evt);
+            }
+        });
+        jBtnConsultar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jBtnConsultarKeyPressed(evt);
             }
         });
 
@@ -160,6 +166,13 @@ public class JDlgConsultasUsuarios extends javax.swing.JDialog {
        }
          
     }//GEN-LAST:event_jBtnConsultarActionPerformed
+
+    private void jBtnConsultarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jBtnConsultarKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+        jBtnConsultarActionPerformed(null);
+    }
+    }//GEN-LAST:event_jBtnConsultarKeyPressed
 
     /**
      * @param args the command line arguments

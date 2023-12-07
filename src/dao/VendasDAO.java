@@ -59,8 +59,24 @@ public class VendasDAO extends DAO_Abstract{
         return Lista;
     }
     
+    public Object busca(int nome) {
+        session.beginTransaction();
+        Criteria criteria = session.createCriteria(MslfVendas.class);
+        criteria.add(Restrictions.like("mslfIdVendas", nome));
+        List Lista = criteria.list();
+        session.getTransaction().commit();
+        if (!Lista.isEmpty()) {
+        
+        return Lista.get(0);
+        }
+        return null;
+        
+    }
+    
     public static void main(String[] args) {
-        VendasDAO vendasAO = new VendasDAO();
+        VendasDAO vendasDAO = new VendasDAO();
+        
+        System.out.println(vendasDAO.busca(1));  
     }
     
     

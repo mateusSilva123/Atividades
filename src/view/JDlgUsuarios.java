@@ -8,6 +8,7 @@ package view;
 import view.pesquisar.JDlgUsuariosPesquisar;
 import bean.MslfUsuarios;
 import dao.UsuariosDAO;
+import java.awt.event.KeyEvent;
 import java.text.SimpleDateFormat;
 import java.text.ParseException;
 import java.util.logging.Level;
@@ -42,7 +43,7 @@ public class JDlgUsuarios extends javax.swing.JDialog {
                 jFmtCpf, jFmtData, jPwfSenha,jBtnCancelar, jBtnConfirmar);
         
         Util.habilitar(true, jBtnAlterar, jBtnExcluir, jBtnIncluir, jBtnPesquisar);
-        
+        mexer = false;
         try {
             mascaraCpf = new MaskFormatter("###.###.###-##");
             mascaraData = new MaskFormatter("##/##/####");
@@ -123,12 +124,22 @@ public class JDlgUsuarios extends javax.swing.JDialog {
                 jBtnCancelarActionPerformed(evt);
             }
         });
+        jBtnCancelar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jBtnCancelarKeyPressed(evt);
+            }
+        });
 
         jBtnPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/pesquisar.png"))); // NOI18N
         jBtnPesquisar.setText("Pesquisar");
         jBtnPesquisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBtnPesquisarActionPerformed(evt);
+            }
+        });
+        jBtnPesquisar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jBtnPesquisarKeyPressed(evt);
             }
         });
 
@@ -139,12 +150,22 @@ public class JDlgUsuarios extends javax.swing.JDialog {
                 jBtnIncluirActionPerformed(evt);
             }
         });
+        jBtnIncluir.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jBtnIncluirKeyPressed(evt);
+            }
+        });
 
         jBtnAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/alterar.png"))); // NOI18N
         jBtnAlterar.setText("Alterar");
         jBtnAlterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBtnAlterarActionPerformed(evt);
+            }
+        });
+        jBtnAlterar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jBtnAlterarKeyPressed(evt);
             }
         });
 
@@ -155,12 +176,22 @@ public class JDlgUsuarios extends javax.swing.JDialog {
                 jBtnExcluirActionPerformed(evt);
             }
         });
+        jBtnExcluir.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jBtnExcluirKeyPressed(evt);
+            }
+        });
 
         jBtnConfirmar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Confirmado.png"))); // NOI18N
         jBtnConfirmar.setText("Confirmar");
         jBtnConfirmar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBtnConfirmarActionPerformed(evt);
+            }
+        });
+        jBtnConfirmar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jBtnConfirmarKeyPressed(evt);
             }
         });
 
@@ -378,7 +409,10 @@ public class JDlgUsuarios extends javax.swing.JDialog {
     }//GEN-LAST:event_jBtnExcluirActionPerformed
 
     private void jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmarActionPerformed
-       if (incluindo == true) {
+        if (Util.camposVazios(jTxtCodigo, jTxtNome, jCboNivel, jChbAtivo, jFmtCpf, jFmtData, jPwfSenha)) {
+            Util.mensagem("Algum campo está vazio, preencha todos os campos necessários para continuar");
+        } else {
+        if (incluindo == true) {
             MslfUsuarios usuarios = viewBean();  
             UsuariosDAO usuariosDAO = new UsuariosDAO();
             usuariosDAO.insert(usuarios);
@@ -395,6 +429,7 @@ public class JDlgUsuarios extends javax.swing.JDialog {
          
          Util.limparCampos(jTxtApelido, jTxtCodigo, jTxtNome, jChbAtivo, jCboNivel, 
                 jFmtCpf, jFmtData, jPwfSenha);
+        }
     }//GEN-LAST:event_jBtnConfirmarActionPerformed
 
     private void jPwfSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPwfSenhaActionPerformed
@@ -417,6 +452,48 @@ public class JDlgUsuarios extends javax.swing.JDialog {
     private void jTxtApelidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtApelidoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTxtApelidoActionPerformed
+
+    private void jBtnIncluirKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jBtnIncluirKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+        jBtnIncluirActionPerformed(null);
+    }
+    }//GEN-LAST:event_jBtnIncluirKeyPressed
+
+    private void jBtnAlterarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jBtnAlterarKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+        jBtnAlterarActionPerformed(null);
+    }
+    }//GEN-LAST:event_jBtnAlterarKeyPressed
+
+    private void jBtnExcluirKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jBtnExcluirKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+        jBtnExcluirActionPerformed(null);
+    }
+    }//GEN-LAST:event_jBtnExcluirKeyPressed
+
+    private void jBtnConfirmarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jBtnConfirmarKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+        jBtnConfirmarActionPerformed(null);
+    }
+    }//GEN-LAST:event_jBtnConfirmarKeyPressed
+
+    private void jBtnCancelarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jBtnCancelarKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+        jBtnCancelarActionPerformed(null);
+    }
+    }//GEN-LAST:event_jBtnCancelarKeyPressed
+
+    private void jBtnPesquisarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jBtnPesquisarKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+        jBtnPesquisarActionPerformed(null);
+    }
+    }//GEN-LAST:event_jBtnPesquisarKeyPressed
 
     /**
      * @param args the command line arguments

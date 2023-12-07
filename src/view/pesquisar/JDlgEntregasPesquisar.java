@@ -27,7 +27,7 @@ public class JDlgEntregasPesquisar extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
-        setTitle("Consulta de Entregas");
+        setTitle("Pesquisa de Entregas");
         
         entregasControle = new EntregasControle();
         EntregasDAO entregasDAO = new EntregasDAO();
@@ -68,6 +68,7 @@ public class JDlgEntregasPesquisar extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jScrollPane1.setViewportView(jTable1);
 
         jBtnConfirmar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Confirmado.png"))); // NOI18N
@@ -128,7 +129,6 @@ public class JDlgEntregasPesquisar extends javax.swing.JDialog {
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
         // TODO add your handling code here:
         setVisible(false);
-        jDlgEntregas.mexer = false;
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     /**

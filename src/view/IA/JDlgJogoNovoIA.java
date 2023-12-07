@@ -2,6 +2,7 @@ package view.IA;
 
 import dao.JogoDAO;
 import bean.MslfJogo;
+import java.awt.event.KeyEvent;
 import java.text.ParseException;
 import java.util.List;
 import java.util.logging.Level;
@@ -151,6 +152,11 @@ public class JDlgJogoNovoIA extends javax.swing.JDialog {
                 jBtnOkActionPerformed(evt);
             }
         });
+        jBtnOk.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jBtnOkKeyPressed(evt);
+            }
+        });
         jPanel1.add(jBtnOk);
 
         jBtnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cancelar.png"))); // NOI18N
@@ -158,6 +164,11 @@ public class JDlgJogoNovoIA extends javax.swing.JDialog {
         jBtnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBtnCancelarActionPerformed(evt);
+            }
+        });
+        jBtnCancelar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jBtnCancelarKeyPressed(evt);
             }
         });
         jPanel1.add(jBtnCancelar);
@@ -184,7 +195,7 @@ public class JDlgJogoNovoIA extends javax.swing.JDialog {
 
         jLabel14.setText("Gênero");
 
-        jCboGenero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ação", "Batalha", "Cartas", "Corrida", "Estrategia", "Esportes", "Infantil", "Terror", "Puzzle", "RPG", "Simulação", " " }));
+        jCboGenero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ação", "Batalha", "Cartas", "Corrida", "Estrategia", "Esportes", "Infantil", "Terror", "Puzzle", "RPG", "Simulação" }));
         jCboGenero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCboGeneroActionPerformed(evt);
@@ -211,7 +222,7 @@ public class JDlgJogoNovoIA extends javax.swing.JDialog {
 
         jLabel16.setText("Idioma");
 
-        jLabel17.setText("Ano");
+        jLabel17.setText("Data");
 
         jCboClassificacao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Livre", "+10", "+14", "+16", "+18" }));
         jCboClassificacao.addActionListener(new java.awt.event.ActionListener() {
@@ -224,7 +235,7 @@ public class JDlgJogoNovoIA extends javax.swing.JDialog {
 
         jCboEdicao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Colecionador", "Especial", "Luxo", "Padrão" }));
 
-        jCboBrinde.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Adesivos", "Controle", "Chaveiro", "Fone de Ouvido", "Mouse", "Mouse Pad", "Pen Drive" }));
+        jCboBrinde.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Adesivos", "Controle", "Chaveiro", "Fone de Ouvido", "Mouse", "Mouse Pad", "Pen Drive", " " }));
         jCboBrinde.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCboBrindeActionPerformed(evt);
@@ -387,6 +398,10 @@ public class JDlgJogoNovoIA extends javax.swing.JDialog {
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     private void jBtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkActionPerformed
+        if (Util.camposVazios(jTxtAvaliacao, jTxtEmpresa, jTxtEstoque, jTxtID, jTxtNome, jTxtPreco, jFmtAno, jCboClassificacao,
+                jCboEdicao, jCboGenero, jCboIdioma)) {
+            Util.mensagem("Algum campo está vazio, preencha todos os campos necessários para continuar");
+        } else {
         MslfJogo jogo = viewBean();
         JogoDAO jogoDAO = new JogoDAO();
         
@@ -408,6 +423,7 @@ public class JDlgJogoNovoIA extends javax.swing.JDialog {
         
         Util.limparCampos(jTxtAvaliacao, jTxtDesconto, jTxtEmpresa, jTxtEstoque, jTxtID, jTxtNome, jTxtPreco,
                 jTxtObservacao, jCboBrinde, jCboClassificacao, jCboEdicao, jCboGenero, jCboIdioma, jFmtAno);           
+        }
     }//GEN-LAST:event_jBtnOkActionPerformed
 
     private void jTxtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtNomeActionPerformed
@@ -433,6 +449,20 @@ public class JDlgJogoNovoIA extends javax.swing.JDialog {
     private void jTxtDescontoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtDescontoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTxtDescontoActionPerformed
+
+    private void jBtnOkKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jBtnOkKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+        jBtnOkActionPerformed(null);
+    }
+    }//GEN-LAST:event_jBtnOkKeyPressed
+
+    private void jBtnCancelarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jBtnCancelarKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+        jBtnCancelarActionPerformed(null);
+    }
+    }//GEN-LAST:event_jBtnCancelarKeyPressed
 
     /**
      * @param args the command line arguments

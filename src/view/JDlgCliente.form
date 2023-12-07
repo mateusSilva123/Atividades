@@ -368,6 +368,7 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBtnCancelarActionPerformed"/>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jBtnCancelarKeyPressed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jBtnPesquisar">
@@ -379,6 +380,7 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBtnPesquisarActionPerformed"/>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jBtnPesquisarKeyPressed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jBtnIncluir">
@@ -390,6 +392,7 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBtnIncluirActionPerformed"/>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jBtnIncluirKeyPressed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jBtnAlterar">
@@ -401,6 +404,7 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBtnAlterarActionPerformed"/>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jBtnAlterarKeyPressed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jBtnExcluir">
@@ -412,6 +416,7 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBtnExcluirActionPerformed"/>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jBtnExcluirKeyPressed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jBtnConfirmar">
@@ -423,6 +428,7 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBtnConfirmarActionPerformed"/>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jBtnConfirmarKeyPressed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JFormattedTextField" name="jFmtCPF">

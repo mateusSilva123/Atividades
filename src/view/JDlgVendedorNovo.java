@@ -6,6 +6,7 @@
 package view;
 import bean.MslfVendedor;
 import dao.VendedorDAO;
+import java.awt.event.KeyEvent;
 import java.util.List;
 import view.IA.JDlgVendedorNovoIA;
 import view.controle.VendedorControle;
@@ -85,13 +86,28 @@ public class JDlgVendedorNovo extends javax.swing.JDialog {
                 jBtnIncluirActionPerformed(evt);
             }
         });
+        jBtnIncluir.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jBtnIncluirKeyPressed(evt);
+            }
+        });
         jPanel1.add(jBtnIncluir);
 
         jBtnAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/alterar.png"))); // NOI18N
         jBtnAlterar.setText("Alterar");
+        jBtnAlterar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBtnAlterarMouseClicked(evt);
+            }
+        });
         jBtnAlterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBtnAlterarActionPerformed(evt);
+            }
+        });
+        jBtnAlterar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jBtnAlterarKeyPressed(evt);
             }
         });
         jPanel1.add(jBtnAlterar);
@@ -101,6 +117,11 @@ public class JDlgVendedorNovo extends javax.swing.JDialog {
         jBtnExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBtnExcluirActionPerformed(evt);
+            }
+        });
+        jBtnExcluir.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jBtnExcluirKeyPressed(evt);
             }
         });
         jPanel1.add(jBtnExcluir);
@@ -165,6 +186,31 @@ public class JDlgVendedorNovo extends javax.swing.JDialog {
         }
         }
     }//GEN-LAST:event_jBtnExcluirActionPerformed
+
+    private void jBtnIncluirKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jBtnIncluirKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+        jBtnIncluirActionPerformed(null);
+    }
+    }//GEN-LAST:event_jBtnIncluirKeyPressed
+
+    private void jBtnAlterarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnAlterarMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBtnAlterarMouseClicked
+
+    private void jBtnAlterarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jBtnAlterarKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+        jBtnAlterarActionPerformed(null);
+    }
+    }//GEN-LAST:event_jBtnAlterarKeyPressed
+
+    private void jBtnExcluirKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jBtnExcluirKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+        jBtnExcluirActionPerformed(null);
+    }
+    }//GEN-LAST:event_jBtnExcluirKeyPressed
 
     /**
      * @param args the command line arguments

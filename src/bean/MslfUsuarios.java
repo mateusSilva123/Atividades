@@ -66,7 +66,7 @@ public class MslfUsuarios  implements java.io.Serializable {
     }
 
     
-    @Column(name="MSLF_apelido", nullable=false, length=45)
+    @Column(name="MSLF_apelido",  length=45)
     public String getMslfApelido() {
         return this.mslfApelido;
     }

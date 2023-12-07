@@ -27,7 +27,7 @@ public class JDlgUsuariosPesquisar extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
-        setTitle("Consulta de Usuarios");
+        setTitle("Pesquisa de Usuarios");
         usuariosControle = new UsuariosControle();
         UsuariosDAO usuariosDAO = new UsuariosDAO();
         List lista = usuariosDAO.listALL();
@@ -66,6 +66,7 @@ public class JDlgUsuariosPesquisar extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jScrollPane1.setViewportView(jTable1);
 
         jBtncConfirmar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Confirmado.png"))); // NOI18N
@@ -125,7 +126,6 @@ public class JDlgUsuariosPesquisar extends javax.swing.JDialog {
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
         // TODO add your handling code here:
-        jDlgUsuarios.mexer = false;
         setVisible(false);
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 

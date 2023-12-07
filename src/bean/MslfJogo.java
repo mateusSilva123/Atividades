@@ -165,7 +165,7 @@ public class MslfJogo  implements java.io.Serializable {
     }
 
     
-    @Column(name="MSLF_edicao", length=45)
+    @Column(name="MSLF_edicao", nullable=false, length=45)
     public String getMslfEdicao() {
         return this.mslfEdicao;
     }

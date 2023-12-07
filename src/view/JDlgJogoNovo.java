@@ -6,6 +6,7 @@
 package view;
 import bean.MslfJogo;
 import dao.JogoDAO;
+import java.awt.event.KeyEvent;
 import java.util.List;
 import javax.swing.JTable;
 import view.IA.JDlgJogoNovoIA;
@@ -90,6 +91,11 @@ public class JDlgJogoNovo extends javax.swing.JDialog {
                 jBtnIncluirActionPerformed(evt);
             }
         });
+        jBtnIncluir.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jBtnIncluirKeyPressed(evt);
+            }
+        });
         jPanel1.add(jBtnIncluir);
 
         jBtnAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/alterar.png"))); // NOI18N
@@ -99,6 +105,11 @@ public class JDlgJogoNovo extends javax.swing.JDialog {
                 jBtnAlterarActionPerformed(evt);
             }
         });
+        jBtnAlterar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jBtnAlterarKeyPressed(evt);
+            }
+        });
         jPanel1.add(jBtnAlterar);
 
         jBtnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/excluir.png"))); // NOI18N
@@ -106,6 +117,11 @@ public class JDlgJogoNovo extends javax.swing.JDialog {
         jBtnExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBtnExcluirActionPerformed(evt);
+            }
+        });
+        jBtnExcluir.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jBtnExcluirKeyPressed(evt);
             }
         });
         jPanel1.add(jBtnExcluir);
@@ -171,6 +187,27 @@ public class JDlgJogoNovo extends javax.swing.JDialog {
         }
         }
     }//GEN-LAST:event_jBtnExcluirActionPerformed
+
+    private void jBtnIncluirKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jBtnIncluirKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+        jBtnIncluirActionPerformed(null);
+    }
+    }//GEN-LAST:event_jBtnIncluirKeyPressed
+
+    private void jBtnAlterarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jBtnAlterarKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+        jBtnAlterarActionPerformed(null);
+    }
+    }//GEN-LAST:event_jBtnAlterarKeyPressed
+
+    private void jBtnExcluirKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jBtnExcluirKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+        jBtnExcluirActionPerformed(null);
+    }
+    }//GEN-LAST:event_jBtnExcluirKeyPressed
 
     /**
      * @param args the command line arguments

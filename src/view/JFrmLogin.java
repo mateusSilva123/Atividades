@@ -7,6 +7,7 @@ package view;
 
 import bean.MslfUsuarios;
 import dao.UsuariosDAO;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import tools.Util;
 
@@ -62,11 +63,21 @@ public class JFrmLogin extends javax.swing.JFrame {
 
         jLabel2.setText("Senha");
 
+        jPwfSenha.setNextFocusableComponent(jBtnConfirmar);
+
         jBtnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cancelar.png"))); // NOI18N
         jBtnCancelar.setText("Cancelar");
         jBtnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBtnCancelarActionPerformed(evt);
+            }
+        });
+        jBtnCancelar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jBtnCancelarKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jBtnCancelarKeyReleased(evt);
             }
         });
 
@@ -75,6 +86,11 @@ public class JFrmLogin extends javax.swing.JFrame {
         jBtnConfirmar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBtnConfirmarActionPerformed(evt);
+            }
+        });
+        jBtnConfirmar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jBtnConfirmarKeyPressed(evt);
             }
         });
 
@@ -133,21 +149,44 @@ public class JFrmLogin extends javax.swing.JFrame {
 
     private void jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmarActionPerformed
         // TODO add your handling code here:
-        UsuariosDAO usuariosDAO = new UsuariosDAO();
-        if(tentativas >= 1){ 
-            if ( usuariosDAO.validar("mslfApelido", jTxtLogin.getText()).size() !=0 && usuariosDAO.validar("mslfSenha", jPwfSenha.getText()).size()!=0) { 
-                JFrmPrincipal jFrmPrincipal = new JFrmPrincipal();
-                jFrmPrincipal.setVisible(true);
-                this.dispose();
-                setVisible(false);
-            } else {    
-                Util.mensagem("Algum campo está incorreto, tente novamente");
-                tentativas -= 1;
-                }
-            } else {
-            Util.mensagem("Você não possui mais tentativas, tente novamente mais tarde");
-            System.exit(0);}
+        if (Util.camposVazios(jTxtLogin, jPwfSenha)) {
+            Util.mensagem("Algum campo está vazio, preencha todos os campos necessários para continuar");
+        } else {
+            UsuariosDAO usuariosDAO = new UsuariosDAO();
+            if(tentativas >= 1){ 
+                if ( usuariosDAO.validar("mslfApelido", jTxtLogin.getText()).size() !=0 && usuariosDAO.validar("mslfSenha", jPwfSenha.getText()).size()!=0) { 
+                    JFrmPrincipal jFrmPrincipal = new JFrmPrincipal();
+                    jFrmPrincipal.setVisible(true);
+                    this.dispose();
+                    setVisible(false);
+                } else {    
+                    Util.mensagem("Algum campo está incorreto, tente novamente");
+                    tentativas -= 1;
+                    }
+                } else {
+                Util.mensagem("Você não possui mais tentativas, tente novamente mais tarde");
+                System.exit(0);
+            }
+        }
     }//GEN-LAST:event_jBtnConfirmarActionPerformed
+
+    private void jBtnConfirmarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jBtnConfirmarKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+        jBtnConfirmarActionPerformed(null);
+    }
+    }//GEN-LAST:event_jBtnConfirmarKeyPressed
+
+    private void jBtnCancelarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jBtnCancelarKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBtnCancelarKeyReleased
+
+    private void jBtnCancelarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jBtnCancelarKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+        jBtnCancelarActionPerformed(null);
+    }
+    }//GEN-LAST:event_jBtnCancelarKeyPressed
 
     /**
      * @param args the command line arguments

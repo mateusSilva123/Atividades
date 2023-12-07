@@ -26,7 +26,7 @@ public class JDlgVendasPesquisar extends javax.swing.JDialog {
         super(parent, modal);
         initComponents(); 
         setLocationRelativeTo(null);
-        setTitle("Consulta de Vendas");
+        setTitle("Pesquisa de Vendas");
          
         vendasControle = new VendasControle();
         VendasDAO vendasDAO = new VendasDAO();
@@ -85,6 +85,7 @@ public class JDlgVendasPesquisar extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -129,7 +130,6 @@ public class JDlgVendasPesquisar extends javax.swing.JDialog {
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
         // TODO add your handling code here:
         setVisible(false);
-        jDlgVendas.mexerVendas = false;
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     /**

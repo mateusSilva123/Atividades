@@ -8,6 +8,7 @@ package view.pesquisar;
 import view.controle.ClienteControle;
 import bean.MslfCliente;
 import dao.ClienteDAO;
+import java.awt.event.KeyEvent;
 import java.util.List;
 import tools.Util;
 import view.JDlgCliente;
@@ -27,7 +28,7 @@ public class JDlgClientePesquisar extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
-        setTitle("Consulta de Cliente");
+        setTitle("Pesquisa de Cliente");
         
         clienteControle = new ClienteControle();
         ClienteDAO clienteDAO = new ClienteDAO();
@@ -68,6 +69,13 @@ public class JDlgClientePesquisar extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jTable1.setNextFocusableComponent(jBtnConfirmar);
+        jTable1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTable1KeyPressed(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jBtnConfirmar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Confirmado.png"))); // NOI18N
@@ -128,8 +136,11 @@ public class JDlgClientePesquisar extends javax.swing.JDialog {
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
         // TODO add your handling code here:
         setVisible(false);
-        jDlgCliente.mexer = false;
     }//GEN-LAST:event_jBtnCancelarActionPerformed
+
+    private void jTable1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable1KeyPressed
+
+    }//GEN-LAST:event_jTable1KeyPressed
 
     /**
      * @param args the command line arguments

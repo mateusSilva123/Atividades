@@ -65,4 +65,23 @@ public class VendasJogoDAO extends DAO_Abstract {
         session.getTransaction().commit();
         return lista;
     }
+    
+    public Object Apagar(MslfVendas mslfVendas) {
+        session.beginTransaction();
+        Criteria criteria = session.createCriteria(MslfVendasJogo.class);
+        criteria.add( Restrictions.eq("mslfVendas", mslfVendas) );
+        List lista = criteria.list();
+        for (int i = 0; i < lista.size(); i++) {
+            Object objeto = lista.get(i);
+            session.delete(objeto);
+        }
+        session.getTransaction().commit();
+        return "Deu certo";
+    }
+     public static void main(String[] args) {
+        VendasDAO vendasAO = new VendasDAO();
+        VendasJogoDAO vendasJogoDAO = new VendasJogoDAO();
+        Object id = vendasAO.busca(1);
+        System.out.println(vendasJogoDAO.Apagar((MslfVendas) id));  
+    } 
 }

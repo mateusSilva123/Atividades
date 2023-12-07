@@ -6,6 +6,7 @@
 package view;
 
 
+import java.awt.event.KeyEvent;
 import query.JDlgConsultasCliente;
 import query.JDlgConsultasEntregas;
 import query.JDlgConsultasJogo;
@@ -63,11 +64,11 @@ public class JFrmPrincipal extends javax.swing.JFrame {
         jMniVendedor = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         jMniJogo = new javax.swing.JMenuItem();
+        jMniEntregas = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
         jMniSair = new javax.swing.JMenuItem();
         JMenu = new javax.swing.JMenu();
         jMniVendas = new javax.swing.JMenuItem();
-        jMniEntregas = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMiniConsultaCliente = new javax.swing.JMenuItem();
         jMiniConsultaEntregas = new javax.swing.JMenuItem();
@@ -108,6 +109,11 @@ public class JFrmPrincipal extends javax.swing.JFrame {
                 jBtnUsariosActionPerformed(evt);
             }
         });
+        jBtnUsarios.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jBtnUsariosKeyPressed(evt);
+            }
+        });
         jToolBar2.add(jBtnUsarios);
         jToolBar2.add(jSeparator4);
 
@@ -121,6 +127,11 @@ public class JFrmPrincipal extends javax.swing.JFrame {
         jBtnCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBtnClienteActionPerformed(evt);
+            }
+        });
+        jBtnCliente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jBtnClienteKeyPressed(evt);
             }
         });
         jToolBar2.add(jBtnCliente);
@@ -138,6 +149,11 @@ public class JFrmPrincipal extends javax.swing.JFrame {
                 jBtnVendedorActionPerformed(evt);
             }
         });
+        jBtnVendedor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jBtnVendedorKeyPressed(evt);
+            }
+        });
         jToolBar2.add(jBtnVendedor);
         jToolBar2.add(jSeparator6);
 
@@ -151,6 +167,11 @@ public class JFrmPrincipal extends javax.swing.JFrame {
         jBtnJogo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBtnJogoActionPerformed(evt);
+            }
+        });
+        jBtnJogo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jBtnJogoKeyPressed(evt);
             }
         });
         jToolBar2.add(jBtnJogo);
@@ -168,6 +189,11 @@ public class JFrmPrincipal extends javax.swing.JFrame {
                 jBtnVendasActionPerformed(evt);
             }
         });
+        jBtnVendas.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jBtnVendasKeyPressed(evt);
+            }
+        });
         jToolBar2.add(jBtnVendas);
         jToolBar2.add(jSeparator10);
 
@@ -181,6 +207,11 @@ public class JFrmPrincipal extends javax.swing.JFrame {
         jBtnEntregas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBtnEntregasActionPerformed(evt);
+            }
+        });
+        jBtnEntregas.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jBtnEntregasKeyPressed(evt);
             }
         });
         jToolBar2.add(jBtnEntregas);
@@ -242,6 +273,17 @@ public class JFrmPrincipal extends javax.swing.JFrame {
             }
         });
         jMenu1.add(jMniJogo);
+
+        jMniEntregas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        jMniEntregas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/entregas.png"))); // NOI18N
+        jMniEntregas.setMnemonic('E');
+        jMniEntregas.setText("Entrega");
+        jMniEntregas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMniEntregasActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMniEntregas);
         jMenu1.add(jSeparator2);
 
         jMniSair.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
@@ -269,17 +311,6 @@ public class JFrmPrincipal extends javax.swing.JFrame {
             }
         });
         JMenu.add(jMniVendas);
-
-        jMniEntregas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
-        jMniEntregas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/entregas.png"))); // NOI18N
-        jMniEntregas.setMnemonic('E');
-        jMniEntregas.setText("Entrega");
-        jMniEntregas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMniEntregasActionPerformed(evt);
-            }
-        });
-        JMenu.add(jMniEntregas);
 
         jMenuBar1.add(JMenu);
 
@@ -465,6 +496,48 @@ public class JFrmPrincipal extends javax.swing.JFrame {
         JDlgConsultasJogo jDlgConsultasJogo = new JDlgConsultasJogo(this, true);
         jDlgConsultasJogo.setVisible(true);
     }//GEN-LAST:event_jMiniConsultaJogoActionPerformed
+
+    private void jBtnUsariosKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jBtnUsariosKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+        jBtnUsariosActionPerformed(null);
+    }
+    }//GEN-LAST:event_jBtnUsariosKeyPressed
+
+    private void jBtnClienteKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jBtnClienteKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+        jBtnClienteActionPerformed(null);
+    }
+    }//GEN-LAST:event_jBtnClienteKeyPressed
+
+    private void jBtnVendedorKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jBtnVendedorKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+        jBtnVendedorActionPerformed(null);
+    }
+    }//GEN-LAST:event_jBtnVendedorKeyPressed
+
+    private void jBtnJogoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jBtnJogoKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+        jBtnJogoActionPerformed(null);
+    }
+    }//GEN-LAST:event_jBtnJogoKeyPressed
+
+    private void jBtnVendasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jBtnVendasKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+        jBtnVendasActionPerformed(null);
+    }
+    }//GEN-LAST:event_jBtnVendasKeyPressed
+
+    private void jBtnEntregasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jBtnEntregasKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+        jBtnEntregasActionPerformed(null);
+    }
+    }//GEN-LAST:event_jBtnEntregasKeyPressed
 
     /**
      * @param args the command line arguments

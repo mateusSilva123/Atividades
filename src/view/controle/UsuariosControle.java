@@ -43,16 +43,15 @@ public MslfUsuarios getbean(int linha){
              return usuarios.getMslfNome();
         }
         if (columnIndex == 2) {
-              if (usuarios.getMslfAtivo().equals("Sim")) {
+              return usuarios.getMslfApelido();
+        }
+        if (columnIndex == 3) {
+            if (usuarios.getMslfAtivo().equals("Sim")) {
               return  "Ativo";
             } else if(usuarios.getMslfAtivo().equals("Não")){
              return  "Não Ativo";
             }
               return "Sem atividade";
-        }
-        if (columnIndex == 3) {
-             return usuarios.getMslfCpf();
-        
         }
        return "";
     }
@@ -65,10 +64,10 @@ public MslfUsuarios getbean(int linha){
              return "Nome";
         }
         if (columnIndex == 2) {
-             return "Ativo";
+             return "Apelido";
         }
         if (columnIndex == 3) {
-             return "CPF";
+             return "Ativo";
         }
        
     return "";

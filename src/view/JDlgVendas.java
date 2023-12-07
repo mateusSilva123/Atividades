@@ -13,6 +13,7 @@ import dao.ClienteDAO;
 import dao.VendasDAO;
 import dao.VendasJogoDAO;
 import dao.VendedorDAO;
+import java.awt.event.KeyEvent;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
@@ -167,12 +168,22 @@ k     */
                 jBtnIncluirActionPerformed(evt);
             }
         });
+        jBtnIncluir.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jBtnIncluirKeyPressed(evt);
+            }
+        });
 
         jBtnAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/alterar.png"))); // NOI18N
         jBtnAlterar.setText("Alterar");
         jBtnAlterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBtnAlterarActionPerformed(evt);
+            }
+        });
+        jBtnAlterar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jBtnAlterarKeyPressed(evt);
             }
         });
 
@@ -183,12 +194,22 @@ k     */
                 jBtnExcluirActionPerformed(evt);
             }
         });
+        jBtnExcluir.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jBtnExcluirKeyPressed(evt);
+            }
+        });
 
         jBtnConfirmar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Confirmado.png"))); // NOI18N
         jBtnConfirmar.setText("Confirmar");
         jBtnConfirmar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBtnConfirmarActionPerformed(evt);
+            }
+        });
+        jBtnConfirmar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jBtnConfirmarKeyPressed(evt);
             }
         });
 
@@ -199,12 +220,22 @@ k     */
                 jBtnCancelarActionPerformed(evt);
             }
         });
+        jBtnCancelar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jBtnCancelarKeyPressed(evt);
+            }
+        });
 
         jBtnPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/pesquisar.png"))); // NOI18N
         jBtnPesquisar.setText("Pesquisar");
         jBtnPesquisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBtnPesquisarActionPerformed(evt);
+            }
+        });
+        jBtnPesquisar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jBtnPesquisarKeyPressed(evt);
             }
         });
 
@@ -214,6 +245,11 @@ k     */
                 jBtnAlterarJogoActionPerformed(evt);
             }
         });
+        jBtnAlterarJogo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jBtnAlterarJogoKeyPressed(evt);
+            }
+        });
 
         jBtnExcluirJogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/excluir.png"))); // NOI18N
         jBtnExcluirJogo.addActionListener(new java.awt.event.ActionListener() {
@@ -221,11 +257,21 @@ k     */
                 jBtnExcluirJogoActionPerformed(evt);
             }
         });
+        jBtnExcluirJogo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jBtnExcluirJogoKeyPressed(evt);
+            }
+        });
 
         jBtnIncluirJogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/incluir.png"))); // NOI18N
         jBtnIncluirJogo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBtnIncluirJogoActionPerformed(evt);
+            }
+        });
+        jBtnIncluirJogo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jBtnIncluirJogoKeyPressed(evt);
             }
         });
 
@@ -307,6 +353,28 @@ k     */
                 .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jBtnIncluir, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(25, 25, 25)
+                                .addComponent(jBtnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(25, 25, 25)
+                                .addComponent(jBtnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(25, 25, 25)
+                                .addComponent(jBtnConfirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(25, 25, 25)
+                                .addComponent(jBtnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(25, 25, 25)
+                                .addComponent(jBtnPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(7, 7, 7)))
+                        .addGap(20, 20, 20)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jBtnAlterarJogo)
+                                .addComponent(jBtnIncluirJogo))
+                            .addComponent(jBtnExcluirJogo)))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
                             .addComponent(jTxtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -333,29 +401,8 @@ k     */
                         .addGap(20, 20, 20)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6)
-                            .addComponent(jTxtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jBtnIncluir, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(25, 25, 25)
-                                .addComponent(jBtnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(25, 25, 25)
-                                .addComponent(jBtnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(25, 25, 25)
-                                .addComponent(jBtnPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(25, 25, 25)
-                                .addComponent(jBtnConfirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(25, 25, 25)
-                                .addComponent(jBtnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jBtnAlterarJogo)
-                                .addComponent(jBtnIncluirJogo))
-                            .addComponent(jBtnExcluirJogo))))
-                .addContainerGap(28, Short.MAX_VALUE))
+                            .addComponent(jTxtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -404,11 +451,11 @@ k     */
                     .addComponent(jBtnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jBtnConfirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jBtnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jBtnPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jBtnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jBtnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jBtnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jBtnIncluir, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         pack();
@@ -452,12 +499,8 @@ k     */
          if ((Util.pergunta("Deseja excluir o registro?") == true)){
             VendasJogoDAO vendasJogoDAO = new VendasJogoDAO();
             MslfVendasJogo mslfVendasJogo;
-            for (int linha = 0; linha < jTable1.getRowCount(); linha++) {
-                // Tem que excluir primeiro o pedidosProdutos
-                mslfVendasJogo = vendasJogoControle.getBean(linha);
-                vendasJogoDAO.delete(mslfVendasJogo);
-            }
-            // Depois o Pedido, pq se não gera erro
+            vendasJogoDAO.Apagar((MslfVendas) vendasDAO.busca(Util.strInt(jTxtCodigo.getText())));            
+            mslfVendas = viewBean();
             vendasDAO.delete(mslfVendas);
             Util.mensagem("Exclusão realizada com sucesso");
         } else {
@@ -562,6 +605,9 @@ k     */
 
     private void jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmarActionPerformed
         // TODO add your handling code here:
+        if (Util.camposVazios(jTxtCodigo, jTxtQuantidade, jTxtTotal, jCboCliente, jCboVendedor, jFmtData)) {
+            Util.mensagem("Algum campo está vazio, preencha todos os campos necessários para continuar");
+        } else {
         mslfVendas = viewBean();
         if (incluindo == true) {
             vendasDAO.insert(mslfVendas);
@@ -577,14 +623,8 @@ k     */
             // Remover todos os pedidosProdutos deste pedido
             VendasJogoDAO vendasJogoDAO = new VendasJogoDAO();
             MslfVendasJogo mslfVendasJogo;
-            for (int linha = 0; linha < jTable1.getRowCount(); linha++) {
-                mslfVendasJogo = vendasJogoControle.getBean(linha);
-                mslfVendasJogo.setMslfVendas(mslfVendas); // funciona como chave estrangeira
-                vendasJogoDAO.delete(mslfVendasJogo);
-            }
+            vendasJogoDAO.Apagar((MslfVendas) vendasDAO.busca(Util.strInt(jTxtCodigo.getText())));
             // Incluir todos os pedidosProdutos que estão no jTable
-                // PedidosProdutosDAO pedidosProdutosDAO = new PedidosProdutosDAO();
-                // PedidosProdutos pedidosProdutos;
             for (int linha = 0; linha < jTable1.getRowCount(); linha++) {
                 mslfVendasJogo = vendasJogoControle.getBean(linha);
                 mslfVendasJogo.setMslfVendas(mslfVendas); // funciona como chave estrangeira
@@ -602,6 +642,8 @@ k     */
         
         vendasJogoControle.setList(new ArrayList());
         mexerVendas = false;
+        mexerVendasJogo = false;
+        }
     }//GEN-LAST:event_jBtnConfirmarActionPerformed
 
     private void jTxtObservacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtObservacaoActionPerformed
@@ -631,6 +673,69 @@ k     */
     private void jFmtDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFmtDataActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jFmtDataActionPerformed
+
+    private void jBtnIncluirJogoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jBtnIncluirJogoKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+        jBtnIncluirJogoActionPerformed(null);
+    }
+    }//GEN-LAST:event_jBtnIncluirJogoKeyPressed
+
+    private void jBtnAlterarJogoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jBtnAlterarJogoKeyPressed
+        // TODO add your handling code here:
+       if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+        jBtnAlterarActionPerformed(null);
+    }
+    }//GEN-LAST:event_jBtnAlterarJogoKeyPressed
+
+    private void jBtnExcluirJogoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jBtnExcluirJogoKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+        jBtnExcluirJogoActionPerformed(null);
+    }
+    }//GEN-LAST:event_jBtnExcluirJogoKeyPressed
+
+    private void jBtnIncluirKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jBtnIncluirKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+        jBtnIncluirActionPerformed(null);
+    }
+    }//GEN-LAST:event_jBtnIncluirKeyPressed
+
+    private void jBtnAlterarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jBtnAlterarKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+        jBtnAlterarActionPerformed(null);
+    }
+    }//GEN-LAST:event_jBtnAlterarKeyPressed
+
+    private void jBtnExcluirKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jBtnExcluirKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+        jBtnExcluirActionPerformed(null);
+    }
+    }//GEN-LAST:event_jBtnExcluirKeyPressed
+
+    private void jBtnPesquisarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jBtnPesquisarKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+        jBtnPesquisarActionPerformed(null);
+    }
+    }//GEN-LAST:event_jBtnPesquisarKeyPressed
+
+    private void jBtnConfirmarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jBtnConfirmarKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+        jBtnConfirmarActionPerformed(null);
+    }
+    }//GEN-LAST:event_jBtnConfirmarKeyPressed
+
+    private void jBtnCancelarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jBtnCancelarKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+        jBtnCancelarActionPerformed(null);
+    }
+    }//GEN-LAST:event_jBtnCancelarKeyPressed
 
     /**
      * @param args the command line arguments

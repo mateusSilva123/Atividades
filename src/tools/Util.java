@@ -11,6 +11,7 @@ import java.util.Date;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox; 
 import javax.swing.JComponent;
+import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
@@ -41,6 +42,34 @@ public class Util {
             }
         }
     }
+    
+     public static boolean camposVazios(JComponent... vetComp) {
+        for (JComponent componente : vetComp) {
+            if (componente instanceof JTextField) {
+                JTextField texto = (JTextField) componente;
+                if (texto.getText().isEmpty()) {
+                    return true; // Se um campo de texto estiver vazio, vai retorna verdadeiro
+                }
+            } else if (componente instanceof JComboBox) {
+                JComboBox<?> combo = (JComboBox<?>) componente;
+                if (combo.getSelectedItem() == null) {
+                    return true; // Se um combobox não tiver nenhuma seleção, retorna verdadeiro
+                }
+            } else if (componente instanceof JCheckBox) {
+                JCheckBox check = (JCheckBox) componente;
+                if (!check.isSelected()) {
+                    return true; // Se um checkbox não estiver selecionado, retorna verdadeiro
+                }
+            } else if (componente instanceof JFormattedTextField) {
+                JFormattedTextField formatado = (JFormattedTextField) componente;
+                if (formatado.getValue() == null) {
+                    return true; // Se um campo formatado estiver vazio, retorna verdadeiro
+                }
+            }
+        }
+        return false; // Se nenhum campo estiver vazio, retorna falso
+    }
+
 
     public static void mensagem(String mensagem) {
         JOptionPane.showMessageDialog(null, mensagem);

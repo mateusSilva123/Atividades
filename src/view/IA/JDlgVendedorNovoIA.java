@@ -2,6 +2,7 @@ package view.IA;
 
 import dao.VendedorDAO;
 import bean.MslfVendedor;
+import java.awt.event.KeyEvent;
 
 import java.text.ParseException;
 import java.util.logging.Level;
@@ -140,6 +141,11 @@ public class JDlgVendedorNovoIA extends javax.swing.JDialog {
                 jBtnOkActionPerformed(evt);
             }
         });
+        jBtnOk.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jBtnOkKeyPressed(evt);
+            }
+        });
         jPanel1.add(jBtnOk);
 
         jBtnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cancelar.png"))); // NOI18N
@@ -147,6 +153,11 @@ public class JDlgVendedorNovoIA extends javax.swing.JDialog {
         jBtnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBtnCancelarActionPerformed(evt);
+            }
+        });
+        jBtnCancelar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jBtnCancelarKeyPressed(evt);
             }
         });
         jPanel1.add(jBtnCancelar);
@@ -293,7 +304,7 @@ public class JDlgVendedorNovoIA extends javax.swing.JDialog {
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     private void jBtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkActionPerformed
-        MslfVendedor vendedor = viewBean();
+       MslfVendedor vendedor = viewBean();
         VendedorDAO vendedorDAO = new VendedorDAO();
         
         if (getTitle().toUpperCase().substring(0, 1).equals("I"))
@@ -304,16 +315,14 @@ public class JDlgVendedorNovoIA extends javax.swing.JDialog {
             vendedorControle.setList(lista);
             
         } else {
-            
-                  vendedorDAO.update(vendedor);
+            vendedorDAO.update(vendedor);
             jDlgVendedorNovo.vendedorControle.updateBean(jDlgVendedorNovo.getSelectedRow(), vendedor);
             List lista = vendedorDAO.listALL();       
             vendedorControle.setList(lista);
-      
         }
        setVisible(false);
        this.dispose();
-        
+       
         Util.limparCampos(jTxtID, jTxtEmail, jTxtNome, jCboSexo, jFmtCPF, jFmtData, jFmtRG, jFmtSalario, jFmtTelefone);
     }//GEN-LAST:event_jBtnOkActionPerformed
 
@@ -328,6 +337,20 @@ public class JDlgVendedorNovoIA extends javax.swing.JDialog {
     private void jTxtIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtIDActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTxtIDActionPerformed
+
+    private void jBtnOkKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jBtnOkKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+        jBtnOkActionPerformed(null);
+    }
+    }//GEN-LAST:event_jBtnOkKeyPressed
+
+    private void jBtnCancelarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jBtnCancelarKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+        jBtnCancelarActionPerformed(null);
+    }
+    }//GEN-LAST:event_jBtnCancelarKeyPressed
 
     /**
      * @param args the command line arguments
