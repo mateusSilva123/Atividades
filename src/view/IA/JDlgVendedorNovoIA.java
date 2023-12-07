@@ -304,7 +304,10 @@ public class JDlgVendedorNovoIA extends javax.swing.JDialog {
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     private void jBtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkActionPerformed
-       MslfVendedor vendedor = viewBean();
+        if (Util.camposVazios(jTxtEmail, jTxtID, jTxtNome, jFmtCPF, jFmtData, jFmtRG, jFmtSalario, jFmtTelefone, jCboSexo)) {
+            Util.mensagem("Algum campo está vazio, preencha todos os campos necessários para continuar");
+        } else {
+        MslfVendedor vendedor = viewBean();
         VendedorDAO vendedorDAO = new VendedorDAO();
         
         if (getTitle().toUpperCase().substring(0, 1).equals("I"))
@@ -324,6 +327,7 @@ public class JDlgVendedorNovoIA extends javax.swing.JDialog {
        this.dispose();
        
         Util.limparCampos(jTxtID, jTxtEmail, jTxtNome, jCboSexo, jFmtCPF, jFmtData, jFmtRG, jFmtSalario, jFmtTelefone);
+        }
     }//GEN-LAST:event_jBtnOkActionPerformed
 
     private void jTxtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtNomeActionPerformed

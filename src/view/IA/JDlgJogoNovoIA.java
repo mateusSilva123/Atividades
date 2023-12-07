@@ -140,8 +140,8 @@ public class JDlgJogoNovoIA extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        java.awt.FlowLayout flowLayout1 = new java.awt.FlowLayout(java.awt.FlowLayout.TRAILING);
+        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
+        java.awt.FlowLayout flowLayout1 = new java.awt.FlowLayout(4);
         flowLayout1.setAlignOnBaseline(true);
         jPanel1.setLayout(flowLayout1);
 
@@ -276,7 +276,7 @@ public class JDlgJogoNovoIA extends javax.swing.JDialog {
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel11)
                                         .addGap(33, 33, 33)
-                                        .addComponent(jCboEdicao, 0, 150, Short.MAX_VALUE))))
+                                        .addComponent(jCboEdicao, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(2, 2, 2)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

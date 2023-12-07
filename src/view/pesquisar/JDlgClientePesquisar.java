@@ -10,6 +10,8 @@ import bean.MslfCliente;
 import dao.ClienteDAO;
 import java.awt.event.KeyEvent;
 import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 import tools.Util;
 import view.JDlgCliente;
 
@@ -30,6 +32,9 @@ public class JDlgClientePesquisar extends javax.swing.JDialog {
         setLocationRelativeTo(null);
         setTitle("Pesquisa de Cliente");
         
+//        DefaultTableModel padrao = (DefaultTableModel) jTable1.getModel();
+//        jTable1.setRowSorter(new TableRowSorter(padrao));
+//        
         clienteControle = new ClienteControle();
         ClienteDAO clienteDAO = new ClienteDAO();
         

@@ -497,7 +497,9 @@ public class JDlgCliente extends javax.swing.JDialog {
         Util.limparCampos(jTxtApelido, jTxtBairro, jTxtCidade, jTxtEmail, jTxtEndereco,
                 jTxtEstado, jTxtID, jTxtNome, jFmtRG, jPwfSenha, jFmtCPF, jFmtCEP, jFmtData,
                 jFmtTelefone, jCboSexo, jCboNivel);
-
+        
+        mexer = false;
+        
         Util.mensagem("Operação Cancelada");
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 

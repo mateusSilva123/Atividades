@@ -8,6 +8,9 @@ package query;
 import dao.UsuariosDAO;
 import java.awt.event.KeyEvent;
 import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
+import tools.Util;
 import view.controle.UsuariosControle;
 
 /**
@@ -25,6 +28,10 @@ public class JDlgConsultasUsuarios extends javax.swing.JDialog {
     public JDlgConsultasUsuarios(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
+        DefaultTableModel padrao = (DefaultTableModel) jTable1.getModel();
+        jTable1.setRowSorter(new TableRowSorter(padrao));
+        
         setTitle("Pesquisas de Usuarios");
         setLocationRelativeTo(null);
         usuariosControle = new UsuariosControle();
@@ -47,7 +54,8 @@ public class JDlgConsultasUsuarios extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         jTxtNome = new javax.swing.JTextField();
         jBtnConsultar = new javax.swing.JButton();
-        jChbAtivo = new javax.swing.JCheckBox();
+        jLabel2 = new javax.swing.JLabel();
+        jTxtNivel = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
 
@@ -69,7 +77,7 @@ public class JDlgConsultasUsuarios extends javax.swing.JDialog {
             }
         });
 
-        jChbAtivo.setText("Ativo");
+        jLabel2.setText("Nivel");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -79,11 +87,12 @@ public class JDlgConsultasUsuarios extends javax.swing.JDialog {
                 .addGap(25, 25, 25)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jTxtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(170, 170, 170)
-                        .addComponent(jChbAtivo)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jTxtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(110, 110, 110)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jTxtNivel, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(234, 234, 234)
                 .addComponent(jBtnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25))
         );
@@ -91,12 +100,17 @@ public class JDlgConsultasUsuarios extends javax.swing.JDialog {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTxtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jBtnConsultar)
-                    .addComponent(jChbAtivo))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTxtNivel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTxtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jBtnConsultar))))
                 .addContainerGap(25, Short.MAX_VALUE))
         );
 
@@ -135,20 +149,12 @@ public class JDlgConsultasUsuarios extends javax.swing.JDialog {
 
     private void jBtnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConsultarActionPerformed
         // TODO add your handling code here:
-        String atividade = "atividade";
-        
-        if (jChbAtivo.isSelected()) {
-            atividade = "Sim";
-        } else {
-            atividade = "Não";
-        }
-        
-        if (jTxtNome.getText().equals("") && !jChbAtivo.isSelected()) {
+        if (jTxtNome.getText().equals("") && jTxtNivel.getText().equals("")) {
            List lista = usuariosDAO.listALL();
            usuariosControle.setList(lista);
        } else {
-           if (! jTxtNome.getText().equals("") && ! !jChbAtivo.isSelected()) {
-               List lista = usuariosDAO.listNomeAtivo(jTxtNome.getText(), atividade);
+           if (! jTxtNome.getText().equals("") && !jTxtNivel.getText().equals("")) {
+               List lista = usuariosDAO.listNomeNivel(jTxtNome.getText(), Util.strInt( jTxtNivel.getText()));
                usuariosControle.setList(lista);
            } else {
                 if (! jTxtNome.getText().equals("")) {
@@ -156,8 +162,8 @@ public class JDlgConsultasUsuarios extends javax.swing.JDialog {
                 usuariosControle.setList(lista);
                 jTable1.setModel(usuariosControle);
             } else {
-                    if (!jChbAtivo.isSelected()) {
-                        List lista = usuariosDAO.listAtivo(atividade);
+                    if (! jTxtNivel.getText().equals("")) {
+                        List lista = usuariosDAO.listNivel(Util.strInt(jTxtNivel.getText()));
                         usuariosControle.setList(lista);
                         jTable1.setModel(usuariosControle);
                     }
@@ -218,11 +224,12 @@ public class JDlgConsultasUsuarios extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBtnConsultar;
-    private javax.swing.JCheckBox jChbAtivo;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTextField jTxtNivel;
     private javax.swing.JTextField jTxtNome;
     // End of variables declaration//GEN-END:variables
 }

@@ -81,21 +81,21 @@ public class UsuariosDAO extends DAO_Abstract{
         return Lista;
     }
     
-    public List listAtivo(String ativo){
+    public List listNivel(int nivel){
         session.beginTransaction();
         Criteria criteria = session.createCriteria(MslfUsuarios.class);
-        criteria.add(Restrictions.like("mslfAtivo",  ativo));
+        criteria.add(Restrictions.ge("mslfNivel",  nivel));
         List lista = criteria.list();
         session.getTransaction().commit();
     
         return lista;
     }   
     
-    public List listNomeAtivo(String nome, String ativo) {
+    public List listNomeNivel(String nome, int nivel) {
         session.beginTransaction();
         Criteria criteria = session.createCriteria(MslfUsuarios.class);
         criteria.add(Restrictions.like("mslfNome", "%" + nome + "%"));
-        criteria.add(Restrictions.like("mslfAtivo",  ativo));
+        criteria.add(Restrictions.ge("mslfNive",  nivel));
         List Lista = criteria.list();
         session.getTransaction().commit();
         

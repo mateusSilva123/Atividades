@@ -409,7 +409,7 @@ public class JDlgUsuarios extends javax.swing.JDialog {
     }//GEN-LAST:event_jBtnExcluirActionPerformed
 
     private void jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmarActionPerformed
-        if (Util.camposVazios(jTxtCodigo, jTxtNome, jCboNivel, jChbAtivo, jFmtCpf, jFmtData, jPwfSenha)) {
+        if (Util.camposVazios(jTxtCodigo, jTxtNome, jCboNivel, jFmtCpf, jFmtData, jPwfSenha)) {
             Util.mensagem("Algum campo está vazio, preencha todos os campos necessários para continuar");
         } else {
         if (incluindo == true) {
