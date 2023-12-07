@@ -27,6 +27,33 @@
               <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="jScrollPane2" alignment="0" max="32767" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="jBtnIncluir" min="-2" pref="118" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                              <Component id="jBtnAlterar" min="-2" pref="118" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                              <Component id="jBtnExcluir" min="-2" pref="118" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                              <Component id="jBtnConfirmar" min="-2" pref="118" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                              <Component id="jBtnCancelar" min="-2" pref="118" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                              <Component id="jBtnPesquisar" min="-2" pref="118" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                              <Component id="jBtnAlterarJogo" min="-2" max="-2" attributes="0"/>
+                              <Component id="jBtnIncluirJogo" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="jBtnExcluirJogo" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                           <Component id="jTxtCodigo" min="-2" pref="100" max="-2" attributes="0"/>
@@ -62,34 +89,8 @@
                           <Component id="jTxtTotal" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="jBtnIncluir" min="-2" pref="118" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-                              <Component id="jBtnAlterar" min="-2" pref="118" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-                              <Component id="jBtnExcluir" min="-2" pref="118" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-                              <Component id="jBtnPesquisar" min="-2" pref="118" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-                              <Component id="jBtnConfirmar" min="-2" pref="118" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-                              <Component id="jBtnCancelar" min="-2" pref="118" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="jScrollPane2" alignment="0" max="32767" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                              <Component id="jBtnAlterarJogo" min="-2" max="-2" attributes="0"/>
-                              <Component id="jBtnIncluirJogo" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="jBtnExcluirJogo" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
               </Group>
-              <EmptySpace pref="28" max="32767" attributes="0"/>
+              <EmptySpace pref="49" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -152,13 +153,13 @@
                   <Component id="jBtnAlterar" min="-2" pref="35" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jBtnConfirmar" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                      <Component id="jBtnCancelar" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                       <Component id="jBtnPesquisar" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                       <Component id="jBtnExcluir" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                      <Component id="jBtnCancelar" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                   </Group>
                   <Component id="jBtnIncluir" alignment="0" min="-2" pref="35" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="40" max="32767" attributes="0"/>
+              <EmptySpace pref="41" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -173,6 +174,7 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBtnIncluirActionPerformed"/>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jBtnIncluirKeyPressed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jBtnAlterar">
@@ -184,6 +186,7 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBtnAlterarActionPerformed"/>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jBtnAlterarKeyPressed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jBtnExcluir">
@@ -195,6 +198,7 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBtnExcluirActionPerformed"/>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jBtnExcluirKeyPressed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jBtnConfirmar">
@@ -206,6 +210,7 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBtnConfirmarActionPerformed"/>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jBtnConfirmarKeyPressed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jBtnCancelar">
@@ -217,6 +222,7 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBtnCancelarActionPerformed"/>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jBtnCancelarKeyPressed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jBtnPesquisar">
@@ -228,6 +234,7 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBtnPesquisarActionPerformed"/>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jBtnPesquisarKeyPressed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jBtnAlterarJogo">
@@ -238,6 +245,7 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBtnAlterarJogoActionPerformed"/>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jBtnAlterarJogoKeyPressed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jBtnExcluirJogo">
@@ -248,6 +256,7 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBtnExcluirJogoActionPerformed"/>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jBtnExcluirJogoKeyPressed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jBtnIncluirJogo">
@@ -258,6 +267,7 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBtnIncluirJogoActionPerformed"/>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jBtnIncluirJogoKeyPressed"/>
       </Events>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane2">
