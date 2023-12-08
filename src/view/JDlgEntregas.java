@@ -507,6 +507,7 @@ public class JDlgEntregas extends javax.swing.JDialog {
 
         Util.limparCampos(jTxtBairro, jTxtCidade, jTxtEndereco, jTxtEstado, jTxtID, jTxtNumCasa, 
                jFmtCEP, jFmtData, jFmtTelefone, jCboCliente, jCboVendedor, jFmtData);
+        mexer = false;
         }
     }//GEN-LAST:event_jBtnConfirmarActionPerformed
 

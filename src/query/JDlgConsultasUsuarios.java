@@ -28,10 +28,7 @@ public class JDlgConsultasUsuarios extends javax.swing.JDialog {
     public JDlgConsultasUsuarios(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        
-        DefaultTableModel padrao = (DefaultTableModel) jTable1.getModel();
-        jTable1.setRowSorter(new TableRowSorter(padrao));
-        
+       
         setTitle("Pesquisas de Usuarios");
         setLocationRelativeTo(null);
         usuariosControle = new UsuariosControle();

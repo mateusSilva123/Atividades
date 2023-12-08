@@ -429,6 +429,7 @@ public class JDlgUsuarios extends javax.swing.JDialog {
          
          Util.limparCampos(jTxtApelido, jTxtCodigo, jTxtNome, jChbAtivo, jCboNivel, 
                 jFmtCpf, jFmtData, jPwfSenha);
+         mexer = false;
         }
     }//GEN-LAST:event_jBtnConfirmarActionPerformed
 
