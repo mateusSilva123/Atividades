@@ -95,7 +95,7 @@ public class UsuariosDAO extends DAO_Abstract{
         session.beginTransaction();
         Criteria criteria = session.createCriteria(MslfUsuarios.class);
         criteria.add(Restrictions.like("mslfNome", "%" + nome + "%"));
-        criteria.add(Restrictions.ge("mslfNive",  nivel));
+        criteria.add(Restrictions.ge("mslfNivel",  nivel));
         List Lista = criteria.list();
         session.getTransaction().commit();
         
